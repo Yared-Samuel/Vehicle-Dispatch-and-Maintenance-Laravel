@@ -1,0 +1,47 @@
+body{
+    background: #FCFDF2;
+}
+
+.title-vcl{
+    padding-bottom: 0;
+    margin-bottom: 0;
+    margin-top: 2rem;
+    text-align: right;
+    padding-right: 3rem;
+    text-decoration: underline;
+    color: grey;
+}
+.container-vcl{
+    margin: 0em 2em;
+
+}
+
+.tbl-vcl{
+    
+    border: 2px solid rgba(63, 78, 79, 0.2);
+    border-radius: 1rem;
+}
+.btn{
+    border-radius: 1rem;
+    font-weight: bold;
+}
+.btn-add-vcl{
+    border: 2px solid rgba(63, 78, 79, 0.2);
+    border-radius: 1rem;
+}
+
+#form-title {
+   font-weight: 800;
+}
+table {
+    counter-reset: row-num -1;
+}
+
+table tr {
+    counter-increment: row-num;
+  }
+
+
+table tr td:first-child::before {
+    content: counter(row-num) ;
+}
