@@ -13,6 +13,8 @@ class Tirechart extends Model
 
     protected $fillable = [
         'serial_num',
+        'tire_type',
+        'tire_price',
         'category_id',
         'status',
         'start',

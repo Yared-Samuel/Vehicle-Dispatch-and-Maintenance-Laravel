@@ -7,8 +7,9 @@ use Ramsey\Uuid\Type\Integer;
 
  enum TireStatus: int
  {
-    case OnVehicle = 1;
-    case InStore = 0;
+    case InStore = 1;
+    case OnVehicle = 2;    
+    case Disposed = 3;
  }
 
 

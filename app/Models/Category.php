@@ -20,6 +20,12 @@ class Category extends Model
     {
         return $this->hasMany(Vcl::class);
     }
+    
+    public function cat_hasm_sprs()
+    {
+        return $this->hasMany(Sparepart::class);
+    }
+
     public function cat_hasm_tires()
     {
         return $this->hasMany(Tirechart::class);

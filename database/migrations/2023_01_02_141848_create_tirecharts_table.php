@@ -16,11 +16,13 @@ return new class extends Migration
         Schema::create('tirecharts', function (Blueprint $table) {
             $table->id();
             $table->integer('serial_num')->unsigned();
-            $table->date('start')->nullable();;
+            $table->smallInteger('status');
+            $table->integer('tire_type');
+            $table->string('tire_price');
+            $table->date('start')->nullable();
             $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
             $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
-            $table->foreignId('category_id')->constrained('categories','id');
-            $table->boolean('status')->nullable();
+            $table->foreignId('category_id')->constrained('categories','id');            
             $table->timestamps();
         });
     }

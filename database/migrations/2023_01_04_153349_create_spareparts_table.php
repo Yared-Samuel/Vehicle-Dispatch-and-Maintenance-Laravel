@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('part_number');
             $table->integer('spare_price');
             $table->integer('spare_qty');
-            $table->foreignId('sparelist_id')->constrained('sparelists','id');
+            $table->string('spare_type');
+            $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
             $table->timestamps();
         });
     }

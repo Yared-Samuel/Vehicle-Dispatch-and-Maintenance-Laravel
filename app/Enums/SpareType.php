@@ -2,13 +2,15 @@
 
 namespace App\Enums;
 
- enum SpareState: string
+ enum SpareType: string
  {
     case Oil = 'oil';
-    case Chassis = 'chassis';
+    case Cambio = 'cambio';
     case Engine = 'engine';
+    case Defferencial = 'differ';
     case Lights = 'light';
     case Mirror = 'mirror';
+    case Other = 'other';
     
  }
 

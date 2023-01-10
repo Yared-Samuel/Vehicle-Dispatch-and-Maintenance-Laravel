@@ -61,6 +61,12 @@
                                 Serial Number
                             </th>
                             <th scope="col" class="py-2 px-2">
+                                Brand
+                            </th>
+                            <th scope="col" class="py-2 px-2">
+                                Price
+                            </th>
+                            <th scope="col" class="py-2 px-2">
                                 Starting date
                             </th>
                             <th scope="col" class="py-2 px-2">
@@ -90,6 +96,12 @@
                                 {{ $tire->serial_num }}
                             </td>
                             <td class="py-1 px-2">
+                                {{ $tire->tire_type }}
+                            </td>
+                            <td class="py-1 px-2">
+                                {{ $tire->tire_price }}
+                            </td>
+                            <td class="py-1 px-2">
                                 {{ $tire->start}}
                             </td>
                             <td class="py-1 px-2">
@@ -98,13 +110,14 @@
                             <td class="py-1 px-2">
                                 {{ $tire->tire_blgto_drvrs->driver_name}}
                             </td>
-                            <td class="py-1 px-2">
+                            {{-- <td class="py-1 px-2">
                              @if ($tire->status === 1)
                                {{ "On Vehicle" }}
                               @else
                               {{ "In Store" }}
                              @endif 
-                          </td>
+                             
+                          </td> --}}
                            
                             
                             <td class="py-1 px-2">
@@ -140,10 +153,16 @@
                           <th scope="col" class="py-2 px-2">
                               Serial Number
                           </th>
-                          
                           <th scope="col" class="py-2 px-2">
-                            Status
+                            Brand
                         </th>
+                        <th scope="col" class="py-2 px-2">
+                            Price
+                        </th>
+                          
+                        {{-- <th scope="col" class="py-2 px-2">
+                            Status
+                        </th> --}}
                           
                           <th scope="col" class="py-2 px-2 text-left">
                               Action
@@ -161,15 +180,21 @@
                           <td class="py-1 px-2">
                               {{ $tire->serial_num }}
                           </td>
-                          
-                          
                           <td class="py-1 px-2">
+                              {{ $tire->tire_type }}
+                          </td>
+                          <td class="py-1 px-2">
+                              {{ $tire->tire_price }}
+                          </td>
+                          
+                          
+                          {{-- <td class="py-1 px-2">
                            @if ($tire->status === 1)
                              {{ "On Vehicle" }}
                             @else
                             {{ "In Store" }}
                            @endif 
-                        </td>
+                        </td> --}}
                          
                           
                           <td class="py-1 px-2">

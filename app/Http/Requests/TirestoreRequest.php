@@ -27,6 +27,8 @@ class TirestoreRequest extends FormRequest
             'serial_num'=>['required'],
             'category_id'=>['required'],         
             'status'=>['required'],
+            'tire_type'=>['required'],
+            'tire_price'=>['required'],
             'start'=>['nullable'],
             'vcl_id'=>['nullable'],
             'driver_id'=>['nullable'],

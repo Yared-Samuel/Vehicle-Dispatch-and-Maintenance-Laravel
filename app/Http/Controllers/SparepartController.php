@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\SparelistStoreRequest;
-use App\Models\Sparelist;
 use Illuminate\Http\Request;
 
-class SparelistController extends Controller
+class SparepartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +13,7 @@ class SparelistController extends Controller
      */
     public function index()
     {
-        $sparelists = Sparelist::all();
-        return view('admin.sparelists.index',compact('sparelists'));
+        //
     }
 
     /**
@@ -26,7 +23,7 @@ class SparelistController extends Controller
      */
     public function create()
     {
-        return view('admin.sparelists.create');
+        //
     }
 
     /**
@@ -35,16 +32,9 @@ class SparelistController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SparelistStoreRequest $request)
+    public function store(Request $request)
     {
-        
-        Sparelist::create([
-            'part_name'=>$request->part_name,
-            'spare_measure'=>$request->spare_measure,
-            'spare_state'=>$request->spare_state,
-         ]);
-
-         return to_route('admin.sparelists.index');
+        //
     }
 
     /**

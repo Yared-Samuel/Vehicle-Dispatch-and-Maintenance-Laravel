@@ -50,6 +50,8 @@ class tireChartController extends Controller
         
         Tirechart::create([
             'serial_num' => $request->serial_num,
+            'tire_type'=>$request->tire_type,
+            'tire_price'=>$request->tire_price,
             'category_id' => $request->category_id,
             'status' => $request->status,
             'start' => $request->start,
