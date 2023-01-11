@@ -91,7 +91,7 @@
                                     <x-admin-nav-link :href="route('admin.request.index')" :active="request()->routeIs('admin.vcls.index')">
                                         {{ __('Maintenance Request') }}
                                     </x-admin-nav-link>
-                                    <x-admin-nav-link :href="route('admin.maintenance.index')" :active="request()->routeIs('admin.categories.index')">
+                                    <x-admin-nav-link :href="route('admin.request.index')" :active="request()->routeIs('admin.categories.index')">
                                         {{ __('Maintenance') }}
                                     </x-admin-nav-link>                             
                                     </div>
@@ -113,8 +113,8 @@
                                     <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
                                         <li>
-                                            <a href="{{ route('admin.sparelists.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                >Spare Category</a>
+                                            <a href="{{ route('admin.spareparts.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                                >Spare Parts</a>
                                         </li>
                                         <li>
                                             <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -145,7 +145,7 @@
                                     <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
                                         <li>
-                                            <a href="{{ route('admin.sparelists.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            <a href="{{ route('admin.spareparts.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >Spare Category</a>
                                         </li>
                                         <li>

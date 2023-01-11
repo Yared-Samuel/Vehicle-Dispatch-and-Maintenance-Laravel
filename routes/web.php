@@ -7,7 +7,8 @@ use App\Http\Controllers\maintenanceController;
 use App\Http\Controllers\maintenanceTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\requestController;
-use App\Http\Controllers\SparelistController;
+
+use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\tireChartController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
@@ -49,7 +50,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     route::resource('/drivers',driverController::class);
     route::resource('/tires',tireChartController::class);
     route::resource('/cost',costController::class);
-    route::resource('/sparelists',SparelistController::class);
+    route::resource('/spareparts',SparepartController::class);
     
 });
     

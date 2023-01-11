@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Sparepart;
 use Illuminate\Http\Request;
 
 class SparepartController extends Controller
@@ -13,7 +14,9 @@ class SparepartController extends Controller
      */
     public function index()
     {
-        //
+        $spares = Sparepart::all();
+
+        return view('admin.spareparts.index',compact('spares'));
     }
 
     /**
@@ -23,7 +26,8 @@ class SparepartController extends Controller
      */
     public function create()
     {
-        //
+        $spr_blgto_cats = Sparepart::all();
+        return view('admin.spareparts.create',compact('spr_blgto_cats'));
     }
 
     /**

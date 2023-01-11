@@ -24,7 +24,14 @@ return new class extends Migration
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->longText('description');
-            $table->boolean('status')->default(true);
+            $table->smallInteger('status')->default("1");
+            $table->date('start_date');
+            $table->date('end_date');
+            $table->bigInteger('kilometer')->default(0001);
+            $table->longText('mech_work_desc');
+            $table->integer('mech_cost');
+            $table->bigInteger('spare_description')->nullable();
+            $table->foreignId('sparepart_id')->constrained('spareparts','id');
             $table->timestamps();            
             
         });
