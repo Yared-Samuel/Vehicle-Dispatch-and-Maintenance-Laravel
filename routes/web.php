@@ -11,7 +11,6 @@ use App\Http\Controllers\requestController;
 use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\tireChartController;
 use Illuminate\Support\Facades\Route;
-use PHPUnit\TextUI\XmlConfiguration\Group;
 use App\Http\Controllers\vclCategoryController;
 use App\Http\Controllers\vclController;
 
@@ -44,7 +43,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/categories',vclCategoryController::class);    
     Route::resource('/request',requestController::class);
-    Route::resource('/request',maintenanceController::class);
+    Route::resource('/maintenance',maintenanceController::class);
     Route::resource('/maintenancetype',maintenanceTypeController::class);
     Route::resource('/vcls',vclController::class);
     route::resource('/drivers',driverController::class);
