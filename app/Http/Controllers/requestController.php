@@ -76,8 +76,13 @@ class requestController extends Controller
      */
     public function edit($id)
     {
-        //
+        $mtn = Request::find($id);     
+         
+        
+        return view('admin.request.edit', compact('mtn'));
+
     }
+    
 
     /**
      * Update the specified resource in storage.
@@ -86,9 +91,19 @@ class requestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(RequestStoreRequest $request,$id)
     {
-        //
+        // dd($id);
+        // $request->validate([
+        //     'status'=>'required',
+            
+        // ]);
+        $mtn = Request::find($id);
+       
+        $mtn->update([
+            'status'=>$request->status,            
+        ]);
+        return to_route('admin.request.index');
     }
 
     /**

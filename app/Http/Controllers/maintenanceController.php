@@ -25,9 +25,8 @@ class maintenanceController extends Controller
      */
     public function create()
     {
-        //
+       
     }
-
     /**
      * Store a newly created resource in storage.
      *

@@ -29,6 +29,7 @@ class RequestStoreRequest extends FormRequest
             'description'=>['required'],
             'vcl_id'=>['required'],
             'maintenancetype_id'=>['required'],
+            'status'=>['nullable'],
         ];
     }
 }
