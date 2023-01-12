@@ -52,9 +52,9 @@
                                         
                        
                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <td scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 
-                            </th>
+                            </td>
                             <td class="py-1 px-2">
                                 {{ $spares->name }}
                             </td>

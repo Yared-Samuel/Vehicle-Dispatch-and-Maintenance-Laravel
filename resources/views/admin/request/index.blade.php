@@ -7,7 +7,7 @@
     
         
             
-    <div class="relative overflow-x-auto max-h-full  bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
+    <div class="relative max-h-20 h-2/3 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
         
         <div class="flex justify-between w-full pb-4  items-center">
             <div class="text-xl font-bold">

@@ -226,6 +226,7 @@
             
             $(document).ready( function () {
                 $('#table_one').DataTable();
+                
             } );
             
         </script>

@@ -16,10 +16,9 @@ return new class extends Migration
         Schema::create('spareparts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('part_number');
+            $table->string('part_number')->nullable();
             $table->integer('spare_price');
             $table->integer('spare_qty');
-            $table->string('spare_type');
             $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
             $table->timestamps();
         });

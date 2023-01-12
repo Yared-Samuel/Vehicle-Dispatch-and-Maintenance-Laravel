@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('serial_num')->unsigned();
             $table->smallInteger('status');
-            $table->integer('tire_type');
+            $table->string('tire_type');
             $table->string('tire_price');
             $table->date('start')->nullable();
             $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');

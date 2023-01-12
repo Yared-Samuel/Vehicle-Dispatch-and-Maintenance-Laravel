@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Sparepart;
 use Illuminate\Http\Request;
 
@@ -26,7 +27,7 @@ class SparepartController extends Controller
      */
     public function create()
     {
-        $spr_blgto_cats = Sparepart::all();
+        $spr_blgto_cats = Category::all();
         return view('admin.spareparts.create',compact('spr_blgto_cats'));
     }
 

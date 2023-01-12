@@ -17,39 +17,7 @@
                 >Add Tires</a>
           </div>
           
-          <div
-            class="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:justify-between  w-full px-4 mb-2 mt-4 items-center">
-            <div class="flex bg-gray-100 w-full sm:w-2/5 items-center rounded-lg">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mx-2" fill="none" viewBox="0 0 24 24"
-                stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-              </svg>
-              <input
-                class="w-full bg-gray-100 outline-none border-transparent focus:border-transparent focus:ring-0 rounded-lg text-sm"
-                type="text" placeholder="Search a product..." />
-            </div>
-            <div class="flex-row space-x-2 items-center ">
-              <select class="border border-gray-300 rounded-md text-gray-600 px-2 pl-2 pr-8 bg-white hover:border-gray-400 focus:outline-none text-xs
-                 focus:ring-0">
-                <option>Filter by</option>
-                <option></option>
-                <option></option>
-              </select>
-              <select class="border border-gray-300 rounded-md text-gray-600 px-2 pl-2 pr-8 bg-white hover:border-gray-400 focus:outline-none text-xs
-                focus:ring-0">
-                <option>Short by</option>
-                <option></option>
-                <option></option>
-              </select>
-              <button class="border border-gray-300 rounded-md text-gray-600 px-3 py-[9px] bg-white hover:border-gray-400 focus:outline-none text-xs
-              focus:ring-0">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 13l-7 7-7-7m14-8l-7 7-7-7" />
-                </svg>
-              </button>
-            </div>
-          </div>
+         
     
             <table id="table_one" class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
