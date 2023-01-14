@@ -44,7 +44,7 @@ class requestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestStoreRequest $request, MaintenanceStoreRequest $maintenence)
+    public function store(RequestStoreRequest $request)
     {
         
        Request::create([
@@ -54,13 +54,8 @@ class requestController extends Controller
         'maintenancetype_id'=>$request->maintenancetype_id,
         'description'=>$request->description,
        ]);
-       $rq_id = $request->id;
-
-       Maintenance::create([
-         'request_id'=>$maintenence->$rq_id,
-       ]);
        
-
+       
        return to_route('admin.request.index');
     }
 
@@ -98,17 +93,11 @@ class requestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(RequestStoreRequest $request,$id)
+    public function update(Request $request, Request $requests)
     {
         
-        $request->validate([
-            'status'=>'required',
-            
-        ]);
-        $mtn = Request::find($id);
-       
-        $mtn->update([
-            'status'=>$request->status,            
+        $requests->update([
+            'status'=>$request->status
         ]);
         return to_route('admin.request.index');
     }

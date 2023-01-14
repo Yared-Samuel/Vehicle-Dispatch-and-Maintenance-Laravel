@@ -12,7 +12,7 @@ class Request extends Model
     use HasFactory;
 
     protected $fillable= [
-        'request_date','request_by','description','maintenancetype_id','vcl_id','status'
+        'status','request_date','request_by','description','maintenancetype_id','vcl_id','status'
         
     ];
 

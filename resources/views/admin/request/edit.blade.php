@@ -18,7 +18,7 @@
             <form method="POST" action="{{ route('admin.request.update',$mtn->id )}}">
                 @csrf
                 @method('PUT')
-                
+                {{ $mtn->id }}
                 <div class="relative z-0 mb-10 w-1/3 group">
                     <label for="status" class="sr-only">Confirm</label>
                     <select name="status" id="status" class="dynamic block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-4 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
