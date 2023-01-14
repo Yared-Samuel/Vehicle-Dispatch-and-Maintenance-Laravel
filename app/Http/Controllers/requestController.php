@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MaintenanceStoreRequest;
 use App\Http\Requests\RequestStoreRequest;
+use App\Models\Maintenance;
 use App\Models\Maintenancetype;
 use App\Models\Request;
 use App\Models\Vcl;
@@ -18,7 +20,7 @@ class requestController extends Controller
     public function index()
     {
         $requests = Request::all();
-        // dd($requests);
+        
         return view('admin.request.index',compact('requests'));
     }
 
@@ -42,7 +44,7 @@ class requestController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(RequestStoreRequest $request)
+    public function store(RequestStoreRequest $request, MaintenanceStoreRequest $maintenence)
     {
         
        Request::create([
@@ -51,6 +53,10 @@ class requestController extends Controller
         'vcl_id'=>$request->vcl_id,
         'maintenancetype_id'=>$request->maintenancetype_id,
         'description'=>$request->description,
+       ]);
+
+       Maintenance::create([
+         'id'=>$maintenence->request_id,
        ]);
        
 
@@ -93,11 +99,11 @@ class requestController extends Controller
      */
     public function update(RequestStoreRequest $request,$id)
     {
-        // dd($id);
-        // $request->validate([
-        //     'status'=>'required',
+        
+        $request->validate([
+            'status'=>'required',
             
-        // ]);
+        ]);
         $mtn = Request::find($id);
        
         $mtn->update([

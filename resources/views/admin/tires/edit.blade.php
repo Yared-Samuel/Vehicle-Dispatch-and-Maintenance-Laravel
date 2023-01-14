@@ -12,7 +12,7 @@
         
         <div class="flex justify-between w-full px-4 py-2 items-center">
             <div class="text-xl font-bold">
-              List of Tiers
+              Fix tires On Vehicle
             </div>
             <a href="{{ route('admin.tires.index') }}" class="text-gray-900 hover:text-white border inline border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Back >>></a>

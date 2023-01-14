@@ -43,9 +43,7 @@
                             <th scope="col" class="py-2 px-2">
                                 Witnnes Driver
                             </th>
-                            <th scope="col" class="py-2 px-2">
-                              Status
-                          </th>
+                            
                             
                             <th scope="col" class="py-2 px-2 ">
                                 Action

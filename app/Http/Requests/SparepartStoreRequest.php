@@ -13,7 +13,7 @@ class SparepartStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class SparepartStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name'=>['required'],
+            'part_number'=>['nullable'],
+            'spare_price'=>['required'],
+            'spare_qty'=>['required'],
+            'cat_id'=>['nullable'],
         ];
     }
 }

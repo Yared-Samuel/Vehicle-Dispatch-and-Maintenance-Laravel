@@ -25,7 +25,7 @@
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
 
-        <div class="bg-gray-500 border-gray-200 px-2 md:px-4 border-b-white border-b-4 dark:bg-gray-900 shadow-md">
+        <div class="bg-sky-900 border-gray-200 px-2 md:px-4 border-b-amber-300 border-b-4 dark:bg-gray-900 shadow-md">
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
@@ -36,16 +36,16 @@
                     <div id="mega-menu" class="justify-between  items-start w-full text-sm md:flex md:w-auto md:order-1 ">
                         <ul class="flex flex-col font-medium md:flex-row md:space-x-8 md:mt-0 mr-3">
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-slate-900 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page"
+                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page"
                                     >Home</a>
                             </li>
                             
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-slate-900 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                     >Team</a>
                             </li>
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-slate-900 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                     >Contact</a>
                             </li>
                         </ul>
@@ -56,7 +56,7 @@
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-white-700 hover:text-white border border-white-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-small rounded-lg text-sm px-3 py-0.5 text-center mr-2  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                                this.closest('form').submit();" class="text-teal-200 hover:text-white border border-spacing-5 border-teal-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-small rounded-lg text-sm px-3 py-0.5 text-center mr-2  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -75,12 +75,12 @@
         
   
         <div class="flex-col md:flex md:flex-row overflow-clip md:min-h-screen">
-            <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-slate-200 md:w-56 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
+            <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-teal-600 md:w-56 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
                 
                     <nav :class="{'block': open, 'hidden': !open}" 
                         class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
                         <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                            <button @click="open = !open" class="flex flex-row items-center underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                            <button @click="open = !open" class="flex flex-row items-center text-white  underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                 <span>Meitenance Progress</span>
                                 <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                             </button>
@@ -91,7 +91,7 @@
                                     <x-admin-nav-link :href="route('admin.request.index')" :active="request()->routeIs('admin.vcls.index')">
                                         {{ __('Maintenance Request') }}
                                     </x-admin-nav-link>
-                                    <x-admin-nav-link :href="route('admin.request.index')" :active="request()->routeIs('admin.categories.index')">
+                                    <x-admin-nav-link :href="route('admin.maintenance.index')" :active="request()->routeIs('admin.categories.index')">
                                         {{ __('Maintenance') }}
                                     </x-admin-nav-link>                             
                                     </div>
@@ -100,7 +100,7 @@
                         </div>
 
 
-                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-black bg-slate-200 underline   focus:outline-none  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button"
+                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white  underline font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" type="button"
                                 >Part Managment 
                             </button>
                         <!-- Dropdown menu -->
@@ -132,7 +132,7 @@
                             
                             </ul>
                         </div>
-                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-black bg-slate-200 underline   focus:outline-none  font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center" type="button"
+                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white  underline font-medium rounded-lg text-sm  px-4 py-2.5 text-center inline-flex items-center dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" type="button"
                                 >Reports
                             </button>
                         <!-- Dropdown menu -->
@@ -166,7 +166,7 @@
                         </div>
                         
                         <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                            <button @click="open = !open" class="flex flex-row items-center underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
+                            <button @click="open = !open" class="flex flex-row items-center text-white  underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
                                 <span>Configurations</span>
                                 <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
                             </button>

@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('part_number')->nullable();
             $table->integer('spare_price');
             $table->integer('spare_qty');
-            $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
+            $table->foreignId('vclcat_id')->nullable()->constrained('categories','id');
             $table->timestamps();
         });
     }

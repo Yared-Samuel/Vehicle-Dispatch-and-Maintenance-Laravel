@@ -10,7 +10,7 @@ class Sparepart extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name','part_number','spare_price','spare_qty','vcl_id'];
+        'name','part_number','spare_price','spare_qty','vclcat_id'];
 
         public function spr_blgto_cats()
     {

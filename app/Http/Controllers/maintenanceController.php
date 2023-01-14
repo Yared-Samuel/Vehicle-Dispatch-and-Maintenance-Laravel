@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Request;
-// use Illuminate\Http\Request;
 
 class maintenanceController extends Controller
 {
@@ -13,8 +12,12 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $requests= Request::all();
-        return view('admin.maintenance.index',compact('requests'));
+        $mtn_aprroveds= Request::select('id','vcl_id','status','maintenancetype_id',
+                                                        'request_date')
+                                    ->where('status','1')
+                                    ->get();
+        
+        return view('admin.maintenance.index',compact('mtn_aprroveds'));
         
     }
 

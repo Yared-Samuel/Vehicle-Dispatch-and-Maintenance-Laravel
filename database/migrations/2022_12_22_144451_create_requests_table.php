@@ -17,13 +17,14 @@ return new class extends Migration
             $table->id();
             $table->dateTime('request_date');            
             $table->string('request_by');
+            $table->longText('description');
             $table->foreignId('vcl_id')->constrained('vcls','id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreignId('maintenancetype_id')->constrained('maintenancetypes','id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->longText('description');
+            
             $table->smallInteger('status')->default("1");
             $table->timestamps();            
             

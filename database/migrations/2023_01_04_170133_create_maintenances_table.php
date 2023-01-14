@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('maintenances', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
             $table->bigInteger('kilometer')->default(0001);
-            $table->longText('mech_work_desc');
+            $table->longText('mech_work_desc')->nullable();
             $table->integer('mech_cost')->nullable();
             $table->longText('spare_desc')->nullable();
             $table->foreignId('sparepart_id')->nullable()->constrained('spareparts','id');

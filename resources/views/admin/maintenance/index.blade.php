@@ -1,112 +1,78 @@
-
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
     </x-slot>    
-    
-
-  
-        
-    <div class="flex justify-between w-full px-4 py-2 items-center">
-        <div class="text-xl font-bold">
-          Maintenance Requests
+    <div class="relative overflow-x-auto max-h-full h-96 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
+        <div class="flex justify-between w-full px-4 py-2 items-center">
+            <div class="text-xl font-bold">
+                    Vehicles Approved
+            </div>  
+            <div>     
+                <a href="{{ route('admin.request.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Requests</a>
+                <a href="{{ route('admin.maintenance.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Add Categories</a>
+            </div>
         </div>
-        <a href="{{ route('admin.vcls.create') }}" class="text-gray-900 hover:text-white border inline border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-            >Add Vehicle</a>
-      </div>
         
-       
-<div class="relative border-b-2 h-80 shadow-md sm:rounded-lg">
-    
-    
-
-</div>
-
-    <div class="flex justify-between w-full px-4 py-2 items-center">
-        <div class="text-xl font-bold">
-          Maintenance Requests
-        </div>
-        <a href="{{ route('admin.vcls.create') }}" class="text-gray-900 hover:text-white border inline border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-            >Add Vehicle</a>
-    </div>
-<div class="relative border-b-2 h-96 shadow-md sm:rounded-lg">
-    
-    <table id="table_one" class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="py-2 px-2">
-                            #
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Plate
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Date From
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Date To
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Kilometer
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Mechanic's Repair
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Mechanic Cost
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Purchased Spareparts
-                        </th>
-                        <th scope="col" class="py-2 px-2">
-                            Spare Part From Store
-                        </th>
-                        <th scope="col" class="py-2 px-2 text-left">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($requests as $request)
-                                                           
-                    <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                        
-                        <td class="py-1 px-2">
-                            
-                        </td>
-                        <td class="py-1 px-2">
-                            {{ $request->rqst_blgto_vcls->plate_id }}
-                        </td>
-                        <td class="py-1 px-2">
-                            {{ $request->request_date}}
-                        </td>
-                        <td class="py-1 px-2">
-                            {{ $request->rqst_blgto_mtns->maintenance_name }}
-                        </td>
-                        <td class="py-1 px-2">
-                            {{ $request->request_by}}
-                        </td>
-                       
-                        <td class="py-1 px-2">
-                            {{ $request->description}}
-                        </td>
-                        <td class="py-1 px-2">
-                            <a href="#" class="text-green-500 hover:text-white border border-green-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-sm px-1 py-0 text-center mr-0 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                                    >Accept</a>
-                            <a href="#" class="text-red-500 hover:text-white border border-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-sm px-1 py-0 text-center mr-0 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                                    >Decline</a>
-                            
-                        </td>
-                    </tr>
-                    @endforeach
-                    
-                </tbody>
-            </table>
-</div>
-
             
+            
+                <table class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-200 uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                No
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Vehicle Plate
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Request Date
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Maintenace Type
+                            </th>
+                            
+                            <th scope="col" class="py-2 px-1 border border-r-gray-300">
+                                Complete 
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($mtn_aprroveds as $mtn_aprroved)
+                                        
+                       
+                        <tr class="bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
+                            <th scope="row" class="py-1 px-2 border-r">
+                                {{ $mtn_aprroved->id }}
+                            </th>
+                            <td class="py-1 px-2 border-r">
+                                {{ $mtn_aprroved->rqst_blgto_vcls->plate_id }}
+                            </td>
+                            <td class="py-1 px-2 border-r">
+                                {{  date('d-m-Y', strtotime($mtn_aprroved->request_date)); }}
+                            </td>
+                            <td class="py-1 px-2 border-r">
+                                {{ $mtn_aprroved->rqst_blgto_mtns->maintenance_name }}
+                            </td>
+                            <td class="flex py-1 px-1">
+                                <a href="{{ route('admin.maintenance.edit', $mtn_aprroved->id) }}" class="text-teal-600 "
+                                        >
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
+                                            <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />
+                                          </svg>
+                                          
+                                    </a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        
+                    </tbody>
+                </table>
+    </div> 
+
         
     
 </x-admin-layout>

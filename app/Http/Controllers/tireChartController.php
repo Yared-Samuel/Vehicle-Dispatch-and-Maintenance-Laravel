@@ -80,10 +80,9 @@ class tireChartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit( $id)
-    {
+    {        
         $tirechart = Tirechart::find($id);
         $vcls= Vcl::all();
-        
         $drvrs= Driver::all();
         return view('admin.tires.edit',compact('tirechart','vcls','drvrs'));
     }
