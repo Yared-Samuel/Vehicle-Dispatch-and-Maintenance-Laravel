@@ -54,9 +54,10 @@ class requestController extends Controller
         'maintenancetype_id'=>$request->maintenancetype_id,
         'description'=>$request->description,
        ]);
+       $rq_id = $request->id;
 
        Maintenance::create([
-         'id'=>$maintenence->request_id,
+         'request_id'=>$maintenence->$rq_id,
        ]);
        
 

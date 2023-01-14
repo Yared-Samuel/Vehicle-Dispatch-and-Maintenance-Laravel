@@ -11,7 +11,7 @@ class Maintenance extends Model
 
 
     protected $fillable= [
-        'status','start_date','end_date','kilometer','mech_work_desc','mech_cost',
-        'spare_description','sparepart_id','purch_sparepart','spare_qty','price',
+        'start_date','end_date','kilometer','mech_work_desc','mech_cost',
+        'spare_desc','sparepart_id','request_id',
     ];
 }

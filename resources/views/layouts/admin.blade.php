@@ -30,22 +30,22 @@
                 
                 <a href="https://flowbite.com" class="flex items-center">
                     <img src="{{ asset('images/LOGO.png') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-                    <span class="text-white self-center text-xl font-semibold whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
+                    <span class="text-teal-300 font-bold self-center text-xl whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
                 </a>
                 <div class="flex items-center  md:order-2">
                     <div id="mega-menu" class="justify-between  items-start w-full text-sm md:flex md:w-auto md:order-1 ">
                         <ul class="flex flex-col font-medium md:flex-row md:space-x-8 md:mt-0 mr-3">
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page"
+                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page"
                                     >Home</a>
                             </li>
                             
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                     >Team</a>
                             </li>
                             <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
+                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
                                     >Contact</a>
                             </li>
                         </ul>
