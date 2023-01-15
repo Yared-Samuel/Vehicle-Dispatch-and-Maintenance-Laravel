@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\MaintenanceStoreRequest;
-use App\Http\Requests\RequestStoreRequest;
-use App\Models\Maintenance;
-use App\Models\Maintenancetype;
-use App\Models\Request;
-use App\Models\Vcl;
 
+use App\Http\Requests\RequestStoreRequest;
+
+use App\Models\Maintenancetype;
+use App\Models\Requester;
+use App\Models\Vcl;
+use Illuminate\Http\Request;
 
 class requestController extends Controller
 {
@@ -19,7 +19,8 @@ class requestController extends Controller
      */
     public function index()
     {
-        $requests = Request::all();
+        $requests = Requester::where('status','=','1')
+                                ->get();
         
         return view('admin.request.index',compact('requests'));
     }
@@ -47,7 +48,7 @@ class requestController extends Controller
     public function store(RequestStoreRequest $request)
     {
         
-       Request::create([
+       Requester::create([
         'request_date'=> $request->request_date,
         'request_by'=>$request->request_by,
         'vcl_id'=>$request->vcl_id,
@@ -78,7 +79,7 @@ class requestController extends Controller
      */
     public function edit($id)
     {
-        $mtn = Request::find($id);     
+        $mtn = Requester::find($id);     
          
         
         return view('admin.request.edit', compact('mtn'));
@@ -93,12 +94,12 @@ class requestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Request $requests)
+    public function update($id)
     {
         
-        $requests->update([
-            'status'=>$request->status
-        ]);
+        $req = Requester::find($id);
+        $req->status = 2;
+        $req->save();
         return to_route('admin.request.index');
     }
 

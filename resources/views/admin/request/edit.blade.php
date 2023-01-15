@@ -13,6 +13,9 @@
             <a href="{{ route('admin.request.index') }}" class="text-gray-900 hover:text-white border inline border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Back >>></a>
           </div>
+          <div class="bg-yellow-100 rounded-lg py-5 px-6 mb-4 text-base text-yellow-700 mb-3" role="alert">
+            This confirmation is irreversible!!
+          </div>
           <div class="max-w-9xl mx-auto sm:px-6 lg:px-8">
             
             <form method="POST" action="{{ route('admin.request.update',$mtn->id )}}">

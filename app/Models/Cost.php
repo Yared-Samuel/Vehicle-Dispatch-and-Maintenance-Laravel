@@ -15,6 +15,6 @@ class Cost extends Model
 
     public function cost_blgtomny_maintenances()
     {
-        return $this->belongsToMany(Maintenance::class);
+        return $this->belongsTo(Maintenance::class);
     }
 }

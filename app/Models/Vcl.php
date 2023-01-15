@@ -31,7 +31,7 @@ class Vcl extends Model
     
     public function vcl_hasm_rqsts()
     {
-        return $this->hasMany(Request::class);
+        return $this->hasMany(Requester::class);
     }
     
 

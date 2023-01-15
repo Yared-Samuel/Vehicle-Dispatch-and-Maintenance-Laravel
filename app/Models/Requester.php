@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Vcl;
 use App\Models\Maintenancetype;
 
-class Request extends Model
+class Requester extends Model
 {
     use HasFactory;
 
@@ -29,9 +29,12 @@ class Request extends Model
     }
     
     
+    public function rqst_hasone_mnts()
+    {
+        return $this->hasOne(Maintenance::class);
+    }
 
-
-
+    
 
 
 

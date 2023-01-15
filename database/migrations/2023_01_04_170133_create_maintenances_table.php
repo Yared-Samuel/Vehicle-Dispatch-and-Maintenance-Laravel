@@ -18,10 +18,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->bigInteger('kilometer')->default(0001);
-            $table->longText('mech_work_desc')->nullable();
-            $table->integer('mech_cost')->nullable();
-            $table->longText('spare_desc')->nullable();
-            $table->foreignId('sparepart_id')->nullable()->constrained('spareparts','id');
+            $table->foreignId('cost_id')->nullable()->constrained('costs','id');
             $table->foreignId('request_id')->constrained('requests','id');
             
                     

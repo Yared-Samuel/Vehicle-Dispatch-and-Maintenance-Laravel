@@ -1,7 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Request;
+
+use App\Models\Cost;
+use App\Models\Maintenance;
+use App\Models\Requester;
+use App\Models\Vcl;
+use Illuminate\Http\Request;
 
 class maintenanceController extends Controller
 {
@@ -12,9 +17,9 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Request::select('id','vcl_id','status','maintenancetype_id',
+        $mtn_aprroveds= Requester::select('id','vcl_id','status','maintenancetype_id',
                                                         'request_date')
-                                    ->where('status','1')
+                                    ->where('status','2')
                                     ->get();
         
         return view('admin.maintenance.index',compact('mtn_aprroveds'));
@@ -26,9 +31,17 @@ class maintenanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create( $id)
     {
-       
+        
+        dd($id);
+       $rqsts = Requester::with('rqst_hasone_mnts','rqst_blgto_vcls')
+                    ->where('status','=','2')
+                    // ->where('id','<>','$mainten')
+                    ->get();
+       $mtn_costs = Cost::all();
+       return view('admin.maintenance.create')
+                ->with(['rqsts'=>$rqsts,'mtn_costs'=>$mtn_costs]);
     }
     /**
      * Store a newly created resource in storage.
@@ -36,7 +49,7 @@ class maintenanceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($request)
     {
         //
     }

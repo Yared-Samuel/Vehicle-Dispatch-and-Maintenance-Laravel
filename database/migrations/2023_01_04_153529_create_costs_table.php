@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
-            $table->string('cost_name');
+            $table->integer('Spare_cost')->nullable();
+            $table->integer('mech_cost')->nullable();
+            $table->integer('other_cost')->nullable();
             $table->timestamps();
         });
     }

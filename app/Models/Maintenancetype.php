@@ -15,7 +15,7 @@ class Maintenancetype extends Model
 
     public function mtn_hasm_rqsts()
     {
-        return $this->hasMany(Request::class);
+        return $this->hasMany(Requester::class);
     }
     
 }
