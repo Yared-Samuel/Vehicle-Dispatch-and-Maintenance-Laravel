@@ -7,6 +7,7 @@ use App\Models\Maintenance;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Symfony\Component\Console\Input\Input;
 
 class maintenanceController extends Controller
 {
@@ -31,10 +32,10 @@ class maintenanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create( $id)
+    public function create(Request $request)
     {
         
-        dd($id);
+        
        $rqsts = Requester::with('rqst_hasone_mnts','rqst_blgto_vcls')
                     ->where('status','=','2')
                     // ->where('id','<>','$mainten')

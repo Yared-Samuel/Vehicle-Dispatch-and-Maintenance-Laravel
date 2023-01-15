@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->bigInteger('kilometer')->default(0001);
             $table->foreignId('cost_id')->nullable()->constrained('costs','id');
-            $table->foreignId('request_id')->constrained('requests','id');
+            $table->foreignId('requester_id')->constrained('requesters','id');
             
                     
                      

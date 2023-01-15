@@ -31,7 +31,7 @@ class MaintenanceStoreRequest extends FormRequest
             'mech_cost'=>['nullable'],
             'spare_desc'=>['nullable'],
             'sparepart_id'=>['nullable'],
-            'request_id'=>['required'],
+            'requester_id'=>['required'],
         ];
     }
 }
