@@ -34,6 +34,10 @@ class Vcl extends Model
         return $this->hasMany(Requester::class);
     }
     
+    public function vcl_hasmny_fuels()
+    {
+        return $this->belongsTo(Fuel::class,'vcl_id','id');
+    }
 
 
 

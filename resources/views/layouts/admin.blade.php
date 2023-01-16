@@ -102,7 +102,7 @@
 
 
                         <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white  underline font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" type="button"
-                                >Part Managment 
+                                >Resource Managment 
                             </button>
                         <!-- Dropdown menu -->
                         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
@@ -127,8 +127,8 @@
                                 </li>
                                 
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >#</a>
+                                <a href="{{ route('admin.fuel.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >Fuel Record</a>
                             </li>
                             
                             </ul>

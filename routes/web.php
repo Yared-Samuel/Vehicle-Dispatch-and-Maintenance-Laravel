@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\costController;
 use App\Http\Controllers\driverController;
+use App\Http\Controllers\fuelchartController;
 use App\Http\Controllers\maintenanceController;
 use App\Http\Controllers\maintenanceTypeController;
 use App\Http\Controllers\ProfileController;
@@ -50,6 +51,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     route::resource('/tires',tireChartController::class);
     route::resource('/cost',costController::class);
     route::resource('/spareparts',SparepartController::class);
+    route::resource('/fuel',fuelchartController::class);
     
 });
     

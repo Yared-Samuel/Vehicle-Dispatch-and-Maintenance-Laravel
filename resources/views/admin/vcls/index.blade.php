@@ -29,19 +29,17 @@
                     Plate Id
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Code
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    City
-                </th>
-                <th scope="col" class="px-6 py-3">
                     Model
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Fuel Consumption
+                    Purchase date
                 </th>
+                
                 <th scope="col" class="px-6 py-3">
                     Category
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Fuel Consumption
                 </th>
                 
             </tr>
@@ -53,22 +51,21 @@
                     
                 </th>
                 <td class="px-6 py-4">
-                    {{ $vcl->plate_id }}
+                    {{ $vcl->plate_city }}  0{{ $vcl->plate_code }} <b>-</b> {{ $vcl->plate_id }}
                 </td>
-                <td class="px-6 py-4">
-                    {{ $vcl->plate_code }}
-                </td>
-                <td class="px-6 py-4">
-                    {{ $vcl->plate_city }}
-                </td>
+                
                 <td class="px-6 py-4">
                     {{ $vcl->vcl_model }}
                 </td>
                 <td class="px-6 py-4">
-                    {{ $vcl->fuel_type }}
+                    {{ $vcl->purchase_date }}
                 </td>
+                
                 <td class="px-6 py-4">
                     {{ $vcl->vcl_blgto_cats->category_name }}
+                </td>
+                <td class="px-6 py-4">
+                    {{ $vcl->fuel_type }}
                 </td>
                 
             </tr>

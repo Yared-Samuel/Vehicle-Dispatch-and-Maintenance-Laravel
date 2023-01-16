@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Cost;
-use App\Models\Maintenance;
-use App\Models\Requester;
-use App\Models\Vcl;
+use App\Models\Fuel;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
-class maintenanceController extends Controller
+class fuelchartController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,13 +14,9 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','status','maintenancetype_id',
-                                                        'request_date')
-                                    ->where('status','2')
-                                    ->get();
-        
-        return view('admin.maintenance.index',compact('mtn_aprroveds'));
-        
+        $fuels = Fuel::with('fuel_blgto_vcls')
+                ->get();
+        return view('admin.fuel.index')->with(['fuels'=>$fuels]);
     }
 
     /**
@@ -32,23 +24,18 @@ class maintenanceController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-       $rqsts = Requester::with('rqst_hasone_mnts','rqst_blgto_vcls')
-                    ->where('status','=','2')
-                    // ->where('id','<>','$mainten')
-                    ->get();
-       $mtn_costs = Cost::all();
-       return view('admin.maintenance.create')
-                ->with(['rqsts'=>$rqsts,'mtn_costs'=>$mtn_costs]);
+        //
     }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($request)
+    public function store(Request $request)
     {
         //
     }
