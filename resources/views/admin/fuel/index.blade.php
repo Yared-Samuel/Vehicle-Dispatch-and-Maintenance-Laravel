@@ -29,58 +29,83 @@
                                 Vehicle Plate
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Previous Kilometer & <br>
-                                <hr>
-                                Fueling date
+                                Previous Data 
+                                
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Latest Kilometer & <br>
-                                <hr>
-                                Fueling date
+                                Latest Data
+                               
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Diference
                             </th>
-                            
-                            <th scope="col" class="py-2 px-1 border border-r-gray-300">
-                                Detail
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                KM / Liter
                             </th>
+                            
+                            {{-- <th scope="col" class="py-2 px-1 border border-r-gray-300">
+                                Detail
+                            </th> --}}
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                            $a = 0;
+                        @endphp
                         @foreach ($fuels as $key=>$fuel)
                                     
-                       
+                        
                         <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="py-1 px-2 border-r">
                                 {{ $key +1 }}
                             </th>
                             <td class="py-1 px-2 border-r">
-                                {{ $fuel->plate_id }}
+                                {{ $fuel->plate_city}} - 0{{ $fuel->plate_code }} - <b> {{ $fuel->plate_id }} </b>
                             </td>
                             @foreach ($fuel->vcl_hasmny_fuels->take(-2) as $km)                               
                             
                             <td class="py-1 px-2 border-r">
                                 
-                                {{ $km->kilometre }}
+                                <b> {{ $distance =  $km->kilometre }}</b> <small>KM</small> 
+                                <br><hr>
+                                <b> {{ $liter =  $km->litre }}</b> <small class="text-teal-800">liter</small> 
                                 <br><hr>
                                 {{ $km->fuel_date }}
-                            </td>
+                                
+                            </td>      
+                            @php
+                                ++$a;
+                                switch ($a) {
+                                    case 1:
+                                        $one = $distance;
+                                          
+                                    case 2:
+                                        $two = $distance;
+                                        $lit = $liter;
+                                        break;    
+                                        }                                
+                            @endphp                       
                             @endforeach
 
                             <td class="py-1 px-2 border-r">
-                                
-                                {{ $fuel->vcl_hasmny_fuels->map(function($km, $value){
-                                    foreach ($value as  $value) {
-                                        return $kms;
-                                    }
-                                })}}
-                                
-                                
+                                @php
+                                     $diffr =  $one - $two;
+                                     echo $diffr
+                                @endphp
+                                <small>KM</small> 
+                                @php
+                                    $a = 0;
+                                @endphp
                             </td>
-                            
+                            <td class="py-1 px-2 border-r font-extrabold underline">
+                                @php
+                                      $ratio = $diffr / $lit;
+                                       $ratio_dec = number_format((float)$ratio, 2, '.', '');
+                                       echo $ratio_dec;
+                                @endphp
+                            </td>
                             @endforeach
-                            <td class="flex py-1 px-1">
+                            {{-- <td class="flex py-1 px-1">
                                 <a href="#" class="text-teal-600 "
                                         >
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
@@ -88,7 +113,7 @@
                                           </svg>
                                           
                                     </a>
-                            </td>
+                            </td> --}}
                         </tr>
                         
                         

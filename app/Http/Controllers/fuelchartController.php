@@ -26,9 +26,7 @@ class fuelchartController extends Controller
         //     ->get();
         $fuels =Vcl::
                     with('vcl_hasmny_fuels')
-                    ->Latest() 
-                    
-
+                    ->Latest()                    
                     ->get();
             
         
