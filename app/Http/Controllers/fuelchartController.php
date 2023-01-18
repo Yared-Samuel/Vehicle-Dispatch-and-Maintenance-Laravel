@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FuelStoreRequest;
 use App\Models\Fuel;
+use App\Models\Vcl;
 use Illuminate\Http\Request;
 
 class fuelchartController extends Controller
@@ -12,12 +14,37 @@ class fuelchartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        $fuels = Fuel::with('fuel_blgto_vcls')
-                ->get();
-        return view('admin.fuel.index')->with(['fuels'=>$fuels]);
-    }
+
+
+
+     public function index()
+     {
+        // $fuels = Fuel::select('fuel_date','kilometre','litre','cash','vcl_id','created_at')
+        //     ->with('fuel_blgto_vcls') 
+        //     ->orderBy('fuel_date', 'desc')
+        //     ->orderBy('vcl_id', 'desc')                   
+        //     ->get();
+
+        $fuels =Vcl::
+                    with('vcl_hasmny_fuels')
+                    ->Latest()                    
+                    ->get();
+            
+            
+                // foreach ($fuels as $value) {
+                //    dd($value->vcl_hasmny_fuels->kilometre);
+                // }
+            
+                return view('admin.fuel.index')->with(['fuels'=>$fuels]);
+     }      
+
+
+    
+
+    
+    
+        
+        
 
     /**
      * Show the form for creating a new resource.
@@ -26,7 +53,8 @@ class fuelchartController extends Controller
      */
     public function create()
     {
-        //
+        $vcls= Vcl::all();
+        return view('admin.fuel.create')->with(['vcls'=>$vcls]);
     }
 
     /**
@@ -35,9 +63,17 @@ class fuelchartController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(FuelStoreRequest $request)
     {
-        //
+        Fuel::create([            
+            'fuel_date' => $request->fuel_date,
+            'vcl_id' => $request->vcl_id,
+            'cash' => $request->cash,
+            'litre' => $request->litre,
+            'kilometre' => $request->kilometre,
+            
+        ]);
+        return to_route('admin.fuel.create');
     }
 
     /**

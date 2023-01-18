@@ -36,7 +36,7 @@ class Vcl extends Model
     
     public function vcl_hasmny_fuels()
     {
-        return $this->belongsTo(Fuel::class,'vcl_id','id');
+        return $this->hasMany(Fuel::class);
     }
 
 

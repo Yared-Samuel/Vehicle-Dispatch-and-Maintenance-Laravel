@@ -19,4 +19,5 @@ class Fuel extends Model
         return $this->belongsTo(Vcl::class,'vcl_id','id');
     }
 
+
 }

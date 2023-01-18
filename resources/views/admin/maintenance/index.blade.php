@@ -44,7 +44,7 @@
                         @foreach ($mtn_aprroveds as $mtn_aprroved)
                                         
                        
-                        <tr class="bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
+                        <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="py-1 px-2 border-r">
                                 {{ $mtn_aprroved->id }}
                             </th>
