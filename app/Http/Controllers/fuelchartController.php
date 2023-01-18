@@ -24,13 +24,14 @@ class fuelchartController extends Controller
         //     ->orderBy('fuel_date', 'desc')
         //     ->orderBy('vcl_id', 'desc')                   
         //     ->get();
-
         $fuels =Vcl::
                     with('vcl_hasmny_fuels')
-                    ->Latest()                    
+                    ->Latest() 
+                    
+
                     ->get();
             
-            
+        
                 // foreach ($fuels as $value) {
                 //    dd($value->vcl_hasmny_fuels->kilometre);
                 // }
