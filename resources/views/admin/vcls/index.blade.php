@@ -18,7 +18,7 @@
       </div>
         
        
-<div class="relative overflow-x-auto border-b-2 h-80 shadow-md sm:rounded-lg">
+<div class="relative  border-b-2 h-5/6 max-h-screen min-h-max shadow-md sm:rounded-lg">
     <table id="table_one" class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
             <tr>

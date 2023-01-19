@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>    
-    <div class="relative overflow-x-auto max-h-full h-96 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
+    <div class="relative overflow-x-auto max-h-full h-5/6 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
         <div class="flex justify-between w-full px-4 py-2 items-center">
             <div class="text-xl font-bold">
                     Vehicles Approved
@@ -51,6 +51,9 @@
                     <tbody>
                         @php
                             $a = 0;
+                            $one = 0;
+                            $two = 0;
+                            $lit = 0;
                         @endphp
                         @foreach ($fuels as $key=>$fuel)
                                     
@@ -66,9 +69,9 @@
                             
                             <td class="py-1 px-2 border-r">
                                 
-                                <b> {{ $distance =  $km->kilometre }}</b> <small>KM</small> 
+                                <b> {{ $distance =  $km->kilometre }}</b> <small class="text-yellow-300">KM</small> 
                                 <br><hr>
-                                <b> {{ $liter =  $km->litre }}</b> <small class="text-teal-800">liter</small> 
+                                <b> {{ $liter =  $km->litre }}</b> <small class="text-blue-300">liter</small> 
                                 <br><hr>
                                 {{ $km->fuel_date }}
                                 
@@ -92,16 +95,21 @@
                                      $diffr =  $one - $two;
                                      echo $diffr
                                 @endphp
-                                <small>KM</small> 
+                                <small class="text-yellow-300">KM</small> 
                                 @php
                                     $a = 0;
                                 @endphp
                             </td>
                             <td class="py-1 px-2 border-r font-extrabold underline">
                                 @php
-                                      $ratio = $diffr / $lit;
+                                if ($lit != 0) {
+                                    $ratio = $diffr / $lit;
                                        $ratio_dec = number_format((float)$ratio, 2, '.', '');
                                        echo $ratio_dec;
+                                }elseif ($lit = 0) {
+                                    echo 0;
+                                }
+                                      
                                 @endphp
                             </td>
                             @endforeach

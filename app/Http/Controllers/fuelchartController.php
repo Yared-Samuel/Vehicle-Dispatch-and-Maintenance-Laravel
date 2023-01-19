@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Collection;
 use App\Http\Requests\FuelStoreRequest;
 use App\Models\Fuel;
 use App\Models\Vcl;
@@ -19,20 +19,15 @@ class fuelchartController extends Controller
 
      public function index()
      {
-        // $fuels = Fuel::select('fuel_date','kilometre','litre','cash','vcl_id','created_at')
-        //     ->with('fuel_blgto_vcls') 
-        //     ->orderBy('fuel_date', 'desc')
-        //     ->orderBy('vcl_id', 'desc')                   
-        //     ->get();
-        $fuels =Vcl::
-                    with('vcl_hasmny_fuels')
-                    ->Latest()                    
+
+        $vcl_in_fuel = Fuel::get('vcl_id')->toArray();
+        
+        
+        $fuels =Vcl::with('vcl_hasmny_fuels')
                     ->get();
             
         
-                // foreach ($fuels as $value) {
-                //    dd($value->vcl_hasmny_fuels->kilometre);
-                // }
+                
             
                 return view('admin.fuel.index')->with(['fuels'=>$fuels]);
      }      
