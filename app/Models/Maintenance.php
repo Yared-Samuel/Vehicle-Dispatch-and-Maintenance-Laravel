@@ -22,6 +22,6 @@ class Maintenance extends Model
 
     public function mtn_hasmny_cost()
     {
-        return $this->belongsTo(Cost::class,'cost_id','id');
+        return $this->hasMany(Cost::class,'cost_id','id');
     }
 }

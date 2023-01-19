@@ -18,12 +18,13 @@
             
                 <form method="POST" action="{{ route('admin.maintenance.index') }}">
                     @csrf
-                        
+                    {{-- {{  dd($rqsts) }} --}}
                     <div class="flex justify-around">
                         <div class="relative z-0 mb-10 w-1/5 group">                                
                             <select name="request_id" id="request_id" class="block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" >
                                 <option disabled selected> Select Plate number </option>
                                 @foreach ($rqsts as $rqst)
+                                
                                 <option class="text-white bg-slate-600" value="{{ $rqst->id }}">{{ $rqst->rqst_blgto_vcls->plate_city }}  0{{$rqst->rqst_blgto_vcls->plate_code}} - {{ $rqst->rqst_blgto_vcls->plate_id   }}</option>
                                 @endforeach
                             </select>

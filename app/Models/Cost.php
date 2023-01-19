@@ -13,7 +13,7 @@ class Cost extends Model
         'cost_name'
     ];
 
-    public function cost_blgtomny_maintenances()
+    public function cost_blgto_maintenances()
     {
         return $this->belongsTo(Maintenance::class);
     }
