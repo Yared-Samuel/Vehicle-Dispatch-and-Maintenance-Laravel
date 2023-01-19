@@ -21,7 +21,7 @@ return new class extends Migration
             $table->foreignId('vcl_id')->constrained('vcls','id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
-            $table->integer('maintenancetype_id');
+            $table->string('maintenancetype_id');
             
             $table->smallInteger('status')->default("1");
             $table->timestamps();            

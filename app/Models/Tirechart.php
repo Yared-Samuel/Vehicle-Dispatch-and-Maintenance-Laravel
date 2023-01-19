@@ -15,7 +15,7 @@ class Tirechart extends Model
         'serial_num',
         'tire_type',
         'tire_price',
-        'category_id',
+        'category_name',
         'status',
         'start',
         'vcl_id',
@@ -33,9 +33,6 @@ class Tirechart extends Model
         return $this->belongsTo(Driver::class,'driver_id','id');
     }
 
-    public function drvr_blgto_cats()
-    {
-        return $this->belongsTo(Category::class,'category_id','id');
-    }
+    
 
 }

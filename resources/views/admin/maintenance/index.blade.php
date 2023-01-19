@@ -55,7 +55,7 @@
                                 {{  date('d-m-Y', strtotime($mtn_aprroved->request_date)); }}
                             </td>
                             <td class="py-1 px-2 border-r">
-                                {{ $mtn_aprroved->rqst_blgto_mtns->maintenance_name }}
+                                {{ $mtn_aprroved->maintenancetype_id }}
                             </td>
                             <td class="flex py-1 px-1">
                                 <a href="{{ route('admin.maintenance.create', $mtn_aprroved->id) }}" class="text-teal-600 "

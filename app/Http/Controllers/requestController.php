@@ -34,9 +34,9 @@ class requestController extends Controller
     {
         
         $vcls= Vcl::with('vcl_hasm_rqsts')->get();
-        $mttyps= Maintenancetype::with('mtn_hasm_rqsts')->get();
+        
        
-        return view('admin.request.create')->with(['vcls'=>$vcls,'mttyps'=>$mttyps]);
+        return view('admin.request.create')->with(['vcls'=>$vcls]);
     }
 
     /**

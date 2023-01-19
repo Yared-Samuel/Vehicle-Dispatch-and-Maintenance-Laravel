@@ -25,7 +25,7 @@ class TirestoreRequest extends FormRequest
     {
         return [
             'serial_num'=>['required'],
-            'category_id'=>['required'],         
+            'category_name'=>['required'],         
             'status'=>['required'],
             'tire_type'=>['required'],
             'tire_price'=>['required'],

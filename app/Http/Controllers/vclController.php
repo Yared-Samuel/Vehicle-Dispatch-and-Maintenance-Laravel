@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\VclStoreRequest;
-use App\Models\Category;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
 
@@ -17,9 +16,7 @@ class vclController extends Controller
     public function index()
     {
         $vcls = Vcl::all();
-        // $cats = Category::with('vcls')->get();
-        // dd($vcls);
-        
+               
         return view('admin.vcls.index',compact('vcls'));
     }
 
@@ -30,8 +27,8 @@ class vclController extends Controller
      */
     public function create()
     {
-        $vcl_blgto_cats = Category::all();
-        return view('admin.vcls.create',compact('vcl_blgto_cats'));
+        
+        return view('admin.vcls.create');
     }
 
     /**
@@ -51,7 +48,7 @@ class vclController extends Controller
             'motor_number' => $request->motor_number,
             'vcl_model' => $request->vcl_model,
             'fuel_type' => $request->fuel_type,
-            'category_id' => $request->category_id,
+            'category_name' => $request->category_name,
             'purchase_date' => $request->purchase_date,
             'manufacture_date' => $request->manufacture_date,
         ]);

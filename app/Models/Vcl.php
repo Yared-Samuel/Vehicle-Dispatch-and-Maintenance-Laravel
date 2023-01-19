@@ -15,7 +15,7 @@ class Vcl extends Model
 
 
     protected $fillable = [
-        'plate_id','plate_code','plate_city','chassis_number','motor_number','vcl_model','fuel_type','category_id','purchase_date','manufacture_date' ];
+        'plate_id','plate_code','plate_city','chassis_number','motor_number','vcl_model','fuel_type','category_name','purchase_date','manufacture_date' ];
 
     // protected $primaryKey = 'plate_id';
 
@@ -23,10 +23,7 @@ class Vcl extends Model
         return $this->hasMany(Tirechart::class);
     }
 
-    public function vcl_blgto_cats()
-    {
-        return $this->belongsTo(Category::class,'category_id','id');
-    }
+    
 
     
     public function vcl_hasm_rqsts()

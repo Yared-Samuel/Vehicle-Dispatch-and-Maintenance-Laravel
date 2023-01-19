@@ -30,11 +30,11 @@
                             </div>
                             
                                 <div class="relative z-0 mb-10 w-1/3 group">
-                                    <label for="category_id" class="sr-only">Vehicle compatibility</label>
-                                    <select name="category_id" id="category_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-4 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
+                                    <label for="category_name" class="sr-only">Vehicle compatibility</label>
+                                    <select name="category_name" id="category_name" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-4 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" required>
                                         <option disabled selected>Vehicle Category</option>
-                                        @foreach ($vcl_cats as $vcl_cat)
-                                        <option class="text-white bg-slate-600" value="{{ $vcl_cat->id }}">{{ $vcl_cat->category_name }}</option>
+                                        @foreach (App\Enums\Vcl_category::cases() as $vcl_cat)
+                                        <option class="text-white bg-slate-600" value="{{ $vcl_cat->value }}">{{ $vcl_cat->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

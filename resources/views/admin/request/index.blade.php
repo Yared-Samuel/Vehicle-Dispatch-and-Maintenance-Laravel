@@ -63,7 +63,7 @@
                                 {{ $request->request_date}}
                             </td>
                             <td class="py-1 px-2">
-                                {{ $request->rqst_blgto_mtns->maintenance_name }}
+                                {{ $request->maintenancetype_id }}
                             </td>
                             <td class="py-1 px-2">
                                 {{ $request->request_by}}

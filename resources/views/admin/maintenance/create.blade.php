@@ -14,7 +14,7 @@
                 >Back To Index</a>
         </div>
     </div>
-            <div class="max-w-7xl mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
+            <div class="max-w-7xl sm:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
             
                 <form method="POST" action="{{ route('admin.maintenance.index') }}">
                     @csrf

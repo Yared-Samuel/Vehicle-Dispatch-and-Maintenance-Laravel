@@ -4,12 +4,12 @@ namespace App\Enums;
 
  enum Vcl_category: string
  {
-    case Isuzzu = '1';
-    case Trucker = '2';
-    case FSR = '3';
-    case PickUp = '4';
-    case Automobile = '5';
-    case ForkLift = '6';
+    case Isuzzu = 'isuzzu';
+    case Trucker = 'trucker';
+    case FSR = 'fsr';
+    case PickUp = 'pickup';
+    case Automobile = 'automobile';
+    case ForkLift = 'forklift';
     
     
  }

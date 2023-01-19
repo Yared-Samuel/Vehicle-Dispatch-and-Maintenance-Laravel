@@ -31,7 +31,7 @@ class VclStoreRequest extends FormRequest
             'motor_number'=>['required'],
             'vcl_model'=>['required'],
             'fuel_type'=>['required'],
-            'category_id'=>['required'],
+            'category_name'=>['required'],
             'purchase_date'=>['required'],
             'manufacture_date'=>['required'],
             

@@ -34,9 +34,9 @@ class tireChartController extends Controller
     {
         $vcls= Vcl::all();
         $drvrs= Driver::all();
-        $vcl_cats = Category::all();
+      
         
-        return view('admin.tires.create',compact('vcls','drvrs','vcl_cats'));
+        return view('admin.tires.create',compact('vcls','drvrs'));
     }
 
     /**
@@ -52,7 +52,7 @@ class tireChartController extends Controller
             'serial_num' => $request->serial_num,
             'tire_type'=>$request->tire_type,
             'tire_price'=>$request->tire_price,
-            'category_id' => $request->category_id,
+            'category_name' => $request->category_name,
             'status' => $request->status,
             'start' => $request->start,
             'vcl_id' => $request->vcl_id,

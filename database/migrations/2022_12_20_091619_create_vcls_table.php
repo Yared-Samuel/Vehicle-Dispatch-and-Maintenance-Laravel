@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('vcl_model');
             
             $table->string('fuel_type');
-            $table->string('category_id');
+            $table->string('category_name');
 
             $table->date('purchase_date')->default(null);
             $table->date('manufacture_date')->default(null);
