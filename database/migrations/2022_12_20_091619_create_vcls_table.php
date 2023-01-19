@@ -16,7 +16,7 @@ return new class extends Migration
         if (!Schema::hasTable('vcls')) {
         Schema::create('vcls', function (Blueprint $table) {
             $table->id();
-            $table->integer('plate_id')->unsigned();            
+            $table->string('plate_id');            
             $table->integer('plate_code');
 
             $table->string('plate_city');            
@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('vcl_model');
             
             $table->string('fuel_type');
-            $table->foreignId('category_id')->constrained('categories','id');
+            $table->string('category_id');
 
             $table->date('purchase_date')->default(null);
             $table->date('manufacture_date')->default(null);

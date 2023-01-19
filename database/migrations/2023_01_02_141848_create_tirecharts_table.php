@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('start')->nullable();
             $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
             $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
-            $table->foreignId('category_id')->constrained('categories','id');            
+            $table->integer('category_id');            
             $table->timestamps();
         });
     }

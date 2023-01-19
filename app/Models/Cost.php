@@ -10,7 +10,7 @@ class Cost extends Model
     use HasFactory;
 
     protected $fillable= [
-        'cost_name'
+        'cost_desc','Spare_cost','mech_cost','other_cost'
     ];
 
     public function cost_blgto_maintenances()

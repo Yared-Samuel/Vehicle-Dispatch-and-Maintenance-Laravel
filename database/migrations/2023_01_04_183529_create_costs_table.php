@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('costs', function (Blueprint $table) {
             $table->id();
-            $table->string('category_name');
+            $table->string('cost_desc');
+            $table->integer('Spare_cost')->nullable();
+            $table->integer('mech_cost')->nullable();
+            $table->integer('other_cost')->nullable();
+            $table->foreignId('maintenances_id')->constrained('maintenances','id');
             $table->timestamps();
         });
-
-        
     }
 
     /**
@@ -29,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('costs');
     }
 };

@@ -27,10 +27,6 @@ class MaintenanceStoreRequest extends FormRequest
             'start_date'=>['nullable'],
             'end_date'=>['nullable'],
             'kilometer'=>['nullable'],
-            'mech_work_desc'=>['nullable'],
-            'mech_cost'=>['nullable'],
-            'spare_desc'=>['nullable'],
-            'sparepart_id'=>['nullable'],
             'requester_id'=>['required'],
         ];
     }

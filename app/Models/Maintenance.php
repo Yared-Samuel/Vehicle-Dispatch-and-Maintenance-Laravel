@@ -11,8 +11,7 @@ class Maintenance extends Model
 
 
     protected $fillable= [
-        'start_date','end_date','kilometer','mech_work_desc','mech_cost',
-        'spare_desc','sparepart_id','requester_id',
+        'start_date','end_date','kilometer','requester_id'
     ];
 
     public function mtn_blgto_rqsts()
