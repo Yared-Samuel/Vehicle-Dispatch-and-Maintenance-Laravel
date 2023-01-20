@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cost;
+use App\Models\Requester;
 use Illuminate\Http\Request;
 
 class costController extends Controller
@@ -13,7 +15,11 @@ class costController extends Controller
      */
     public function index()
     {
-        //
+        $costs = Cost::with('cost_blgto_rqsts')->get();
+
+        // dd($costs);
+
+        return view('admin.cost.index');
     }
 
     /**
@@ -23,7 +29,17 @@ class costController extends Controller
      */
     public function create()
     {
-        //
+        $cost = Cost::select('requester_id')->get();
+
+        
+            $vcls=Requester::with('rqst_blgto_vcls')
+                ->where('status','=',3)
+                ->get();
+        
+    
+                
+        
+        return view('admin.cost.create',compact('vcls'));
     }
 
     /**

@@ -74,7 +74,7 @@
         
   
         <div class="flex-col md:flex md:flex-row overflow-clip md:min-h-screen">
-            <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-teal-600 md:w-56 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
+            <div @click.away="open = false" class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-teal-800 md:w-56 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
                 
                     <nav :class="{'block': open, 'hidden': !open}" 
                         class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
@@ -129,7 +129,7 @@
                                     >Fuel Record</a>
                             </li>
                             <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                <a href="{{ route('admin.cost.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >Expences</a>
                             </li>
                             <li>
@@ -151,10 +151,7 @@
                                        </button>
                                     <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
-                                        <li>
-                                            <a href="{{ route('admin.spareparts.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                >Spare Category</a>
-                                        </li>
+                                        
                                         <li>
                                             <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >Tire Trucking</a>
@@ -184,13 +181,8 @@
                                     <x-admin-nav-link :href="route('admin.vcls.index')" :active="request()->routeIs('admin.vcls.index')">
                                         {{ __('Vehicles') }}
                                     </x-admin-nav-link>
-                                    <x-admin-nav-link :href="route('admin.categories.index')" :active="request()->routeIs('admin.categories.index')">
-                                        {{ __('Vehicle Category') }}
-                                    </x-admin-nav-link>
-
-                                    <x-admin-nav-link :href="route('admin.maintenancetype.index')" :active="request()->routeIs('admin.maintenancetype.index')">
-                                        {{ __('Meintenance Category') }}
-                                    </x-admin-nav-link>
+                                    
+                                    
 
                                     <x-admin-nav-link :href="route('admin.drivers.index')" :active="request()->routeIs('admin.drivers.index')">
                                         {{ __('Drivers') }}

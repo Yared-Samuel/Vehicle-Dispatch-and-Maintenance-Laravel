@@ -42,15 +42,12 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::resource('/categories',vclCategoryController::class);    
     Route::resource('/request',requestController::class);
     Route::resource('/maintenance',maintenanceController::class);
-    Route::resource('/maintenancetype',maintenanceTypeController::class);
     Route::resource('/vcls',vclController::class);
     route::resource('/drivers',driverController::class);
     route::resource('/tires',tireChartController::class);
     route::resource('/cost',costController::class);
-    route::resource('/spareparts',SparepartController::class);
     route::resource('/fuel',fuelchartController::class);
     
 });

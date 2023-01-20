@@ -4,56 +4,321 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>    
-    <div class="flex  shadow-sm sm:rounded-lg">
-        <h3 class="text-1xl font-bold text-gray-900 dark:text-white md:text-2xl lg:text-2xl">
-            <span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"
-                >Vehicle Index</span></h3>
-        <a href="{{ route('admin.cost.create') }}" class=" text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-            >Request Form</a>
-    </div>
+    
         
             
-    <div class="relative overflow-x-auto max-h-full md:max-h-screen shadow-md sm:rounded-lg">
-        <table class="w-full table-auto text-sm text-left text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="py-2 px-2">
-                                #
-                            </th>
-                            <th scope="col" class="py-2 px-2">
-                                Plate
-                            </th>
-                            
-                            <th scope="col" class="py-2 px-2 text-left">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($requests as $request)
-                                                               
-                        <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            
-                            <td class="py-1 px-2">
-                                
-                            </td>
-                            <td class="py-1 px-2">
-                                {{ $request->rqst_blgto_vcls->plate_id }}
-                            </td>
-                            
-                            <td class="py-1 px-2">
-                                <a href="#" class="text-green-500 hover:text-white border border-green-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-sm px-1 py-0 text-center mr-0 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                                        >Accept</a>
-                                <a href="#" class="text-red-500 hover:text-white border border-red-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-bold rounded-lg text-sm px-1 py-0 text-center mr-0 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                                        >Decline</a>
-                                
-                            </td>
-                        </tr>
-                        @endforeach
-                        
-                    </tbody>
-                </table>
+    <section>
+        <div class="container px-5 py-12 mx-auto lg:px-20 space-y-5">
+          <div
+            class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-indigo-200 hover:border-indigo-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
+            <div class="w-full xl:w-1/4 md:w-1/4 ">
+              <div class="relative flex flex-col h-full py-8 px-4 text-center md:text-left">
+                <h2
+                  class="mb-4 text-2xl xl:text-2xl md:text-xl font-bold tracking-widest text-indigo-900 uppercase title-font">
+                  AA-03-B22405
+                </h2>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  Annual Scervice
+                </p>
+              </div>
             </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Oil number 54
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Big Spring
+                </p>
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Tire
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2 ">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2"></span> Flat Tire 
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2">Google</span> Flat Tire 
+                </p>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-indigo-800 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Databases
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4 lg:ml-auto">
+              <div class="relative flex flex-col h-full p-8">
+                <h1 class="flex items-end mx-auto text-5xl lg:text-5xl sm:text-4xl font-black leading-none text-indigo-800 ">
+                  3602<span class="text-lg">Birr</span>
+                </h1>
+                <button
+                  class="w-full px-4 py-2 mx-auto mt-3 text-indigo-800 border border-indigo-700 rounded-full text-md hover:bg-indigo-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 focus:border-gray-700 focus:bg-indigo-800 hover:text-gray-200">
+                  Approve Now
+                </button>
+                <p class="mx-auto mt-4 text-sm text-indigo-800 text-center ">$3.99/mo when you renew</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-indigo-200 hover:border-indigo-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
+            <div class="w-full xl:w-1/4 md:w-1/4 ">
+              <div class="relative flex flex-col h-full py-8 px-4 text-center md:text-left">
+                <h2
+                  class="mb-4 text-2xl xl:text-2xl md:text-xl font-bold tracking-widest text-indigo-900 uppercase title-font">
+                  AA-03-B22405
+                </h2>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  Annual Scervice
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Oil number 54
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Big Spring
+                </p>
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Tire
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2 ">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2"></span> Flat Tire 
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2">Google</span> Flat Tire 
+                </p>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-indigo-800 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Databases
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4 lg:ml-auto">
+              <div class="relative flex flex-col h-full p-8">
+                <h1 class="flex items-end mx-auto text-5xl lg:text-5xl sm:text-4xl font-black leading-none text-indigo-800 ">
+                  3602<span class="text-lg">Birr</span>
+                </h1>
+                <button
+                  class="w-full px-4 py-2 mx-auto mt-3 text-indigo-800 border border-indigo-700 rounded-full text-md hover:bg-indigo-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 focus:border-gray-700 focus:bg-indigo-800 hover:text-gray-200">
+                  Approve Now
+                </button>
+                <p class="mx-auto mt-4 text-sm text-indigo-800 text-center ">$3.99/mo when you renew</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-indigo-200 hover:border-indigo-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
+            <div class="w-full xl:w-1/4 md:w-1/4 ">
+              <div class="relative flex flex-col h-full py-8 px-4 text-center md:text-left">
+                <h2
+                  class="mb-4 text-2xl xl:text-2xl md:text-xl font-bold tracking-widest text-indigo-900 uppercase title-font">
+                  AA-03-B22405
+                </h2>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  Annual Scervice
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Oil number 54
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Big Spring
+                </p>
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-yellow-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">1</span> Tire
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4">
+              <div class="relative flex flex-col h-full py-8 px-2 ">
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2"></span> Flat Tire 
+                </p>
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </span><span class="font-semibold mr-2">Google</span> Flat Tire 
+                </p>
+      
+                <p
+                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
+                  <span
+                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-indigo-800 rounded-full bg-blue-1300">
+                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      class="w-4 h-4" viewBox="0 0 24 24">
+                      <path d="M20 6L9 17l-5-5"></path>
+                    </svg>
+                  </span>
+                  <span class="font-semibold mr-2">2</span> Databases
+                </p>
+              </div>
+            </div>
+            <div class="w-full xl:w-1/4 md:w-1/4 lg:ml-auto">
+              <div class="relative flex flex-col h-full p-8">
+                <h1 class="flex items-end mx-auto text-5xl lg:text-5xl sm:text-4xl font-black leading-none text-indigo-800 ">
+                  3602<span class="text-lg">Birr</span>
+                </h1>
+                <button
+                  class="w-full px-4 py-2 mx-auto mt-3 text-indigo-800 border border-indigo-700 rounded-full text-md hover:bg-indigo-700 focus:shadow-outline focus:outline-none focus:ring-2 ring-offset-current ring-offset-2 focus:border-gray-700 focus:bg-indigo-800 hover:text-gray-200">
+                  Approve Now
+                </button>
+                <p class="mx-auto mt-4 text-sm text-indigo-800 text-center ">$3.99/mo when you renew</p>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      
+      </section>
             
 
         
