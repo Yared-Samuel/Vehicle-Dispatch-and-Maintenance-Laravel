@@ -10,11 +10,11 @@ class Cost extends Model
     use HasFactory;
 
     protected $fillable= [
-        'cost_desc','Spare_cost','mech_cost','other_cost'
+        'cost_desc','Spare_cost','mech_cost','other_cost','ref_no','requester_id'
     ];
 
-    public function cost_blgto_maintenances()
+    public function cost_blgto_rqsts()
     {
-        return $this->belongsTo(Maintenance::class);
+        return $this->belongsTo(Requester::class,'requester_id','id');
     }
 }

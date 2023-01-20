@@ -47,12 +47,12 @@ class requestController extends Controller
      */
     public function store(RequestStoreRequest $request)
     {
-        
+        // dd($request);
        Requester::create([
         'request_date'=> $request->request_date,
         'request_by'=>$request->request_by,
         'vcl_id'=>$request->vcl_id,
-        'maintenancetype_id'=>$request->maintenancetype_id,
+        'mtn_type'=>$request->mtn_type,
         'description'=>$request->description,
        ]);
        

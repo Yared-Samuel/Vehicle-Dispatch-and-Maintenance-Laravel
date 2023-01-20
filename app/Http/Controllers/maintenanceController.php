@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-use App\Models\Maintenance;
+
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
+
 
 class maintenanceController extends Controller
 {
@@ -18,7 +18,7 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','status','maintenancetype_id',
+        $mtn_aprroveds= Requester::select('id','vcl_id','status','mtn_type','description',
                                                         'request_date')
                                     ->where('status','2')
                                     ->get();
@@ -34,11 +34,17 @@ class maintenanceController extends Controller
      */
     public function create(Request $request)
     {
-       $rqsts = Requester::with('rqst_hasone_mnts','rqst_blgto_vcls')
-                    ->where('status','=','2')
-                    // ->where('id','<>','$mainten')
-                    ->get();
+        
+       $rqsts = Requester::with('rqst_blgto_vcls')
+                    ->where('status','=','2')                    
+                    ->get();                    
        $mtn_costs = Cost::all();
+
+        // $costs_filtered = $mtn_costs->filter(function($mtn_costs){
+        //     return $mtn_costs->;
+        // });
+        // dd($costs_filtered);
+
        return view('admin.maintenance.create')
                 ->with(['rqsts'=>$rqsts,'mtn_costs'=>$mtn_costs]);
     }
@@ -72,7 +78,18 @@ class maintenanceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $rqst_approved = Requester::find($id)
+                        ->with('rqst_blgto_vcls')
+                        ->where('id','=',$id)
+                        ->get();
+
+        //dd($rqst_approved);
+        
+        $costs = Cost::with('cost_blgto_rqsts')
+                        ->where('requester_id','=',null)
+                        ->get();
+        return view('admin.maintenance.edit')
+        ->with(['rqst_approved'=>$rqst_approved,'costs'=>$costs]);
     }
 
     /**

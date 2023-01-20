@@ -141,7 +141,19 @@
     </table>
 </div>
 
-            
+<script>
+    $(document).ready(function() {
+      $('#tiretbl').DataTable({
+        "order": [
+          [4, "desc"]
+        ],
+        dom: 'lBfrtip',
+        buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+      });
+    });
+    </script>
         
     
 </x-admin-layout>

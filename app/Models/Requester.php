@@ -12,7 +12,9 @@ class Requester extends Model
     use HasFactory;
 
     protected $fillable= [
-        'status','request_date','request_by','description','maintenancetype_id','vcl_id','status'
+        'status','request_date','request_by','description','mtn_type','vcl_id','status',
+
+        'start_date','end_date','kilometer'
         
     ];
 
@@ -29,13 +31,13 @@ class Requester extends Model
     }
     
     
-    public function rqst_hasone_mnts()
-    {
-        return $this->hasOne(Maintenance::class);
-    }
+   
 
     
-
+    public function rqst_hasmny_cost()
+    {
+        return $this->hasMany(Cost::class);
+    }
 
 
     

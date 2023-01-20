@@ -10,9 +10,7 @@
         <!--datatables-->
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script type="text/javascript" charset="utf8"
-            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
+       
         {{-- <link rel="stylesheet" href="{{ asset('frontend/datatables/jquery.dataTables.min.css') }}"> --}}
         <!--javascript-->
         <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
@@ -107,7 +105,7 @@
                         <!-- Dropdown menu -->
                         <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
                             <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
-                                <li>
+                                {{-- <li>
                                     <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between underline w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                         >Spare Parts<svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
                                        </button>
@@ -115,20 +113,28 @@
                                         <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
                                         <li>
                                             <a href="{{ route('admin.spareparts.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                >Spare Parts</a>
+                                                >Expences</a>
                                         </li>
                                         <li>
-                                            <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                            <a href="" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                                 >Tire Trucking</a>
                                         </li>
                                         
                                         </ul>
                                     </div>
-                                </li>
+                                </li> --}}
                                 
                             <li>
                                 <a href="{{ route('admin.fuel.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                                     >Fuel Record</a>
+                            </li>
+                            <li>
+                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >Expences</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                    >Tire Control</a>
                             </li>
                             
                             </ul>
@@ -231,6 +237,8 @@
             } );
             
         </script>
-        
+         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+         <script type="text/javascript" charset="utf8"
+             src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.js"></script>
     </body>
 </html>

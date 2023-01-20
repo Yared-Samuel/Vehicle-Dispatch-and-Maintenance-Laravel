@@ -40,7 +40,7 @@
                             </div>
                             <div class="relative z-0 mb-6 w-full group">
                                 <label for="id" class="sr-only">For</label>
-                                <select name="maintenancetype_id" id="maintenancetype_id" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" >
+                                <select name="mtn_type" id="mtn_type" class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer" >
                                     <option disabled selected> Select mentenance type </option>
                                     @foreach (App\Enums\Maintenance::cases() as $mttyp)
                                     <option value="{{ $mttyp->value }}">{{ $mttyp->name  }} </option>

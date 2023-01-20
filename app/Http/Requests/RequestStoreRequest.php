@@ -26,10 +26,13 @@ class RequestStoreRequest extends FormRequest
         return [
             'request_date'=>['required'],
             'request_by'=>['required'],
-            'description'=>['required'],
             'vcl_id'=>['required'],
-            'maintenancetype_id'=>['required'],
+            'mtn_type'=>['required'],
+            'description'=>['required'],
             // 'status'=>['nullable'],
+            'start_date'=>['nullable'],
+            'end_date'=>['nullable'],
+            'kilometer'=>['nullable'],
         ];
     }
 }

@@ -19,7 +19,8 @@ return new class extends Migration
             $table->integer('Spare_cost')->nullable();
             $table->integer('mech_cost')->nullable();
             $table->integer('other_cost')->nullable();
-            $table->foreignId('maintenances_id')->constrained('maintenances','id');
+            $table->integer('ref_no')->default(null);
+            $table->foreignId('requester_id')->nullable()->constrained('requesters','id');
             $table->timestamps();
         });
     }
