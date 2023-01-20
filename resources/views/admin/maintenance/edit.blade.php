@@ -77,7 +77,7 @@
       </span>
       <span aria-hidden="true" class="flex-grow bg-gray-200 rounded h-0.5"></span>
     </h3>
-  </section>
+</section>
     
         <div class="bg-slate-200 border border-b-teal-400 border-t-teal-400 rounded-lg shadow-md py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
             

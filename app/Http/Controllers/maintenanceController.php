@@ -90,6 +90,8 @@ class maintenanceController extends Controller
                         ->get();
         return view('admin.maintenance.edit')
         ->with(['rqst_approved'=>$rqst_approved,'costs'=>$costs]);
+
+        return to_route('admin.maintenance.index');
     }
 
     /**
@@ -101,7 +103,19 @@ class maintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'start_date'=>'required',
+            'end_date'=>'required',
+            'kilometer'=>'required'
+        ]);
+
+        $mtn_complete = Requester::find($id);
+        $mtn_complete->update([
+            'start_date'=>$request->start_date,
+            'end_date'=>$request->end_date,
+            'kilometer'=>$request->kilometer,
+            'status'=>3,
+        ]);
     }
 
     /**
