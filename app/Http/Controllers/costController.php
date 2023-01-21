@@ -50,7 +50,7 @@ class costController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -61,7 +61,13 @@ class costController extends Controller
      */
     public function show($id)
     {
-        //
+        Requester::create([
+            'request_date'=> $request->request_date,
+            'request_by'=>$request->request_by,
+            'vcl_id'=>$request->vcl_id,
+            'mtn_type'=>$request->mtn_type,
+            'description'=>$request->description,
+           ]);
     }
 
     /**
