@@ -18,9 +18,9 @@ class costController extends Controller
     {
         $costs = Cost::with('cost_blgto_rqsts')->get();
 
+        
         // dd($costs);
-
-        return view('admin.cost.index');
+        return view('admin.cost.index',compact('costs'));
     }
 
     /**

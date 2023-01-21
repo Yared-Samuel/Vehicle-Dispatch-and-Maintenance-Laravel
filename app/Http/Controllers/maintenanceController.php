@@ -116,6 +116,7 @@ class maintenanceController extends Controller
             'kilometer'=>$request->kilometer,
             'status'=>3,
         ]);
+        return to_route('admin.cost.create');
     }
 
     /**

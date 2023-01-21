@@ -54,17 +54,19 @@
           <div
             class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-teal-200 hover:border-teal-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
             <div class="w-full xl:w-1/4 md:w-1/4 ">
+              @foreach ($costs as $cost)          
               <div class="relative flex flex-col h-full py-8 px-4 text-center md:text-left">
                 <h2
                   class="mb-4 text-2xl xl:text-2xl md:text-xl font-bold tracking-widest text-indigo-900 uppercase title-font">
-                  AA-03-B22405
+                  {{ $cost->Spare_cost }}
                 </h2>
       
                 <p
                   class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
-                  Annual Scervice
+                  {{ $cost->mech_cost }}
                 </p>
               </div>
+              @endforeach
             </div>
             <div class="w-full xl:w-1/4 md:w-1/4">
               <div class="relative flex flex-col h-full py-8 px-2">
