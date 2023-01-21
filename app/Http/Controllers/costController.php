@@ -49,20 +49,9 @@ class costController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CostStoreRequest $request)
     {
-        
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show(CostStoreRequest $request)
-    {
-        Requester::create([
+        Cost::create([
             'spare_cost_desc'=> $request->spare_cost_desc,
             'Spare_cost'=>$request->Spare_cost,
             'spare_qty'=>$request->spare_qty,
@@ -76,6 +65,19 @@ class costController extends Controller
            ]);
 
            return to_route('admin.cost.create');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        
+
+           
     }
 
     /**
