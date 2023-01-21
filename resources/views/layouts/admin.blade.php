@@ -7,16 +7,11 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
         
-        <!--datatables-->
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css">
        
-        {{-- <link rel="stylesheet" href="{{ asset('frontend/datatables/jquery.dataTables.min.css') }}"> --}}
         <!--javascript-->
-        <script src="https://unpkg.com/flowbite@1.6.0/dist/flowbite.min.js"></script>
+        <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
+        
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])

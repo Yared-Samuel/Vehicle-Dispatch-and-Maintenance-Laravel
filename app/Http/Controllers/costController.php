@@ -53,7 +53,7 @@ class costController extends Controller
     {
         Cost::create([
             'spare_cost_desc'=> $request->spare_cost_desc,
-            'Spare_cost'=>$request->Spare_cost,
+            'spare_cost'=>$request->spare_cost,
             'spare_qty'=>$request->spare_qty,
             'mech_cost_desc'=>$request->mech_cost_desc,
             'mech_cost'=>$request->mech_cost,

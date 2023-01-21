@@ -49,12 +49,13 @@
   
 </div>
             
-    <section>
+   
         <div class="container px-5 py-12 mx-auto lg:px-20 space-y-5">
+          @foreach ($costs as $cost) 
           <div
             class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-teal-200 hover:border-teal-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
-            <div class="w-full xl:w-1/4 md:w-1/4 ">
-              @foreach ($costs as $cost)          
+            <div class="w-full xl:w-1/1 md:w-1/4 ">
+                       
               <div class="relative flex flex-col h-full py-8 px-4 text-center md:text-left">
                 <h2
                   class="mb-4 text-2xl xl:text-2xl md:text-xl font-bold tracking-widest text-indigo-900 uppercase title-font">
@@ -66,7 +67,7 @@
                   {{ $cost->mech_cost }}
                 </p>
               </div>
-              @endforeach
+              
             </div>
             <div class="w-full xl:w-1/4 md:w-1/4">
               <div class="relative flex flex-col h-full py-8 px-2">
@@ -79,7 +80,7 @@
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
                   </span>
-                  <span class="font-semibold mr-2">1</span> Oil number 54
+                  <span class="font-semibold mr-2"><small>Qty</small><hr> {{ $cost->spare_qty ?? '0'}}  
                 </p>
                 <p
                   class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
@@ -90,7 +91,7 @@
                       <path d="M20 6L9 17l-5-5"></path>
                     </svg>
                   </span>
-                  <span class="font-semibold mr-2">2</span> Big Spring
+                  <span class="font-semibold mr-2">2</span><small>Qty</small><hr> 
                 </p>
                 </p>
                 <p
@@ -106,42 +107,7 @@
                 </p>
               </div>
             </div>
-            <div class="w-full xl:w-1/4 md:w-1/4">
-              <div class="relative flex flex-col h-full py-8 px-2 ">
-                <p
-                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
-                  <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                      class="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </span><span class="font-semibold mr-2"></span> Flat Tire 
-                </p>
-                <p
-                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-gray-400 justify-center md:justify-start">
-                  <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-red-500 rounded-full bg-blue-1300">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                      class="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                  </span><span class="font-semibold mr-2">Google</span> Flat Tire 
-                </p>
-      
-                <p
-                  class="flex items-center mb-2 text-lg font-normal tracking-wide text-indigo-800 justify-center md:justify-start">
-                  <span
-                    class="inline-flex items-center justify-center flex-shrink-0 w-5 h-5 mr-2 text-indigo-800 rounded-full bg-blue-1300">
-                    <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                      class="w-4 h-4" viewBox="0 0 24 24">
-                      <path d="M20 6L9 17l-5-5"></path>
-                    </svg>
-                  </span>
-                  <span class="font-semibold mr-2">2</span> Databases
-                </p>
-              </div>
-            </div>
+           
             <div class="w-full xl:w-1/4 md:w-1/4 lg:ml-auto">
               <div class="relative flex flex-col h-full p-8">
                 <h1 class="flex items-end mx-auto text-5xl lg:text-5xl sm:text-4xl font-black leading-none text-indigo-800 ">
@@ -155,6 +121,7 @@
               </div>
             </div>
           </div>
+          @endforeach
           <div
             class="flex flex-wrap items-end justify-start w-full duration-500 ease-in-out transform bg-white border-2 hover:border-4 border-indigo-200 hover:border-indigo-600 rounded-lg shadow-md hover:shadow-2xl transition-transform hover:scale-95 group">
             <div class="w-full xl:w-1/4 md:w-1/4 ">
@@ -362,7 +329,7 @@
           
         </div>
       
-      </section>
+    
     </div> 
 
         
