@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CostStoreRequest;
 use App\Models\Cost;
 use App\Models\Requester;
 use Illuminate\Http\Request;
@@ -59,15 +60,22 @@ class costController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(CostStoreRequest $request)
     {
         Requester::create([
-            'request_date'=> $request->request_date,
-            'request_by'=>$request->request_by,
-            'vcl_id'=>$request->vcl_id,
-            'mtn_type'=>$request->mtn_type,
-            'description'=>$request->description,
+            'spare_cost_desc'=> $request->spare_cost_desc,
+            'Spare_cost'=>$request->Spare_cost,
+            'spare_qty'=>$request->spare_qty,
+            'mech_cost_desc'=>$request->mech_cost_desc,
+            'mech_cost'=>$request->mech_cost,
+            'other_cost_desc'=>$request->other_cost_desc,
+            'other_cost'=>$request->other_cost,
+            'ref_no'=>$request->ref_no,
+            'requester_id'=>$request->requester_id,
+            
            ]);
+
+           return to_route('admin.cost.create');
     }
 
     /**

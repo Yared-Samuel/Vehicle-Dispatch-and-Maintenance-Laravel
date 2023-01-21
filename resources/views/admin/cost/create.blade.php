@@ -6,8 +6,33 @@
     </x-slot>    
     <div class="py-6"> 
 
+        <section class="mb-1 bg-slate-100">
     
-        <div class="bg-slate-200 border rounded-lg shadow-md py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <h3 class="flex items-center my-8">
+                <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+                <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+                <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+                <span class="inline-block px-4 py-1 text-md font-bold text-center text-gray-900 bg-teal-200 rounded-full">
+                Request Form
+              </span>
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span class="inline-block px-4 py-1 text-md font-bold text-center text-gray-900 bg-teal-200 rounded-full">
+              Maintenance Complition
+              </span>
+              
+
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
+              <span class="inline-block px-4 py-1 text-md font-bold text-center text-gray-900 bg-teal-200 rounded-full">
+                Cost and Spareparts
+              </span>
+              {{-- <span aria-hidden="true" class="flex-grow bg-gray-200 rounded h-0.5"></span> --}}
+            </h3>
+        </section>
+        <div class="bg-slate-100 border rounded-lg shadow-md py-6 max-w-7xl mx-auto sm:px-6 lg:px-8">
             
                 <form method="POST" 
                         action="{{ route('admin.cost.store') }}">
@@ -60,7 +85,7 @@
                         </div>
                     </div>      
                     <div class="relative z-0 mb-10 ml-10 w-1/5 group">
-                        <label for="requester_id" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        <label for="requester_id" class="multi peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >Vehicle Plate Number</label>                                
                         <select name="requester_id" id="requester_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" required >
                             <option disabled selected> Select Vehicle </option>
@@ -79,7 +104,7 @@
                         
                         <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
                                 >Next / Cost</button>
-                                <a href="{{ route('admin.cost.index') }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+                                <a href="{{ route('admin.cost.create') }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
                 >Back</a>
                 </form>
   

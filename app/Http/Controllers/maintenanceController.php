@@ -91,7 +91,7 @@ class maintenanceController extends Controller
         return view('admin.maintenance.edit')
         ->with(['rqst_approved'=>$rqst_approved,'costs'=>$costs]);
 
-        return to_route('admin.maintenance.index');
+        return to_route('admin.cost.create');
     }
 
     /**

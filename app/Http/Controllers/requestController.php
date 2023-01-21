@@ -34,9 +34,16 @@ class requestController extends Controller
     {
         
         $vcls= Vcl::with('vcl_hasm_rqsts')->get();
+        $rqst_approved = Requester::with('rqst_blgto_vcls')
+                            ->where('status','<','3')
+                                ->get()
+                                    ->pluck('rqst_blgto_vcls');
         
+        
+        
+        // dd($rqst_approved);
        
-        return view('admin.request.create')->with(['vcls'=>$vcls]);
+        return view('admin.request.create')->with(['vcls'=>$vcls,'rqst_approved'=>$rqst_approved]);
     }
 
     /**
