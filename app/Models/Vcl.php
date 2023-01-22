@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Category;
-use App\Models\Request;
 
 class Vcl extends Model
 {
@@ -34,6 +32,11 @@ class Vcl extends Model
     public function vcl_hasmny_fuels()
     {
         return $this->hasMany(Fuel::class);
+    }
+    
+    public function vcl_cost()
+    {
+        return $this->hasManyThrough(Cost::class, Requester::class);
     }
 
 

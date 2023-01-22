@@ -24,15 +24,6 @@ class Requester extends Model
         return $this->belongsTo(Vcl::class,'vcl_id','id');
     }
 
-
-    public function rqst_blgto_mtns()
-    {
-        return $this->belongsTo(Maintenancetype::class,'maintenancetype_id','id');
-    }
-    
-    
-   
-
     
     public function rqst_hasmny_cost()
     {

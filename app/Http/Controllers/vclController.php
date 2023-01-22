@@ -15,7 +15,9 @@ class vclController extends Controller
      */
     public function index()
     {
-        $vcls = Vcl::all();
+        $vcls = Vcl::with('vcl_cost')->get();
+        
+        
                
         return view('admin.vcls.index',compact('vcls'));
     }

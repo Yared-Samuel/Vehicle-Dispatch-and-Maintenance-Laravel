@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CostStoreRequest;
 use App\Models\Cost;
 use App\Models\Requester;
+use App\Models\Vcl;
 use Illuminate\Http\Request;
 
 class costController extends Controller
@@ -17,10 +18,10 @@ class costController extends Controller
     public function index()
     {
         $costs = Cost::with('cost_blgto_rqsts')->get();
-
+        $cost_vcls = Vcl::with('vcl_cost')->get();
         
-        // dd($costs);
-        return view('admin.cost.index',compact('costs'));
+        //  dd($costs);
+        return view('admin.cost.index',compact('costs','cost_vcls'));
     }
 
     /**
@@ -51,7 +52,9 @@ class costController extends Controller
      */
     public function store(CostStoreRequest $request)
     {
+        
         Cost::create([
+            'cost_date'=> $request->cost_date,
             'spare_cost_desc'=> $request->spare_cost_desc,
             'spare_cost'=>$request->spare_cost,
             'spare_qty'=>$request->spare_qty,

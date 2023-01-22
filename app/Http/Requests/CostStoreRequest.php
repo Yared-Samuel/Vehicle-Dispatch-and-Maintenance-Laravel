@@ -24,6 +24,7 @@ class CostStoreRequest extends FormRequest
     public function rules()
     {
         return [
+            'cost_date'=>['cost_date'],
             'spare_cost_desc'=>['required'],
             'spare_cost'=>['required'],
             'spare_qty'=>['required'],

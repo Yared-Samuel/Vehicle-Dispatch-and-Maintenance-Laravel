@@ -10,7 +10,7 @@
        
 
         
-
+        <script src="{{ asset('assets/js/datepicker.js') }}"></script>
         
 
         <!-- Scripts -->

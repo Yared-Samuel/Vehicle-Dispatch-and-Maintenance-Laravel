@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
+            $table->date('cost_date');
             $table->string('spare_cost_desc')->nullable();
             $table->integer('spare_cost')->nullable();
             $table->integer('spare_qty')->nullable();
@@ -22,7 +23,7 @@ return new class extends Migration
             $table->integer('mech_cost')->nullable();
             $table->string('other_cost_desc')->nullable();
             $table->integer('other_cost')->nullable();
-            $table->integer('ref_no');
+            $table->integer('ref_no')->nullable();
             $table->foreignId('requester_id')->nullable()->constrained('requesters','id');
             $table->timestamps();
         });
