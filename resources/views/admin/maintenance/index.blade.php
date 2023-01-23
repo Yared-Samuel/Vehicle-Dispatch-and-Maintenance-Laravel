@@ -7,7 +7,7 @@
     <div class="relative overflow-x-auto max-h-full h-96 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
         <div class="flex justify-between w-full px-4 py-2 items-center">
             <div class="text-xl font-bold">
-                    Vehicles Approved
+                    Vehicles In Garage
             </div>  
             <div>     
                 <a href="{{ route('admin.request.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"

@@ -24,7 +24,7 @@
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
-                    <img src="{{ asset('images/LOGO.png') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
+                    <img src="{{ asset('images/Logos.svg') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
                     <span class="text-teal-300 font-bold self-center text-xl whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
                 </a>
                 <div class="flex items-center  md:order-2">

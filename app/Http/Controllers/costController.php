@@ -19,8 +19,8 @@ class costController extends Controller
     {
         $costs = Cost::with('cost_blgto_rqsts')->get();
         $cost_vcls = Vcl::with('vcl_cost')->get();
+       
         
-        //  dd($costs);
         return view('admin.cost.index',compact('costs','cost_vcls'));
     }
 
@@ -31,15 +31,13 @@ class costController extends Controller
      */
     public function create()
     {
-        $cost = Cost::select('requester_id')->get();
-
-        
+        $cost = Cost::select('requester_id')->get();       
             $vcls=Requester::with('rqst_blgto_vcls')
                 ->where('status','=',3)
                 ->get();
         
     
-                
+               
         
         return view('admin.cost.create',compact('vcls'));
     }
@@ -52,7 +50,7 @@ class costController extends Controller
      */
     public function store(CostStoreRequest $request)
     {
-        
+        // dd($request);
         Cost::create([
             'cost_date'=> $request->cost_date,
             'spare_cost_desc'=> $request->spare_cost_desc,

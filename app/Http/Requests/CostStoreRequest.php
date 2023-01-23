@@ -24,17 +24,16 @@ class CostStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'cost_date'=>['cost_date'],
-            'spare_cost_desc'=>['required'],
-            'spare_cost'=>['required'],
-            'spare_qty'=>['required'],
-            'mech_cost_desc'=>['required'],
-            'mech_cost'=>['required'],
-            'other_cost_desc'=>['required'],
-            'other_cost'=>['required'],
+            'cost_date'=>['required'],
+            'spare_cost_desc'=>['nullable'],
+            'spare_cost'=>['nullable'],
+            'spare_qty'=>['nullable'],
+            'mech_cost_desc'=>['nullable'],
+            'mech_cost'=>['nullable'],
+            'other_cost_desc'=>['nullable'],
+            'other_cost'=>['nullable'],
             'ref_no'=>['required'],
-            'requester_id'=>['required'],
-            
+            'requester_id'=>['nullable'],
         ];
     }
 }

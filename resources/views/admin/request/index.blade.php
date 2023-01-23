@@ -11,7 +11,7 @@
         
         <div class="flex justify-between w-full pb-4  items-center">
             <div class="text-xl font-bold">
-              List of Products
+              Vehicles Requested
             </div>
             <div>
                 <a href="{{ route('admin.request.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"

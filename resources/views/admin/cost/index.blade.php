@@ -3,69 +3,128 @@
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
         </h2>
-    </x-slot>    
-    <div class="flex">
-    <div class="flex flex-col space-y-6 justify-start items-start mt-20">
-<a href="{{ route('admin.cost.create') }}">  
-<button class='relative inline-flex items-center bg-gray-100 rounded-full hover:bg-[#ffc93c] group hover:text-gray-100 text-gray-500 py-3 px-6 text-xl font-bold overflow-visible shadow-2xl'>
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-4" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd"
-        d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z"
-        clip-rule="evenodd" />
-    </svg>
-    PAY
+    </x-slot>
     
-    <div
-      class="absolute top-0 right-0 -mt-4 -mr-4 px-2 py-0 text-gray-100 bg-[#ffc93c] group-hover:bg-[#ff6f3c] rounded-full">
-      3</div>
-  </button>
-</a>
-  
-  
-</div>
-            
-   
-    <div class="flex w-full justify-around mr-5">
-        @foreach ($cost_vcls as $vcls)         
-          <div class="w-1/2 mr-3 max-w-lg mx-auto">      
-            <div class="rounded-lg shadow-lg p-6 text-xs  mx-4 sm:mx-0 bg-white">
-              <div>
-                <h2 class="text-teal-800 text-xl  mb-2 font-bold">{{ $vcls->plate_id }}</h2>
-                @foreach ($vcls->vcl_cost as $costs)     
-                <div class="flex flex-col">
-                   
-                  <p class="text-gray-600 text-xs">Ref. - {{ $costs->ref_no }}</p>
-                  <p class="text-gray-600 text-xs">Date: 22-Sep-2023</p>
-                </div>
-                <hr class="my-4 border-teal-800">
-                <div>
-                  <div class="flex justify-between items-center">
-                    <span class="font-medium text-base truncate">{{ $costs->spare_cost_desc }}</span><span class="text-base pl-8 font-medium">{{ $costs->spare_cost }} <small>birr</small></span>
-                  </div>
-                  <div class="mb-4 flex justify-between items-center">
-                    <span>*Quantity:</span><span class="">{{ $costs->spare_qty }}</span>
-                  </div>
-                  <hr class="my-4 border-teal-800">
-                  <div class="flex justify-between items-center">
-                    <span class="font-medium text-base">{{ $costs->mech_cost_desc }}</span><span class="text-base font-medium">{{ $costs->mech_cost }} <small>birr</small></span>
-                  </div>
-                  
-                  <div class="flex justify-between items-center">
-                    <span class="font-medium text-base">{{ $costs->other_cost_desc }}</span><span class="text-base pl-8 font-medium">{{ $costs->other_cost }} <small>birr</small></span>
-                  </div>                  
-                  <hr class="my-4 border-4 border-teal-800">
-                 
-                  <div class="flex justify-between items-center">
-                    <span class="text-lg font-medium">Total</span><span class="text-lg font-medium">{{ ($costs->spare_qty * $costs->spare_cost) + $costs->mech_cost + $costs->other_cost}} <small>birr</small></span>
-                  </div>
-                </div>
-                @endforeach
-              </div>
-            </div>
-          </div>
-        @endforeach    
+    <div class="flex justify-between mx-0 rounded-md shadow-sm" role="group">
+      <div class="inline-flex rounded-md  shadow-sm" role="group">
+        
+        <a href="{{ route('admin.cost.create') }}">
+            <button type="button" class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+              >Cost Form</button>
+        </a>
+        <a href="{{ route('admin.cost.index') }}">
+            <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
+              >Replenish</button>
+        </a>
+        <a href="{{ route('admin.cost.index') }}">
+            <button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
+              >Replenished
+              <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-white bg-red-400 rounded-full">
+                2
+              </span>
+            </button>
+        </a>
+        <a href="{{ route('admin.cost.index') }}">           
+            <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
+              >Top UP</button>
+        </a>      
+    </div>
+      <div class="text-right font-bold mr-4">Cost Lists</div>
     </div> 
-  </div>
+    <div class="m-4 mb-4">
+  @foreach ($cost_vcls as $key=>$vcls )
+  <button type="button" class="flex items-center justify-between w-full bg-teal-100  font-medium text-left text-green-900 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-1" aria-expanded="true" aria-controls="accordion-color-body-1">
+    <span>{{ $vcls->plate_city}} - 0{{ $vcls->plate_code }} - <b> {{ $vcls->plate_id }}</span> {{ $vcls->vcl_cost->count() }}
+  </button>
+  <table class="w-full max-h-10 table-fixed overflow-x-auto text-sm text-left text-gray-500 dark:text-gray-400">
+      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+              <th scope="" class="px-0 py-0 truncate">
+                  #
+              </th>
+              
+              <th scope="col" class="px-6 py-3 ">
+                  Cost date
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Spare part
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Spare part Price
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Quantity
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Operation
+              </th>
+              <th scope="col" class="px-6 py-3">
+                Operation Cost
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Other Costs
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Ref. No
+              </th>
+              <th scope="col" class="px-6 py-3 text-red-500 ">
+                  Total
+              </th>
+              <th scope="col" class="px-6 py-3">
+                  Action
+              </th>
+          </tr>
+      </thead>
+      @foreach ($vcls->vcl_cost as $key=>$costs)
+      <tbody>
+          <tr class="bg-white border-b max-h-5 dark:bg-gray-800 dark:border-gray-700">
+              <th class="truncate" >
+                  {{ $key }}
+              </th>
+              <td class="px-6 py-4">
+                {{ $costs->cost_date }}
+              </td>
+              <td class="px-6 py-4  ">
+                {{ $costs->spare_cost_desc }}
+              </td>
+              <td class="px-6 py-4 truncate ">
+                {{ $spare=$costs->spare_cost ?? '0' }}
+              </td>
+              <td class="px-6 py-4 truncate ">
+                {{ $qty=$costs->spare_qty ?? '1' }}
+              </td>
+              <td class="px-6 py-4">
+                {{ $costs->mech_cost_desc }}
+              </td>
+              <td class="px-6 py-4 truncate ">
+                {{ $mech=$costs->mech_cost ?? '0'}}
+              </td>
+              <td class="px-6 py-4 truncate ">
+                {{ $costs->other_cost_desc }} - {{ $other= $costs->other_cost }}
+              </td>
+              
+              <td class="px-6 py-4  ">
+                {{ $costs->ref_no }}
+              </td>
+              <td class="px-6 py-4 text-red-500 ">
+                {{ ($spare * $qty) + $mech + $other }}
+              </td>
+              
+              <td class="px-6 py-4">
+                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                  <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Complete</a>
+              </td>
+          </tr>
+         
+      </tbody>
+      @endforeach
+  </table>
+  
+
+  @endforeach
+</div>
+
+  
       
     
     </div> 
