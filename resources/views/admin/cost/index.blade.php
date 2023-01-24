@@ -50,7 +50,7 @@
                   Spare part
               </th>
               <th scope="col" class="px-6 py-3">
-                  Spare part Price
+                  Cost
               </th>
               <th scope="col" class="px-6 py-3">
                   Quantity
@@ -59,7 +59,7 @@
                 Operation
               </th>
               <th scope="col" class="px-6 py-3">
-                Operation Cost
+                Cost
               </th>
               <th scope="col" class="px-6 py-3">
                   Other Costs

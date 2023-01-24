@@ -26,11 +26,11 @@
       </div>
         <div class="text-right font-bold mr-4">Cost Form</div>
       </div> 
-    <div class="py-6"> 
+    <div class="py-10"> 
 
         <section class="mb-1 bg-slate-100">
     
-            <h3 class="flex items-center my-8">
+            <h3 class="flex items-center my-4">
                 <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
                 <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
                 <span aria-hidden="true" class="flex-grow bg-teal-200 rounded h-0.5"></span>
@@ -61,12 +61,12 @@
                     <div class="flex justify-around p-2">
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="text" name="spare_cost_desc" id="spare_cost_desc" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
-                            <label for="spare_cost_desc" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Sparepart Desc</label>
+                            <label for="spare_cost" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >Sparepart</label>
                         </div>
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="number" name="spare_cost" id="spare_cost" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
-                            <label for="spare_cost" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            <label for="spare_cost" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-0 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >Sparepart Cost per Unit</label>
                         </div>
                         <div class="relative z-0 mb-5 w-1/4 group">
@@ -76,23 +76,28 @@
                         </div>
                     </div>    
                     <div class="flex justify-around mr-5 py-3">
-                        <div class="relative z-0 mb-5 w-2/4 group">
-                            <input type="text" name="mech_cost_desc" id="mech_cost_desc" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "/>
-                            <label for="mech_cost_desc" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Mechanich's Work</label>
+                        <div class="relative z-0 mb-5 w-1/4 group">
+                            <input type="text" name="mech_cost_desc" id="mech_cost_desc" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
+                            <label for="spare_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >Work Performed</label>
                         </div>
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="number" name="mech_cost" id="mech_cost" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
                             <label for="mech_cost" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Mechanich's Cost</label>
+                            >Cost</label>
+                        </div>
+                        <div class="relative z-0 mb-5 w-1/4 group">
+                            <input type="text" name="garage_name" id="garage_name" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
+                            <label for="spare_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >Garage Name</label>
                         </div>
                         
                     </div>  
                     <div class="flex justify-around p-2">
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="text" name="other_cost_desc" id="other_cost_desc" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" "  />
-                            <label for="other_cost_desc" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Other Cost</label>
+                            <label for="spare_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                            >Additional Work performed</label>
                         </div>
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="number" name="other_cost" id="other_cost" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " />
@@ -102,29 +107,36 @@
                         <div class="relative z-0 mb-5 w-1/4 group">
                             <input type="number" name="ref_no" id="ref_no" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
                             <label for="ref_no" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Pad Reference</label>
+                            >PCPV No.</label>
                         </div>
                     </div>
                     <div class="flex justify-around p-2">      
-                    <div class="relative z-0 mb-5 ml-10 w-1/5 group">
+                   
+                    
+                    <div class="relative z-0 mb-5 w-1/4 group">
                         <label for="requester_id" class="multi peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Vehicle Plate Number</label>                                
+                            >Vehicle's Driver</label>                                
                         <select name="requester_id" id="requester_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" required >
-                            <option disabled selected> Select Vehicle </option>
-                            @foreach ($vcls as $vcl)
-                            <option class="text-white bg-slate-600" value="{{ $vcl->id }}">
-                                {{ $vcl->rqst_blgto_vcls->plate_city }}  0{{$vcl->rqst_blgto_vcls->plate_code}} - {{ $vcl->rqst_blgto_vcls->plate_id   }} <br>
-                                <small>    ///  Request By - </small> {{ $vcl->request_by   }}
+                            <option disabled selected> Select Driver </option>
+                            @foreach ($drvrs as $drvr)
+                            <option class="text-white bg-slate-600" value="{{ $drvr->id }}">
+                                {{ $drvr->driver_name }}                                
                             </option>
                                 
                                 @endforeach
                         </select>
                     </div> 
                     
-                    <div class="relative z-0 mb-5 w-1/5 group">
+                    <div class="relative z-0 mb-5 w-1/4 group">
                         <input type="date" name="cost_date" id="cost_date" class="block py-2.5 px-0 w-full absolute text-sm text-gray-900 bg-transparent border-0 border-b-2 border-black appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-500 peer" required placeholder=" "/>
                         <label for="cost_date" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >Cost Date</label>
+                    </div>
+
+                    <div class="relative z-0 mb-5 w-1/4 group">
+                        <input type="text" name="requester_id" hidden:value="{{ $vcls->id }}" id="requester_id" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500" placeholder="{{ $vcls->rqst_blgto_vcls->plate_city }}  0{{$vcls->rqst_blgto_vcls->plate_code}} - {{ $vcls->rqst_blgto_vcls->plate_id   }} "  disabled/>
+                        <label for="spare_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y--10 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        >Expence For Vehicle</label>
                     </div>
 
                     </div>

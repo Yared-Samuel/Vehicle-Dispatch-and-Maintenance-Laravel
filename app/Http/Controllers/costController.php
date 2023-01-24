@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CostStoreRequest;
 use App\Models\Cost;
+use App\Models\Driver;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
@@ -32,14 +33,18 @@ class costController extends Controller
     public function create()
     {
         $cost = Cost::select('requester_id')->get();       
-            $vcls=Requester::with('rqst_blgto_vcls')
+        $vcls=Requester::with('rqst_blgto_vcls')
                 ->where('status','=',3)
-                ->get();
+                ->orderBy('updated_at', 'DESC')
+                ->get()->first(); 
         
+               
+        
+        $drvrs = Driver::all();
     
                
         
-        return view('admin.cost.create',compact('vcls'));
+        return view('admin.cost.create',compact('vcls','drvrs'));
     }
 
     /**
@@ -61,6 +66,8 @@ class costController extends Controller
             'other_cost_desc'=>$request->other_cost_desc,
             'other_cost'=>$request->other_cost,
             'ref_no'=>$request->ref_no,
+            'garage_name'=>$request->garage_name,
+            'driver_id'=>$request->driver_id,
             'requester_id'=>$request->requester_id,
             
            ]);

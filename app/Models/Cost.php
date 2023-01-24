@@ -11,7 +11,7 @@ class Cost extends Model
 
     protected $fillable= [
         'cost_date','spare_cost_desc','spare_cost','spare_qty','mech_cost_desc','mech_cost','other_cost_desc','other_cost',
-        'ref_no','requester_id'
+        'ref_no','garage_name','driver_id','requester_id'
     ];
 
     public function cost_blgto_rqsts()

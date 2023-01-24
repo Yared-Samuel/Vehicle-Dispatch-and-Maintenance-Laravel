@@ -24,6 +24,8 @@ return new class extends Migration
             $table->string('other_cost_desc')->nullable();
             $table->integer('other_cost')->nullable();
             $table->integer('ref_no')->nullable();
+            $table->string('garage_name')->nullable();
+            $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
             $table->foreignId('requester_id')->nullable()->constrained('requesters','id');
             $table->timestamps();
         });

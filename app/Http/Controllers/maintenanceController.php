@@ -91,7 +91,7 @@ class maintenanceController extends Controller
         return view('admin.maintenance.edit')
         ->with(['rqst_approved'=>$rqst_approved,'costs'=>$costs]);
 
-        return to_route('admin.cost.create');
+        return to_route('admin.cost.create',compact('id'));
     }
 
     /**
@@ -115,6 +115,7 @@ class maintenanceController extends Controller
             'end_date'=>$request->end_date,
             'kilometer'=>$request->kilometer,
             'status'=>3,
+            'timestamps'=>now(),
         ]);
         return to_route('admin.cost.create');
     }
