@@ -20,12 +20,12 @@
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
 
-        <div class="bg-sky-900 border-gray-200 px-2 md:px-4 border-b-amber-300 border-b-4 dark:bg-gray-900 shadow-md">
+        <div class="bg-gradient-to-r from-teal-800 to-cyan-200 shadow-slate-500  px-2 md:px-4 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
                     
-                    <span class="text-teal-300 font-bold self-center text-xl whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
+                    <span class="text-white font-bold self-center text-xl whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
                 </a>
                 <div class="flex items-center  md:order-2">
                     <div id="mega-menu" class="justify-between  items-start w-full text-sm md:flex md:w-auto md:order-1 ">
@@ -51,7 +51,7 @@
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-teal-200 hover:text-white border border-spacing-5 border-teal-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-small rounded-lg text-sm px-3 py-0.5 text-center mr-2  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                                this.closest('form').submit();" class="text-teal-900 font-bold  hover:text-white border-spacing-5 border-teal-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-small rounded-lg text-sm px-3 py-0.5 text-center mr-2  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
@@ -70,123 +70,7 @@
         
   
         <div class="flex-col md:flex md:flex-row  overflow-clip md:min-h-screen">
-            {{-- <div @click.away="open = false" class="w-[calc(100%-3.73rem)] flex flex-col flex-shrink-0 text-gray-700 bg-teal-800 md:w-56 dark:text-gray-200 dark:bg-gray-800" x-data="{ open: false }">
-                
-                    <nav class="{'block': open, 'hidden': !open}" 
-                        class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-                        <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                            <button @click="open = !open" class="flex flex-row items-center text-white  underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                <span>Meitenance Progress</span>
-                                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </button>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                                <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-700">
-                                    
-                                    
-                                    <x-admin-nav-link :href="route('admin.request.index')" :active="request()->routeIs('admin.vcls.index')">
-                                        {{ __('Maintenance Request') }}
-                                    </x-admin-nav-link>
-                                    <x-admin-nav-link :href="route('admin.maintenance.index')" :active="request()->routeIs('admin.categories.index')">
-                                        {{ __('Maintenance') }}
-                                    </x-admin-nav-link>                             
-                                    </div>
-                            </div>
-                        
-                        </div>
-
-
-                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white  underline font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" type="button"
-                                >Resource Managment 
-                            </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
-                                
-                            <li>
-                                <a href="{{ route('admin.fuel.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Fuel Record</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.cost.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Expences</a>
-                            </li>
-                            <li>
-                                <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >Tire Control</a>
-                            </li>
-                            
-                            </ul>
-                        </div>
-                        <button  @click="open = !open" id="multiLevelDropdownButton" data-dropdown-toggle="dropdown" class="text-white  underline font-medium rounded-lg text-sm  px-4 py-2.5 text-center inline-flex items-center dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" type="button"
-                                >Reports
-                            </button>
-                        <!-- Dropdown menu -->
-                        <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="multiLevelDropdownButton">
-                                <li>
-                                    <button id="doubleDropdownButton" data-dropdown-toggle="doubleDropdown" data-dropdown-placement="right-start" type="button" class="flex items-center justify-between underline w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                        >Spare Parts<svg aria-hidden="true" class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
-                                       </button>
-                                    <div id="doubleDropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded shadow w-44 dark:bg-gray-700">
-                                        <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="doubleDropdownButton">
-                                        
-                                        <li>
-                                            <a href="{{ route('admin.tires.index') }}" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                                >Tire Trucking</a>
-                                        </li>
-                                        
-                                        </ul>
-                                    </div>
-                                </li>
-                                
-                            <li>
-                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                                    >#</a>
-                            </li>
-                            
-                            </ul>
-                        </div>
-                        
-                        <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                            <button @click="open = !open" class="flex flex-row items-center text-white  underline w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark:bg-transparent dark:focus:text-white dark:hover:text-white dark:focus:bg-gray-600 dark:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                <span>Configurations</span>
-                                <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            </button>
-                            <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                                <div class="px-2 py-2 bg-white rounded-md shadow dark:bg-gray-700">
-                                    
-                                    
-                                    <x-admin-nav-link :href="route('admin.vcls.index')" :active="request()->routeIs('admin.vcls.index')">
-                                        {{ __('Vehicles') }}
-                                    </x-admin-nav-link>
-                                    
-                                    
-
-                                    <x-admin-nav-link :href="route('admin.drivers.index')" :active="request()->routeIs('admin.drivers.index')">
-                                        {{ __('Drivers') }}
-                                    </x-admin-nav-link>
-                                        
-                                    
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                
-                                            <x-dropdown-link :href="route('logout')"
-                                                    onclick="event.preventDefault();
-                                                                this.closest('form').submit();" class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark:bg-transparent dark:hover:bg-gray-600 dark:focus:bg-gray-600 dark:focus:text-white dark:hover:text-white dark:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                                                {{ __('Log Out') }}
-                                            </x-dropdown-link>
-                                        </form>
-                                    </div>
-                            </div>
-                        
-                        </div>
-
-                    
-                        
-
-                    </nav>
-              
-            </div> --}}
+           
 
 
             <div class="min-h-screen bg-gray-100">
@@ -199,7 +83,7 @@
                       </div>
                       <ul class="mt-0.5 space-y-1 tracking-wide">
                         <li class="min-w-max">
-                          <a href="route('admin.request.index')"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-400  px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                          <a href="{{ route('admin.request.index') }}"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-400  px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             {{-- <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
                               <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
                               <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
@@ -214,7 +98,7 @@
                           </a>
                         </li>
                         <li class="min-w-max">
-                          <a href="route('admin.maintenance.index')"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                          <a href="{{ route('admin.maintenance.index') }}"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             {{-- <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
                               <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
                               <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
@@ -279,15 +163,14 @@
                       </ul>
                       
                     </div>
-                    <div class="min-w-max -mb-48 md:-mb-48">
-                      <a href="{{ route('admin.vcls.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-gray-600 to-gray-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                    
+                    <div class="min-w-max mb-10">
+                      <a href="{{ route('admin.vcls.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r border-b-4 border-blue-50 from-gray-600 to-gray-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
                         </svg>                        
                         <span class="group-hover:text-gray-700">Vehicles</span>
                       </a>
-                    </div>
-                    <div class="min-w-max mb-5">
                       <a href="{{ route('admin.drivers.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-gray-600 to-gray-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />

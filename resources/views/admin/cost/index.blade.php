@@ -24,15 +24,44 @@
               </span>
             </button>
         </a>
-        <a href="{{ route('admin.cost.index') }}">           
+        <a href="">           
             <button type="button" class="text-purple-700 hover:text-white border border-purple-700 hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-purple-400 dark:text-purple-400 dark:hover:text-white dark:hover:bg-purple-500 dark:focus:ring-purple-900"
               >Top UP</button>
         </a>      
     </div>
       <div class="text-right font-bold mr-4">Cost Lists</div>
     </div> 
-    <div class="m-4 mb-4">
+
+  
+<form action="{{ route('admin.cost.index') }}" method="GET" role="search"  class="flex justify-end bg-slate-200">
+  
+  <div class="relative">    
+    <input name="start" type="date" value="{{ request()->input('start') }}" class="bg-white border border-gray-400 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+  </div>
+  <span class="mx-4 mt-2  text-gray-500">to</span>
+  <div class="relative mr-3">
+    
+    <input name="end" type="date" value="{{ request()->input('end') }}" class="bg-white border border-gray-400 mr-3 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+</div>
+
+<select name="vcl" value="{{ request()->input('vcl') }}" id="underline_select" class="block py-0.5 px-4 w-1/5 text-sm font-semibold text-black bg-white border-1 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
+    <option disabled selected>Select Vehicle Plate</option>
+    @foreach ($cost_vcls as $vcler)   
+    <option value="{{ $vcler->id  }}">{{ $vcler->plate_city}} - 0{{ $vcler->plate_code }} - <b> {{ $vcler->plate_id }}</option>
+    @endforeach
+    
+</select>
+        <a href="{{ route('admin.cost.index') }}">
+            <button type="submit" class="text-white mr-3 font-bold bg-gradient-to-r from-teal-800 to-cyan-400  border-4 border-slate-300 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                            >Filter Cost</button>
+        </a>
+</form>
+
+
+    <div class="mx-4 mb-4">
+  
   @foreach ($cost_vcls as $key=>$vcls )
+  
   <button type="button" class="flex items-center justify-between w-full bg-teal-100  font-medium text-left text-green-900 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-800 dark:border-gray-700 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-color-body-1" aria-expanded="true" aria-controls="accordion-color-body-1">
     <span>{{ $vcls->plate_city}} - 0{{ $vcls->plate_code }} - <b> {{ $vcls->plate_id }}</span> {{ $vcls->vcl_cost->count() }}
   </button>
