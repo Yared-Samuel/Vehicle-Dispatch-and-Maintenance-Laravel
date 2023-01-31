@@ -20,14 +20,8 @@ class fuelchartController extends Controller
      public function index()
      {
 
-        $vcl_in_fuel = Fuel::get('vcl_id')->toArray();
-        
-        
-        $fuels =Vcl::with('vcl_hasmny_fuels')
-                    ->get();
+        $fuels =Vcl::with('vcl_hasmny_fuels')->get();
             
-        
-                
             
                 return view('admin.fuel.index')->with(['fuels'=>$fuels]);
      }      
@@ -76,9 +70,28 @@ class fuelchartController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id, Request $request)
     {
-        //
+        $fuel_vcls = Vcl::get();
+        if (count($request->all()) > 0) {        
+        $vcl = $request->input('vcl');
+        $id = $vcl;
+        $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query) use ($request){
+            $str_date =  $request->input('start');            
+            $end_date = $request->input('end');
+            $query->whereBetween('fuel_date',[$str_date, $end_date]);
+            return $query;
+        })->get();
+        }else{
+            $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query){
+            $query;
+        })->get();
+            
+        }
+        
+        // dd($fuels);
+        return view('admin.fuel.show')->with(['fuels'=>$fuels,'fuel_vcls'=>$fuel_vcls]);
+            
     }
 
     /**

@@ -21,31 +21,27 @@ class costController extends Controller
      */
     public function index(Request $request)
     {
-        $costs = Cost::with('cost_blgto_rqsts')->get();
         
+        
+        $costs = Cost::with('cost_blgto_rqsts')->get();
 
         if (count($request->all()) > 0) {
             $vcl = $request->input('vcl');
-            $str_date =  $request->input('start');
-            $end_date = $request->input('end');
-            $cost_vcls = Vcl::where('id','=',$vcl)->with('vcl_cost',function ($date_range) {
-                                 $date_range->whereBetween('cost_date',['$str_date','$end_date']);
+            
+            
+            $cost_vcls = Vcl::where('id','=',$vcl)->with('vcl_cost',function ($date_range) use ($request){
+                                $str_date =  $request->input('start');            
+                                $end_date = $request->input('end');
+                                 $date_range->whereBetween('cost_date',[$str_date, $end_date])->get();
+                                    
                                          return $date_range;
                                                  })->get();  
+                                                 
         }else{
             $cost_vcls = Vcl::with('vcl_cost')->get();
+            
         }
-        
-        
-        
-    
-          
-                                                                             
-
         return view('admin.cost.index',compact('costs','cost_vcls'));
-
-
-         
     }
 
 

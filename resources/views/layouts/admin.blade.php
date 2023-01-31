@@ -20,7 +20,7 @@
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
 
-        <div class="bg-gradient-to-r from-teal-800 to-cyan-200 shadow-slate-500  px-2 md:px-4 dark:bg-gray-900">
+        <div class="bg-gradient-to-r from-teal-800 to-cyan-200 shadow-slate-500  px-4 md:px-4 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
@@ -28,41 +28,72 @@
                     <span class="text-white font-bold self-center text-xl whitespace-nowrap dark:text-white">GrmaGifawossen Trading</span>
                 </a>
                 <div class="flex items-center  md:order-2">
-                    <div id="mega-menu" class="justify-between  items-start w-full text-sm md:flex md:w-auto md:order-1 ">
-                        {{-- <ul class="flex flex-col font-medium md:flex-row md:space-x-8 md:mt-0 mr-3">
-                            <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-blue-500 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700" aria-current="page"
-                                    >Home</a>
-                            </li>
-                            
-                            <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                    >Team</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block py-2 pr-4 pl-3 font-bold text-white border-b border-gray-100 hover:bg-gray-50 md:hover:bg-transparent md:border-0 md:hover:text-teal-400 md:p-0 dark:text-gray-400 md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-blue-500 md:dark:hover:bg-transparent dark:border-gray-700"
-                                    >Contact</a>
-                            </li>
-                        </ul> --}}
+                  
+<button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white mx-4  hover:bg-teal-800 focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
+      >Reports
+        <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                    <!-- Dropdown menu -->
+                    <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="p-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            <a href="#" class="block px-4 py-2 ">Expences</a>
+                          </li>
+                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            <a href="#" class="block px-4 py-2">Fuel</a>
+                          </li>
+                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            <a href="#" class="block px-4 py-2">Maintenances</a>
+                          </li>
+                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            <a href="#" class="block px-4 py-2">Spare Parts</a>
+                          </li>
+                        </ul>
+                    </div>
 
+                  
+                  
+                  
+                  <button id="dropdownInformationButton" data-dropdown-toggle="dropdownInformation" class="text-white hover:bg-teal-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-1 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button"
+                      >{{ auth()->user()->name }} 
+                        <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </button>
 
-                        <form method="POST" action="{{ route('logout') }}">
+                  <!-- Dropdown menu -->
+                  <div id="dropdownInformation" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600">
+                      <div class="px-4 py-3 text-sm text-gray-900 dark:text-white">
+                        <div>{{ auth()->user()->name }}</div>
+                        <div class="font-medium truncate">{{ auth()->user()->email }}</div>
+                      </div>
+                      <ul class="py-2 text-md font-bold text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+                        </li>
+                        <li>
+                          <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+                        </li>
+                      </ul>
+                      <div class="py-0">
+                        
+                          <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                             @csrf
 
                             <x-dropdown-link :href="route('logout')"
                                     onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="text-teal-900 font-bold  hover:text-white border-spacing-5 border-teal-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-small rounded-lg text-sm px-3 py-0.5 text-center mr-2  dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+                                                this.closest('form').submit();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
                                 {{ __('Log Out') }}
                             </x-dropdown-link>
                         </form>
+                        
+                      </div>
+                  </div>
+
+
+                  
                     
-                    
-                    
-                    {{-- <button data-collapse-toggle="mega-menu" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mega-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg aria-hidden="true" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                    </button> --}}
-                </div>
                 </div>
                 
             </div>
@@ -97,6 +128,7 @@
                             
                           </a>
                         </li>
+                        
                         <li class="min-w-max">
                           <a href="{{ route('admin.maintenance.index') }}"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             {{-- <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
