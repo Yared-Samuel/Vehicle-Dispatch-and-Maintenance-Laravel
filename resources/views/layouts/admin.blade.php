@@ -20,7 +20,7 @@
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
 
-        <div class="bg-gradient-to-r from-teal-800 to-cyan-200 shadow-slate-500  px-4 md:px-4 dark:bg-gray-900">
+        <div class="bg-gradient-to-r from-teal-800 to-teal-400 shadow-slate-500  px-4 md:px-4 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
@@ -35,7 +35,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
                     <!-- Dropdown menu -->
                     <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="p-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                        <ul class="p-2 text-md font-bold text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
                           <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             <a href="#" class="block px-4 py-2 ">Expences</a>
                           </li>
@@ -65,7 +65,7 @@
                         <div>{{ auth()->user()->name }}</div>
                         <div class="font-medium truncate">{{ auth()->user()->email }}</div>
                       </div>
-                      <ul class="py-2 text-md font-bold text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
+                      {{-- <ul class="py-2 text-md font-bold text-gray-700 dark:text-gray-200" aria-labelledby="dropdownInformationButton">
                         <li>
                           <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                         </li>
@@ -75,7 +75,7 @@
                         <li>
                           <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
                         </li>
-                      </ul>
+                      </ul> --}}
                       <div class="py-0">
                         
                           <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">

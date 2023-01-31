@@ -49,8 +49,6 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     route::resource('/tires',tireChartController::class);
     route::resource('/cost',costController::class);    
     route::resource('/fuel',fuelchartController::class);
-    
-    
 });
     
 
