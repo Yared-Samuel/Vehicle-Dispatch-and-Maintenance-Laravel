@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class Admin
+class user
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,10 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        // Get the available auth instance. -> Determine if the current user is authenticated.
-        if(!auth()->check() 
-        || !auth()->user()->is_admin
-        ){
+        if(!auth()->check() || auth()->user()->is_admin){
             abort(403);
         }
+        
         return $next($request);
     }
 }

@@ -7,10 +7,12 @@ use App\Http\Controllers\fuelchartController;
 use App\Http\Controllers\maintenanceController;
 use App\Http\Controllers\maintenanceTypeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\requestController;
 
 use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\tireChartController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\vclCategoryController;
 use App\Http\Controllers\vclController;
@@ -40,15 +42,29 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
+
+
+
+
+
 Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/request',requestController::class);
     Route::resource('/maintenance',maintenanceController::class);
     Route::resource('/vcls',vclController::class);
-    route::resource('/drivers',driverController::class);
-    route::resource('/tires',tireChartController::class);
-    route::resource('/cost',costController::class);    
-    route::resource('/fuel',fuelchartController::class);
+    Route::resource('/drivers',driverController::class);
+    Route::resource('/tires',tireChartController::class);
+    Route::resource('/cost',costController::class);    
+    Route::resource('/fuel',fuelchartController::class);
+    Route::resource('/reports', ReportController::class)
+    // ->only([
+    //     'index', 'show'
+    // ])
+    ;
+    Route::view('/reports/fuel', [ReportController::class, 'fuel'])->name('reports.fuel');
+    Route::get('/reports/cost', [ReportController::class, 'cost'])->name('reports.cost');
+     
 });
     
 

@@ -41,7 +41,7 @@
                           </li>
                           <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             <a href="
-                            {{ route('admin.reports.fuel') }}
+                            {{-- {{ route('reports.fuel') }} --}}
                             " class="block px-4 py-2">Fuel</a>
                           </li>
                           <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
