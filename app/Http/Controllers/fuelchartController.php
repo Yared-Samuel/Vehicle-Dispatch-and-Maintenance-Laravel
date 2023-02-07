@@ -24,15 +24,7 @@ class fuelchartController extends Controller
             
             
                 return view('admin.fuel.index')->with(['fuels'=>$fuels]);
-     }      
-
-
-    
-
-    
-    
-        
-        
+     } 
 
     /**
      * Show the form for creating a new resource.
@@ -89,8 +81,7 @@ class fuelchartController extends Controller
             
         }
         
-        // dd($fuels);
-        return view('admin.fuel.show')->with(['fuels'=>$fuels,'fuel_vcls'=>$fuel_vcls]);
+         return view('admin.fuel.show')->with(['fuels'=>$fuels,'fuel_vcls'=>$fuel_vcls]);
             
     }
 

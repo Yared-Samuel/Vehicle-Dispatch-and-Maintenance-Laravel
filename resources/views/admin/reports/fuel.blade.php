@@ -4,23 +4,82 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot> 
-           <!-- component -->
-<div class="relative text-lg bg-transparent text-gray-800">
-    <div class="flex items-center border border-b-2 border-teal-500 py-2">
-      <input class="bg-transparent border-none mr-3 px-2 leading-tight focus:outline-none" type="text" placeholder="Search">
-      <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
-        <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve" width="512px" height="512px">
-            <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z"/>
-        </svg>
-      </button>
-    </div>
-  </div>
-
+    
+        <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
+            <div class="text-xl font-bold">
+              Fuel Report
+            </div>  
+            {{-- <div>     
+                <a href="{{ route('admin.fuel.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Fueling</a>
+                <a href="{{ route('admin.fuel.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Consumption Analysis</a>
+            </div> --}}
+            <form action="{{ route('admin.reports.fuel') }}" method="GET" role="search"  class="flex justify-end ">
+              @csrf
+              <div class="relative">    
+                <input name="start" type="date" value="{{ request()->input('start') }}" class="bg-white border border-gray-400 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
+              </div>
+              <span class="mx-4 mt-2  text-gray-500">to</span>
+              <div class="relative mr-3">
                 
+                <input name="end" type="date" value="{{ request()->input('end') }}" class="bg-white border border-gray-400 mr-3 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
+            </div>
             
-
+            <select name="vcl"  id="underline_select" class="block py-0.5 px-4 w-1/5 text-sm font-semibold text-black bg-white border-1 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer rounded-md">
+                <option disabled selected> Select Vehicle Plate</option>    
+                @foreach ($fuel_vcls as $vcler)   
+          <option value="{{ $vcler->id  }}">{{ $vcler->plate_city}} - 0{{ $vcler->plate_code }} - <b> {{ $vcler->plate_id }}</option>
+          @endforeach
+                
+            </select>
+                    <a href="{{ route('admin.reports.fuel') }}">
+                        <button type="submit" class="text-white mr-3 font-bold bg-gradient-to-r from-teal-800 to-cyan-400  border-4 border-slate-300 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                                        >Filter Cost</button>
+                    </a>
+            </form>
+        </div>
+        
+          
+          
+            
+          
+          <div class="w-full rounded-lg shadow-lg px-12 text-xs mb-8 pb-4 mx-4 sm:mx-0 bg-white">
+             @foreach ($fuels as $fueler)            
+              
+              <div class="border-black  border-t-2">
+                
+                <div class="flex flex-col">
+                  <h1 class="text-gray-800 text-xl font-medium mb-2">{{ $fueler->plate_city}} - 0{{ $fueler->plate_code }} - <b> {{ $fueler->plate_id }}</h1>
+                  
+                </div>
+                <hr class="my-4">
+                 
+                <div>
+                  
+                  <div class="flex justify-between items-center">
+                    <span class="font-medium text-base">Date</span><span class="text-base font-medium">Mileage</span><span class="font-medium text-base">Fuel Volume</span><span class="text-base font-medium">Amount</span>
+                  </div>
+                  @foreach ($fueler->vcl_hasmny_fuels as $fuel)
+                  <div class="mb-1 flex justify-between items-center">
+                    <span class="">{{ $fuel->fuel_date }}</span><span class="">{{ $fuel->kilometre }}</span><span class="">{{ $fuel->litre }}</span><span class="">{{ $fuel->cash }}</span>
+                  </div>
+                  @endforeach
+                  <hr class="my-4">
+                  <div class="flex justify-between items-center">
+                    <span class="text-lg font-medium">Total</span><span class="text-lg font-medium">{{ $fueler->vcl_hasmny_fuels->sum('cash') }}</span>
+                  </div>
+                </div>
+                
+              </div>
+            @endforeach
+            
+          </div>
+          
+      
+   
 
     
-        
+    
     
 </x-admin-layout>

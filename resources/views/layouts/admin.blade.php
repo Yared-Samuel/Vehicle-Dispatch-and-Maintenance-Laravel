@@ -228,7 +228,7 @@
                   </div>
                 </div>
               </div>
-            <main class="flex flex-col m-1 p-1 pb-10 w-full overflow-y-auto h-screen bg-slate-100 justify-between">
+            <main class="flex flex-col m-1 p-1 pb-10 w-full h-full overflow-y-auto h-screen bg-slate-100 justify-between">
 
                 {{ $slot }}
 

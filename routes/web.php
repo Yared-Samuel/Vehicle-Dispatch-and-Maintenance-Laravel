@@ -7,6 +7,7 @@ use App\Http\Controllers\fuelchartController;
 use App\Http\Controllers\maintenanceController;
 use App\Http\Controllers\maintenanceTypeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\repController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\requestController;
 
@@ -57,13 +58,9 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/tires',tireChartController::class);
     Route::resource('/cost',costController::class);    
     Route::resource('/fuel',fuelchartController::class);
-    Route::resource('/reports', ReportController::class)
-    // ->only([
-    //     'index', 'show'
-    // ])
-    ;
-    Route::view('/reports/fuel', [ReportController::class, 'fuel'])->name('reports.fuel');
-    Route::get('/reports/cost', [ReportController::class, 'cost'])->name('reports.cost');
+    
+    Route::get('/reports/fuel',[repController::class, 'fuel'])->name('reports.fuel');
+    
      
 });
     
