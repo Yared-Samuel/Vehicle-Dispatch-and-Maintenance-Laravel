@@ -40,10 +40,10 @@
             
 
 
-    <div class="relative mt-1 max-h-full h-5/6 bg-slate-100 px-4 md:max-h-screen shadow-md sm:rounded-lg">
+    <div class="relative mt-2 max-h-full h-full bg-slate-100 px-4 md:max-h-screen shadow-md sm:rounded-lg">
         <div class="flex justify-between w-full px-4 py-1 items-center">
             <div class="text-xl font-bold">
-            {{ $fuel->plate_city}} - 0{{ $fuel->plate_code }} - <b> {{ $fuel->plate_id }} </b>
+            {{ $fuel->plate_city}}-0{{ $fuel->plate_code }}-<b> {{ $fuel->plate_id }} </b>
             </div>  
             <div>     
                 {{-- <a href="{{ route('admin.fuel.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
@@ -93,7 +93,7 @@
                                 {{ $key +1 }}
                             </th>
                                                                                       
-                            @foreach ($kms as $km)                               
+                            @foreach ($kms->reverse() as $km)                               
                             
                             <td class="py-1 px-2 border-r">
                                 

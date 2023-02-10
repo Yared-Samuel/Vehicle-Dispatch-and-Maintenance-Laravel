@@ -72,7 +72,7 @@ class fuelchartController extends Controller
             $str_date =  $request->input('start');            
             $end_date = $request->input('end');
             $query->whereBetween('fuel_date',[$str_date, $end_date]);
-            return $query;
+            return $query->orderBy('fuel_date','DESC');
         })->get();
         }else{
             $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query){
