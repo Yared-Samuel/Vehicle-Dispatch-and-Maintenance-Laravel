@@ -87,7 +87,7 @@
                     <tbody>
                         
                                     
-                        @foreach ($fuel->vcl_hasmny_fuels->reverse()->chunk(2) as $key=>$kms)
+                        @foreach ($fuel->vcl_hasmny_fuels->chunk(2) as $key=>$kms)
                         <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="py-1 px-2 border-r">
                                 {{ $key +1 }}

@@ -5,7 +5,7 @@
         </h2>
     </x-slot> 
     
-        <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
+        <div class="flex justify-between sticky top-0 bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
             <div class="text-xl font-bold">
               Fuel Report
             </div>  
@@ -26,7 +26,7 @@
                 <input name="end" type="date" value="{{ request()->input('end') }}" class="bg-white border border-gray-400 mr-3 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date end">
             </div>
             
-            <select name="vcl"  id="underline_select" class="block py-0.5 px-4 w-1/5 text-sm font-semibold text-black bg-white border-1 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer rounded-md">
+            <select name="vcl"  id="underline_select" class="block mx-10 px-4 w-1/5 text-sm font-semibold text-black bg-white border-1 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer rounded-md">
                 <option disabled selected> Select Vehicle Plate</option>    
                 @foreach ($fuel_vcls as $vcler)   
           <option value="{{ $vcler->id  }}">{{ $vcler->plate_city}} - 0{{ $vcler->plate_code }} - <b> {{ $vcler->plate_id }}</option>
@@ -50,7 +50,7 @@
               <div class="border-black  border-t-2">
                 
                 <div class="flex flex-col">
-                  <h1 class="text-gray-800 text-xl font-medium mb-2">{{ $fueler->plate_city}} - 0{{ $fueler->plate_code }} - <b> {{ $fueler->plate_id }}</h1>
+                  <h1 class="bg-slate-100 text-gray-800 text-xl font-medium">{{ $fueler->plate_city}} - 0{{ $fueler->plate_code }} - <b> {{ $fueler->plate_id }}</h1>
                   
                 </div>
                 <hr class="my-4">
@@ -62,12 +62,12 @@
                   </div>
                   @foreach ($fueler->vcl_hasmny_fuels as $fuel)
                   <div class="mb-1 flex justify-between items-center">
-                    <span class="">{{ $fuel->fuel_date }}</span><span class="">{{ $fuel->kilometre }}</span><span class="">{{ $fuel->litre }}</span><span class="">{{ $fuel->cash }}</span>
+                    <span class="">{{ $fuel->fuel_date }}</span><span class="">{{ $fuel->kilometre }} <small>KM</small></span><span class="">{{ $fuel->litre }}<small>Liter</small></span><span class="">{{ $fuel->cash }}<small>Birr</small></span>
                   </div>
                   @endforeach
                   <hr class="my-4">
                   <div class="flex justify-between items-center">
-                    <span class="text-lg font-medium">Total</span><span class="text-lg font-medium">{{ $fueler->vcl_hasmny_fuels->sum('cash') }}</span>
+                    <span class="text-lg font-medium">Total</span><span class="text-lg font-medium">{{ $fueler->vcl_hasmny_fuels->sum('cash') }}<small>Birr</small></span>
                   </div>
                 </div>
                 
