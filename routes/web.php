@@ -5,17 +5,14 @@ use App\Http\Controllers\costController;
 use App\Http\Controllers\driverController;
 use App\Http\Controllers\fuelchartController;
 use App\Http\Controllers\maintenanceController;
-use App\Http\Controllers\maintenanceTypeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\repController;
-use App\Http\Controllers\ReportController;
 use App\Http\Controllers\requestController;
-
+use App\Http\Controllers\spareinvController;
 use App\Http\Controllers\SparepartController;
-use App\Http\Controllers\tireChartController;
-use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\Spareuse;
+use App\Http\Controllers\spareuseController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\vclCategoryController;
 use App\Http\Controllers\vclController;
 
 /*
@@ -55,11 +52,11 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/maintenance',maintenanceController::class);
     Route::resource('/vcls',vclController::class);
     Route::resource('/drivers',driverController::class);
-    Route::resource('/tires',tireChartController::class);
     Route::resource('/cost',costController::class);    
-    Route::resource('/fuel',fuelchartController::class);
-    
+    Route::resource('/fuel',fuelchartController::class);    
     Route::get('/reports/fuel',[repController::class, 'fuel'])->name('reports.fuel');
+    Route::resource('/spareuse',spareuseController::class);
+    Route::resource('/spareinv',spareinvController::class);
     
      
 });

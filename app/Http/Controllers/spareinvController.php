@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\VclCategoryRequest;
+use App\Models\Spareinv;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
-
-class vclCategoryController extends Controller
+class spareinvController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,11 +14,8 @@ class vclCategoryController extends Controller
      */
     public function index()
     {
-        
-        $cats = Category::all();
-        
-
-        return view('admin.Categories.index',compact('cats'));
+        $spare_inv = Spareinv::get();
+        return view('admin.spareinv.index')->with(['spare_inv'=>$spare_inv]);
     }
 
     /**
@@ -30,7 +25,7 @@ class vclCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
+        return view('admin.spareinv.create');
     }
 
     /**
@@ -39,13 +34,19 @@ class vclCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VclCategoryRequest $request)
+    public function store(Request $request)
     {
-        Category::create([
-            'category_name' => $request->category_name
+        Spareinv::create([            
+            'date_in' => $request->date_in,
+            'serial' => $request->serial,
+            'spare_name' => $request->spare_name,
+            'spare_type' => $request->spare_type,
+            'qty_in' => $request->qty_in,
+            'unit' => $request->unit,
+            'price_in' => $request->price_in,
+            
         ]);
-
-        return to_route('admin.categories.index');
+        return to_route('admin.spareinv.create');
     }
 
     /**
@@ -65,9 +66,9 @@ class vclCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit($id)
     {
-        return view('admin.categories.edit', compact('category'));
+        //
     }
 
     /**
@@ -77,17 +78,9 @@ class vclCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, $id)
     {
-        $request->validate([
-            'category_name'=>'required'
-        ]);
-
-        $category->update([
-            'category_name'=> $request->category_name
-        ]);
-
-        return to_route('admin.categories.index');
+        //
     }
 
     /**
@@ -96,10 +89,8 @@ class vclCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
-        $category->delete();
-
-        return to_route('admin.categories.index');
+        //
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TirestoreRequest extends FormRequest
+class SpareinvRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,14 +24,14 @@ class TirestoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'serial_num'=>['required'],
-            'category_name'=>['required'],         
-            'status'=>['required'],
-            'tire_type'=>['required'],
-            'tire_price'=>['required'],
-            'start'=>['nullable'],
-            'vcl_id'=>['nullable'],
-            'driver_id'=>['nullable'],
+            'date_in'=>['required'],
+            'serial'=>['required'],
+            'spare_name'=>['nullable'],
+            'spare_type'=>['required'],
+            'qty_in'=>['required'],
+            'unit'=>['required'],
+            'price_in'=>['required'],
+            
             
         ];
     }

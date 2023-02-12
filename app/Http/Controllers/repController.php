@@ -19,17 +19,7 @@ class repController extends Controller
             $query->whereBetween('fuel_date',[$str_date, $end_date]);
             return $query;
         })->get();
-        }
-        // elseif($request->input('vcl') == null)
-        // {           
-        //     $fuels =Vcl::with('vcl_hasmny_fuels', function($query) use ($request){
-        //         $str_date =  $request->input('start');            
-        //         $end_date = $request->input('end');
-        //         $query->whereBetween('fuel_date',[$str_date, $end_date]);
-        //         return $query;
-        //     })->get();
-           
-        // }
+        }       
         else{
             $fuels =Vcl::with('vcl_hasmny_fuels')->get();
             

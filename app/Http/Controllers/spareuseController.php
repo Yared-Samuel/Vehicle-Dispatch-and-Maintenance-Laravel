@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Sparepart;
+use App\Models\Usespare;
 use Illuminate\Http\Request;
 
-class SparepartController extends Controller
+class spareuseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +14,8 @@ class SparepartController extends Controller
      */
     public function index()
     {
-        $spares = Sparepart::all();
-
-        return view('admin.spareparts.index',compact('spares'));
+        $spare_use = Usespare::all();
+        return view('admin.spareuse.index',compact('spare_use'));
     }
 
     /**
@@ -27,8 +25,7 @@ class SparepartController extends Controller
      */
     public function create()
     {
-        $spr_blgto_cats = Category::all();
-        return view('admin.spareparts.create',compact('spr_blgto_cats'));
+        //
     }
 
     /**

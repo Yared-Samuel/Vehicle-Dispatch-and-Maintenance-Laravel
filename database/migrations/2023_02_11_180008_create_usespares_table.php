@@ -13,16 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('tirecharts', function (Blueprint $table) {
+        Schema::create('usespares', function (Blueprint $table) {
             $table->id();
-            $table->integer('serial_num')->unsigned();
-            $table->smallInteger('status');
-            $table->string('tire_type');
-            $table->string('tire_price');
-            $table->date('start')->nullable();
-            $table->foreignId('vcl_id')->nullable()->constrained('vcls','id');
+            $table->date('use_date');
+            $table->integer('use_qty');
+            $table->foreignId('sparecharts_id')->constrained('sparecharts','id');
+            $table->foreignId('vcl_id')->constrained('vcls','id');
             $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
-            $table->string('category_name');            
+            $table->string('desc')->nullable();
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tirecharts');
+        Schema::dropIfExists('usespares');
     }
 };
