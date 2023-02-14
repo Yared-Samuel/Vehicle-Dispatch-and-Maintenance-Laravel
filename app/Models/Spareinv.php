@@ -14,4 +14,9 @@ class Spareinv extends Model
         'unit','price_in'
         
     ];
+
+    public function inv_hasmny_uses()
+    {
+        return $this->hasMany(Usespare::class);
+    }
 }

@@ -6,6 +6,9 @@ namespace App\Enums;
  {
     case Piece = 'piece';
     case Liter = 'liter';
+    case Kilogram = 'kilogram';
+    case Meter = 'meter';
+    case Galon = 'galon';
         
  }
 

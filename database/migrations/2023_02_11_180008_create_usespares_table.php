@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->date('use_date');
             $table->integer('use_qty');
-            $table->foreignId('sparecharts_id')->constrained('sparecharts','id');
+            $table->foreignId('spareinvs_id')->constrained('spareinvs','id');
             $table->foreignId('vcl_id')->constrained('vcls','id');
-            $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
+            $table->integer('mileage')->nullable();
+            $table->string('driver_name')->nullable();
             $table->string('desc')->nullable();
+            $table->tinyInteger('status')->default('1');
             $table->timestamps();
         });
     }

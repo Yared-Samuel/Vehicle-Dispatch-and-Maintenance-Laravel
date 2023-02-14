@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Spareinv;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class spareinvController extends Controller
 {

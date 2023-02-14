@@ -17,12 +17,7 @@ class Vcl extends Model
 
     // protected $primaryKey = 'plate_id';
 
-    public function vcl_hasm_tires(){
-        return $this->hasMany(Tirechart::class);
-    }
-
     
-
     
     public function vcl_hasm_rqsts()
     {
@@ -32,6 +27,11 @@ class Vcl extends Model
     public function vcl_hasmny_fuels()
     {
         return $this->hasMany(Fuel::class);
+    }
+
+    public function vcl_blgtomny_uses()
+    {
+        return $this->belongsToMany(Usespare::class);
     }
     
     public function vcl_cost()

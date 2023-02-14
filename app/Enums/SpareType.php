@@ -5,11 +5,14 @@ namespace App\Enums;
  enum SpareType: string
  {
     case Oil = 'oil';
-    case Cambio = 'cambio';
-    case Engine = 'engine';
-    case Defferencial = 'differ';
+    case Tire = 'tire';
+    case Battery = 'battery';
     case Lights = 'light';
     case Mirror = 'mirror';
+    case Axel = 'axel';
+    case Motor = 'motor';
+    case Differential = 'differential';
+    case Body = 'body';
     case Other = 'other';
     
  }

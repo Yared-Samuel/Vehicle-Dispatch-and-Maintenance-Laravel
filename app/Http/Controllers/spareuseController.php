@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SpareUseRequest;
+use App\Models\Spareinv;
 use App\Models\Usespare;
+use App\Models\Vcl;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class spareuseController extends Controller
 {
@@ -14,7 +18,8 @@ class spareuseController extends Controller
      */
     public function index()
     {
-        $spare_use = Usespare::all();
+        $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();
+        dd($spare_use);
         return view('admin.spareuse.index',compact('spare_use'));
     }
 
@@ -25,7 +30,10 @@ class spareuseController extends Controller
      */
     public function create()
     {
-        //
+        $vcls = Vcl::all();
+        $items = Spareinv::all();
+
+        return view('admin.spareuse.create',compact('vcls','items'));
     }
 
     /**
@@ -34,9 +42,36 @@ class spareuseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(SpareUseRequest $request)
     {
-        //
+        $id = $request->spareinvs_id;
+        $qty_delv = $request->use_qty;
+        $spare_inv = Spareinv::where('id', $id)->first()->qty_in;      
+        $spare_used = Usespare::where('spareinvs_id', $id)->sum('use_qty');
+        $spare_use = $spare_used + $qty_delv;
+        
+        
+
+        if ($spare_inv > $spare_use) {
+            Usespare::create([            
+                'use_date' => $request->use_date,
+                'use_qty' => $request->use_qty,
+                'spareinvs_id' => $request->spareinvs_id,
+                'vcl_id' => $request->vcl_id,
+                'mileage' => $request->mileage,
+                'driver_name' => $request->driver_name,
+                'desc' => $request->desc,               
+
+            ]);
+            toast('Your Product has been submited!','success');
+            
+        } else {
+            Alert::error('Low stock', 'Check Your Stock');
+
+        }
+        
+        
+        return to_route('admin.spareuse.create');
     }
 
     /**

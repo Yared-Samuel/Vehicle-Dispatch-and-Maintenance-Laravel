@@ -54,7 +54,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/drivers',driverController::class);
     Route::resource('/cost',costController::class);    
     Route::resource('/fuel',fuelchartController::class);    
-    Route::get('/reports/fuel',[repController::class, 'fuel'])->name('reports.fuel');
+    Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
     Route::resource('/spareuse',spareuseController::class);
     Route::resource('/spareinv',spareinvController::class);
     

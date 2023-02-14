@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call(Admin::class);
+        $this->call(Vcls::class);
     }
 }

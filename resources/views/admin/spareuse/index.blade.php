@@ -8,13 +8,18 @@
     <div class="overflow-hidden bg-slate-200 p-4 md:max-h-screen max-h-72 shadow-md sm:rounded-lg">
         <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
             <div class="text-xl font-bold">
-                    Spares With Vehicle
+                    Spare Issued
             </div>  
             <div>     
-                <a href="{{ route('admin.fuel.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Fueling</a>
-                <a href="{{ route('admin.fuel.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Consumption Analysis</a>
+                <a href="{{ route('admin.spareinv.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Inventory</a>
+                <a href="{{ route('admin.spareinv.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center mr-4 ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Recieve Items</a>
+                <a href="{{ route('admin.spareuse.index') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Issued List</a>
+                <a href="{{ route('admin.spareuse.create') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Issue Item</a>
+                
             </div>
         </div>
         <div class="input-group relative flex flex-wrap items-stretch w-1/4 mb-0 rounded">
@@ -31,22 +36,26 @@
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 No
                             </th>
-                            <th scope="col" column-name="plate_id":sort-column="$sortColumn" :sort-direction="$sortDirection" class="py-2 px-2 border border-r-gray-300">
-                                Vehicle Plate
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Date
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Fuel Cost
+                                Vehicle
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Mileage
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Spare Name
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Spare Type
                                 
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Fuel Volume
+                                Issued Qty
                                
                             </th>
-                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Odometer Reading
-                            </th>
-                            
-                            
                             <th scope="col" class="py-2 px-1 border border-r-gray-300">
                                 Detail
                             </th>
@@ -62,14 +71,23 @@
                                 {{ $key +1 }}
                             </th>
                             <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->date }}</b> <small class="text-blue-300">Birr</small> 
+                                <b> {{ $spare->use_date }}</b>
                             </td>
                             
                             <td class="py-1 px-2 h-5 border-r">                               
-                                <b> {{ $spare->use_qty }}</b> <small class="text-blue-300">Birr</small> 
+                                <b>{{ $spare->vcl->vcl_id }}</b>
+                            </td>
+                            <td class="py-1 px-2 h-5 border-r">                               
+                                <b>{{ $spare->mileage }}</b>
                             </td>
                             <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->desc }}</b> <small class="text-blue-300">liter</small> 
+                                <b> {{ $spare->uses_blgto_invs->spare_name }}</b> 
+                            </td>
+                            <td class="py-1 px-2 border-r">
+                                <b> {{ $spare->uses_blgto_invs->spare_type }}</b> 
+                            </td>
+                            <td class="py-1 px-2 border-r">
+                                <b> {{ $spare->use_qty }}</b> <small class="text-blue-300">{{ $spare->uses_blgto_invs->unit }}</small> 
                             </td>
                            
                             
@@ -82,9 +100,10 @@
                                           
                                     </a>
                             </td>
-                            @endforeach
+                            
                        
                         </tr>
+                        @endforeach
                         
                         
                     </tbody>
