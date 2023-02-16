@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('date_in');
             $table->integer('serial')->nullable();
             $table->string('spare_name');
+            $table->string('spare_model');
             $table->string('spare_type');
             $table->integer('qty_in');
             $table->string('unit');

@@ -26,7 +26,8 @@ class SpareinvRequest extends FormRequest
         return [
             'date_in'=>['required'],
             'serial'=>['required'],
-            'spare_name'=>['nullable'],
+            'spare_name'=>['required'],
+            'spare_model'=>['nullable'],
             'spare_type'=>['required'],
             'qty_in'=>['required'],
             'unit'=>['required'],

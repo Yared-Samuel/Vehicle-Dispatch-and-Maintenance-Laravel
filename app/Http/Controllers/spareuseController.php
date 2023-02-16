@@ -19,7 +19,7 @@ class spareuseController extends Controller
     public function index()
     {
         $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();
-        dd($spare_use);
+        //dd($spare_use);
         return view('admin.spareuse.index',compact('spare_use'));
     }
 
@@ -53,7 +53,7 @@ class spareuseController extends Controller
         
 
         if ($spare_inv > $spare_use) {
-            Usespare::create([            
+            $usespare=Usespare::create([            
                 'use_date' => $request->use_date,
                 'use_qty' => $request->use_qty,
                 'spareinvs_id' => $request->spareinvs_id,
@@ -63,10 +63,16 @@ class spareuseController extends Controller
                 'desc' => $request->desc,               
 
             ]);
-            toast('Your Product has been submited!','success');
+
+            
+                $usespare->use_blgtomny_vcls()->attach($request->spareinvs_id);
+            
+            
+            
+            toast('Your Product has been submited!','success')->timerProgressBar();
             
         } else {
-            Alert::error('Low stock', 'Check Your Stock');
+            Alert::error('Low stock', 'Check Your Stock')->width('500px')->padding('5px');
 
         }
         

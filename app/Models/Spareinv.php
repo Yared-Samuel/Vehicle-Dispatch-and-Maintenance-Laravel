@@ -10,7 +10,7 @@ class Spareinv extends Model
     use HasFactory;
 
     protected $fillable= [
-        'date_in','serial','spare_name','spare_type','qty_in',
+        'date_in','serial','spare_name','spare_model','spare_type','qty_in',
         'unit','price_in'
         
     ];

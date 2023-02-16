@@ -39,9 +39,7 @@
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Date
                             </th>
-                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Vehicle
-                            </th>
+                            
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Mileage
                             </th>
@@ -64,8 +62,7 @@
                     <tbody>
                         
                         @foreach ($spare_use as $key=>$spare)
-                       
-                        
+                                                
                         <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="py-1 px-2 border-r">
                                 {{ $key +1 }}
@@ -73,10 +70,7 @@
                             <td class="py-1 px-2 border-r">
                                 <b> {{ $spare->use_date }}</b>
                             </td>
-                            
-                            <td class="py-1 px-2 h-5 border-r">                               
-                                <b>{{ $spare->vcl->vcl_id }}</b>
-                            </td>
+                           
                             <td class="py-1 px-2 h-5 border-r">                               
                                 <b>{{ $spare->mileage }}</b>
                             </td>
@@ -103,9 +97,8 @@
                             
                        
                         </tr>
+                        
                         @endforeach
-                        
-                        
                     </tbody>
                 </table>
                 <div class="flex justify-center mt-2 py-2 bg-slate-300 rounded-md w-full">

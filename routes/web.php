@@ -39,13 +39,6 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-
-
-
-
-
-
-
 Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(function(){
     Route::get('/', [AdminController::class, 'index'])->name('index');
     Route::resource('/request',requestController::class);
@@ -56,10 +49,10 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/fuel',fuelchartController::class);    
     Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
     Route::resource('/spareuse',spareuseController::class);
-    Route::resource('/spareinv',spareinvController::class);
-    
-     
+    Route::resource('/spareinv',spareinvController::class);     
 });
+
+    
     
 
 

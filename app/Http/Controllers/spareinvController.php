@@ -15,8 +15,8 @@ class spareinvController extends Controller
      */
     public function index()
     {
-        $spare_inv = Spareinv::get();
-        return view('admin.spareinv.index')->with(['spare_inv'=>$spare_inv]);
+        $spareInv = Spareinv::get();
+        return view('admin.spareinv.index')->with(['spareInv'=>$spareInv]);
     }
 
     /**
@@ -37,16 +37,24 @@ class spareinvController extends Controller
      */
     public function store(Request $request)
     {
-        Spareinv::create([            
+        $spareinv =  Spareinv::create([            
             'date_in' => $request->date_in,
             'serial' => $request->serial,
             'spare_name' => $request->spare_name,
+            'spare_model' => $request->spare_model,
             'spare_type' => $request->spare_type,
             'qty_in' => $request->qty_in,
             'unit' => $request->unit,
             'price_in' => $request->price_in,
             
         ]);
+
+        if ($spareinv) {
+            toast('Your Product has been submited!','success')->timerProgressBar();
+        }else {
+            Alert::error('Error', 'Something went wrong')->width('500px')->padding('5px');
+        }
+
         return to_route('admin.spareinv.create');
     }
 

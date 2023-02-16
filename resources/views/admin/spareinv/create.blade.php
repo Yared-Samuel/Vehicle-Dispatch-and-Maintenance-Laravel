@@ -52,6 +52,11 @@
                                 <label for="spare_name" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                                 >Spare part Name</label>
                             </div>                            
+                            <div class="relative z-0 mb-10 w-1/5 group">
+                                <input type="text" name="spare_model" id="spare_model" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
+                                <label for="spare_model" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >Spare part Model</label>
+                            </div>                            
                                   
                             
                             <div class="relative z-0 mb-10 w-1/5 group">
@@ -60,7 +65,20 @@
                                 >Quantity Delevered</label>
                             </div>
 
-                            <div class="relative z-0 mb-10 w-1/5 group">
+                            
+
+                            
+                        </div>
+                        
+                        <div class="flex justify-start pl-20">
+
+                            <div class="relative z-0 m-auto mb-10 w-1/5 group">
+                                <input type="number" name="price_in" id="price_in" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
+                                <label for="price_in" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                                >Price <small>Total</small></label>
+                            </div>
+
+                            <div class="relative z-0 m-auto mb-10 w-1/5 group">
                                 <label for="unit" class="sr-only">Unit of measurment</label>
                                 <select name="unit" id="unit" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required >
                                     <option disabled selected>Unit of measurment</option>
@@ -70,17 +88,6 @@
                                 </select>
                             </div>               
                             
-
-                            
-                        </div>
-                        
-                        <div class="flex justify-start pl-20">
-
-                            <div class="relative z-0 mb-10 w-1/5 group">
-                                <input type="number" name="price_in" id="price_in" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="price_in" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Price <small>Total</small></label>
-                            </div>
 
                         </div>
                         <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
