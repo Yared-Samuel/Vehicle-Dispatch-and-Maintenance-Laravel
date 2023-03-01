@@ -11,7 +11,7 @@
                     SparePart Inventory
             </div>  
             <div>     
-                <a href="{{ route('admin.reports.stock') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                <a href="{{ route('admin.spareinv.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Inventory</a>
                 <a href="{{ route('admin.spareinv.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center mr-4 ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Recieve Items</a>
@@ -71,45 +71,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                @if ($spareInv)                       
+                @if ($stock)                       
                 
-                    @foreach ($spareInv as $key=>$spare)
+                    @foreach ($stock as $key=>$stock_rep)
                     
                     <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                         <th scope="row" class="py-1 px-2 border-r">
                             {{ $key +1 }}
                         </th>
                         <td class="py-1 px-2 border-r">
-                           <a href=""> <b> {{ $spare->id }}</b> </a>
+                           <a href=""> <b> {{ $stock_rep->id }}</b> </a>
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->date_in }}</b> 
+                            <b> {{ $stock_rep->date_in }}</b> 
                         </td>
                         
                         <td class="py-1 px-2 h-5 border-r">                               
-                            <b> {{ $spare->spare_name }}</b> 
+                            <b> {{ $stock_rep->spare_name }}</b> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->spare_type }}</b> 
+                            <b> {{ $stock_rep->spare_type }}</b> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->serial }}</b> 
+                            <b> {{ $stock_rep->serial }}</b> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->qty_in }}</b> <small class="text-yellow-700">{{ $spare->unit }}</small> 
+                            <b> {{ $stock_rep->qty_in }}</b> <small class="text-yellow-700">{{ $stock_rep->unit }}</small> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b>{{ $spare->price_in / $spare->qty_in }}</b> <small class="text-yellow-700">Birr per {{ $spare->unit }}</small> 
+                            <b>{{ $stock_rep->price_in / $stock_rep->qty_in }}</b> <small class="text-yellow-700">Birr per {{ $stock_rep->unit }}</small> 
                         </td>
                         
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->price_in }}</b> <small class="text-green-700">birr</small> 
+                            <b> {{ $stock_rep->price_in }}</b> <small class="text-green-700">birr</small> 
                         </td>
                        
                         
-                        {{-- <td class="flex py-1 px-1">
+                        <td class="flex py-1 px-1">
                             <a href="
-                            {{ route('admin.printspareinv.export', $spare->id) }}
+                            {{ route('admin.spareinv.export', $stock_rep->id) }}
                             " class="text-teal-600"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
@@ -117,7 +117,7 @@
                                       </svg>
                                       
                                 </a>
-                        </td> --}}
+                        </td>
                     </tr>
                     @endforeach
                     @else

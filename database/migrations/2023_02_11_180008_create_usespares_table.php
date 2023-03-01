@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->date('use_date');
             $table->integer('use_qty');
-            $table->foreignId('spareinvs_id')->constrained('spareinvs','id');
+            $table->foreignId('spareinv_id')->constrained('spareinvs','id');
             $table->foreignId('vcl_id')->constrained('vcls','id');
             $table->integer('mileage')->nullable();
             $table->string('driver_name')->nullable();

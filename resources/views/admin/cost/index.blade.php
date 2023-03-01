@@ -32,8 +32,8 @@
       <div class="text-right font-bold mr-4">Cost Lists</div>
     </div> 
 
-  
-<form action="{{ route('admin.cost.index') }}" method="GET" role="search"  class="flex justify-end bg-slate-200">
+<div class="">
+<form action="{{ route('admin.cost.index') }}" method="GET" role="search"  class="flex justify-end bg-slate-400">
   
   <div class="relative">    
     <input name="start" type="date" value="{{ request()->input('start') }}" class="bg-white border border-gray-400 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
@@ -56,6 +56,7 @@
                             >Filter Cost</button>
         </a>
 </form>
+</div>
 
 
     <div class="mx-4 mb-4">

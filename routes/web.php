@@ -3,8 +3,10 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\costController;
 use App\Http\Controllers\driverController;
+use App\Http\Controllers\exportController;
 use App\Http\Controllers\fuelchartController;
 use App\Http\Controllers\maintenanceController;
+use App\Http\Controllers\printController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\repController;
 use App\Http\Controllers\requestController;
@@ -46,10 +48,15 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::resource('/vcls',vclController::class);
     Route::resource('/drivers',driverController::class);
     Route::resource('/cost',costController::class);    
-    Route::resource('/fuel',fuelchartController::class);    
-    Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
+    Route::resource('/fuel',fuelchartController::class);       
     Route::resource('/spareuse',spareuseController::class);
-    Route::resource('/spareinv',spareinvController::class);     
+    Route::resource('/spareinv',spareinvController::class);
+    Route::get('/reports/stock',[repController::class, 'stock'])->name('reports.stock');
+    
+    Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
+    Route::get('/print/{export}',[printController::class, 'export_inv_grn'])->name('printspareinv.export');
+    Route::get('/print/{export}',[printController::class, 'export_use_grn'])->name('printspareuse.export');
+
 });
 
     

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->foreignId('vcl_id')->constrained('vcls','id')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
+            
 
         });
     }

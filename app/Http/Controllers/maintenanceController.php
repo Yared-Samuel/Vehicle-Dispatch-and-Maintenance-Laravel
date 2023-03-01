@@ -18,7 +18,7 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','status','mtn_type','description',
+        $mtn_aprroveds= Requester::select('id','vcl_id','start_date','status','mtn_type','description',
                                                         'request_date')
                                     ->where('status','2')
                                     ->get();
@@ -104,14 +104,14 @@ class maintenanceController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'start_date'=>'required',
+            
             'end_date'=>'required',
             'kilometer'=>'required'
         ]);
 
         $mtn_complete = Requester::find($id);
         $mtn_complete->update([
-            'start_date'=>$request->start_date,
+            
             'end_date'=>$request->end_date,
             'kilometer'=>$request->kilometer,
             'status'=>3,

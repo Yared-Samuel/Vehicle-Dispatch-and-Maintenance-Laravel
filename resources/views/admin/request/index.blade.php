@@ -40,6 +40,7 @@
                             <th scope="col" class="py-2 px-2">
                                 Requested By
                             </th>
+                            
                             <th scope="col" class="py-2 px-2">
                                 discription
                             </th>
@@ -68,6 +69,13 @@
                             <td class="py-1 px-2">
                                 {{ $request->request_by}}
                             </td>
+                            
+                                
+                                 
+                                    
+                                    
+                                   
+                            
                            
                             <td class="py-1 px-2">
                                 {{ $request->description}}

@@ -18,8 +18,7 @@ class spareuseController extends Controller
      */
     public function index()
     {
-        $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();
-        //dd($spare_use);
+        $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();        
         return view('admin.spareuse.index',compact('spare_use'));
     }
 
@@ -44,10 +43,10 @@ class spareuseController extends Controller
      */
     public function store(SpareUseRequest $request)
     {
-        $id = $request->spareinvs_id;
+        $id = $request->spareinv_id;
         $qty_delv = $request->use_qty;
         $spare_inv = Spareinv::where('id', $id)->first()->qty_in;      
-        $spare_used = Usespare::where('spareinvs_id', $id)->sum('use_qty');
+        $spare_used = Usespare::where('spareinv_id', $id)->sum('use_qty');
         $spare_use = $spare_used + $qty_delv;
         
         
@@ -56,7 +55,7 @@ class spareuseController extends Controller
             $usespare=Usespare::create([            
                 'use_date' => $request->use_date,
                 'use_qty' => $request->use_qty,
-                'spareinvs_id' => $request->spareinvs_id,
+                'spareinv_id' => $request->spareinv_id,
                 'vcl_id' => $request->vcl_id,
                 'mileage' => $request->mileage,
                 'driver_name' => $request->driver_name,
@@ -65,7 +64,7 @@ class spareuseController extends Controller
             ]);
 
             
-                $usespare->use_blgtomny_vcls()->attach($request->spareinvs_id);
+                $usespare->use_blgtomny_vcls()->attach($request->spareinv_id);
             
             
             

@@ -26,7 +26,7 @@ class SpareUseRequest extends FormRequest
         return [
             'use_date'=>['required'],
             'use_qty'=>['required'],
-            'spareinvs_id'=>['required'],
+            'spareinv_id'=>['required'],
             'vcl_id'=>['required'],
             'mileage'=>['nullable'],
             'driver_name'=>['nullable'],

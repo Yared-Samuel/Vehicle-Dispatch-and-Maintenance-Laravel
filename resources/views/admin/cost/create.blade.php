@@ -114,9 +114,9 @@
                    
                     
                     <div class="relative z-0 mb-5 w-1/4 group">
-                        <label for="requester_id" class="multi peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                        <label for="driver_id" class="multi peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >Vehicle's Driver</label>                                
-                        <select name="requester_id" id="requester_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" required >
+                        <select name="driver_id" id="driver_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" required >
                             <option disabled selected> Select Driver </option>
                             @foreach ($drvrs as $drvr)
                             <option class="text-white bg-slate-600" value="{{ $drvr->id }}">
@@ -132,12 +132,33 @@
                         <label for="cost_date" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
                             >Cost Date</label>
                     </div>
-
-                    <div class="relative z-0 mb-5 w-1/4 group">
+                    @if ( isset($vcls->id))
+                        <div class="relative z-0 mb-5 w-1/4 group">
                         <input type="text" name="requester_id" hidden:value="{{ $vcls->id }}" id="requester_id" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500" placeholder="{{ $vcls->rqst_blgto_vcls->plate_city }}  0{{$vcls->rqst_blgto_vcls->plate_code}} - {{ $vcls->rqst_blgto_vcls->plate_id   }} "  disabled/>
                         <label for="spare_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y--10 peer-focus:scale-75 peer-focus:-translate-y-6"
                         >Expence For Vehicle</label>
                     </div>
+                    @else
+
+                    <div class="relative z-0 mb-5 w-1/4 group">
+                        <label for="requester_id" class="multi peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                          >Vehicle</label>                                
+                        <select name="requester_id" id="requester_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" required >
+                            <option disabled selected>Expence For Vehicle </option>
+                              @foreach ($vcls as $vcl)
+                            <option class="text-white bg-slate-600" value="{{ $vcl->id }}">
+                                {{ $vcl->rqst_blgto_vcls->plate_city }}  0{{$vcl->rqst_blgto_vcls->plate_code}} - {{ $vcl->rqst_blgto_vcls->plate_id   }}                               
+                            </option>
+                                
+                                @endforeach
+                        </select>
+                    </div> 
+                        
+                    @endif
+
+                    
+
+                    
 
                     </div>
                         

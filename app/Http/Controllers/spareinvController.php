@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\SpareInvExport;
 use App\Models\Spareinv;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class spareinvController extends Controller
 {
+    
     /**
      * Display a listing of the resource.
      *
@@ -16,9 +18,11 @@ class spareinvController extends Controller
     public function index()
     {
         $spareInv = Spareinv::get();
+        //return Spareinv::download(new SpareInvExport, 'spareinv.xlsx' );
         return view('admin.spareinv.index')->with(['spareInv'=>$spareInv]);
     }
 
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -46,7 +50,6 @@ class spareinvController extends Controller
             'qty_in' => $request->qty_in,
             'unit' => $request->unit,
             'price_in' => $request->price_in,
-            
         ]);
 
         if ($spareinv) {
@@ -102,4 +105,10 @@ class spareinvController extends Controller
     {
         //
     }
+
+    
+
+    
+
+    
 }

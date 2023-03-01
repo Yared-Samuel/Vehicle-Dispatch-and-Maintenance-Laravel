@@ -101,12 +101,17 @@ class requestController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update($id)
+    public function update(Request $request, $id)
     {
         
         $req = Requester::find($id);
-        $req->status = 2;
-        $req->save();
+        // $req->status = 2;
+        $req->update([
+            'start_date'=>$request->start_date,
+            'status'=>$request->status,
+           
+        ]);
+        // $req->save();
         return to_route('admin.request.index');
     }
 

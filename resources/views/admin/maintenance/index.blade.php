@@ -12,8 +12,8 @@
             <div>     
                 <a href="{{ route('admin.request.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Requests</a>
-                <a href="{{ route('admin.maintenance.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Add Categories</a>
+                {{-- <a href="{{ route('admin.maintenance.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >Add Categories</a> --}}
             </div>
         </div>
         
@@ -33,6 +33,9 @@
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Maintenace Type
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                Scheduled For
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Maintenance Description
@@ -61,6 +64,11 @@
                             <td class="py-1 px-2 border-r">
                                 {{ $mtn_aprroved->mtn_type }}
                             </td>
+                            @if ($mtn_aprroved->start_date > now())
+                                <td class="text-green-700 py-1 px-2">{{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }} </td>
+                                @else
+                                <td class="text-red-700 py-1 px-2"> {{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }} (Pleas Check your schedule!!!) </td>
+                            @endif
                             <td class="py-1 px-2 border-r">
                                 {{ $mtn_aprroved->description }}
                             </td>

@@ -33,7 +33,6 @@ class costController extends Controller
                                 $str_date =  $request->input('start');            
                                 $end_date = $request->input('end');
                                  $date_range->whereBetween('cost_date',[$str_date, $end_date])->get();
-                                    
                                          return $date_range;
                                                  })->get();  
                                                  
@@ -52,19 +51,37 @@ class costController extends Controller
      */
     public function create()
     {
+        // After maintenance select the latest vcl maintained with relation to request_id
         $cost = Cost::select('requester_id')->get();       
         $vcls=Requester::with('rqst_blgto_vcls')
                 ->where('status','=',3)
+                ->where('updated_at', now())
                 ->orderBy('updated_at', 'DESC')
                 ->get()->first(); 
-        
-               
-        
+
         $drvrs = Driver::all();
+        
+
+        
+        if ($vcls) {
+            
+            return view('admin.cost.create',compact('vcls','drvrs'));
+        } else {
+            
+            $vcls=Requester::with('rqst_blgto_vcls')
+                ->where('status','=',3)
+                ->orderBy('updated_at', 'DESC')
+                ->get();
+                
+                return view('admin.cost.create',compact('vcls','drvrs'));
+        }
+        
+        
+        
     
                
         
-        return view('admin.cost.create',compact('vcls','drvrs'));
+        
     }
 
     /**
@@ -75,7 +92,7 @@ class costController extends Controller
      */
     public function store(CostStoreRequest $request)
     {
-        // dd($request);
+        // store cost data of the recent maintained vehicle
         Cost::create([
             'cost_date'=> $request->cost_date,
             'spare_cost_desc'=> $request->spare_cost_desc,
