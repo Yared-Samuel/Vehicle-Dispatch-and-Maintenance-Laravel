@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('garage_name')->nullable();
             $table->foreignId('driver_id')->nullable()->constrained('drivers','id');
             $table->foreignId('requester_id')->nullable()->constrained('requesters','id');
+            $table->smallInteger('created_by');
             $table->timestamps();
         });
     }

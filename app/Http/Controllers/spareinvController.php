@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Exports\SpareInvExport;
 use App\Models\Spareinv;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class spareinvController extends Controller
@@ -41,6 +42,7 @@ class spareinvController extends Controller
      */
     public function store(Request $request)
     {
+        $userId = Auth::id();
         $spareinv =  Spareinv::create([            
             'date_in' => $request->date_in,
             'serial' => $request->serial,
@@ -50,6 +52,7 @@ class spareinvController extends Controller
             'qty_in' => $request->qty_in,
             'unit' => $request->unit,
             'price_in' => $request->price_in,
+            'created_by'=>$userId,
         ]);
 
         if ($spareinv) {

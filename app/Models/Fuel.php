@@ -10,7 +10,7 @@ class Fuel extends Model
     use HasFactory;
 
     protected $fillable= [
-        'fuel_date','kilometre','litre','cash','vcl_id',
+        'fuel_date','kilometre','litre','cash','vcl_id','created_by',
         
     ];
 

@@ -23,6 +23,7 @@ return new class extends Migration
             $table->integer('qty_in');
             $table->string('unit');
             $table->integer('price_in');
+            $table->smallInteger('created_by');
             $table->timestamps();
         });
     }

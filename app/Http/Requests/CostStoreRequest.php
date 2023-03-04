@@ -35,7 +35,7 @@ class CostStoreRequest extends FormRequest
             'ref_no'=>['required'],
             'garage_name'=>['nullable'],
             'driver_id'=>['required'],
-            'requester_id'=>['nullable'],
+            'requester_id'=>['required'],
         ];
     }
 }

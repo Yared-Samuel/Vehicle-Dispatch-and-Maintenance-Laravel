@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DriverStoreRequest;
 use App\Models\Driver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class driverController extends Controller
 {
@@ -38,8 +39,10 @@ class driverController extends Controller
      */
     public function store(DriverStoreRequest $request)
     {
+        $userId = Auth::id();
         Driver::create([
-            'driver_name' => $request->driver_name
+            'driver_name' => $request->driver_name,
+            'created_by'=>$userId,
         ]);
 
         return to_route('admin.drivers.index');

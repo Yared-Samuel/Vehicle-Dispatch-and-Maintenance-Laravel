@@ -34,7 +34,7 @@ class VclStoreRequest extends FormRequest
             'category_name'=>['required'],
             'purchase_date'=>['required'],
             'manufacture_date'=>['required'],
-            
+            'image'=> ['required', 'image'],
         ];
     }
 }

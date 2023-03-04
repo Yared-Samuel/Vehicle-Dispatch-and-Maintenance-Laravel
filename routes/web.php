@@ -54,8 +54,11 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/reports/stock',[repController::class, 'stock'])->name('reports.stock');
     
     Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
+
     Route::get('/print/{export}',[printController::class, 'export_inv_grn'])->name('printspareinv.export');
-    Route::get('/print/{export}',[printController::class, 'export_use_grn'])->name('printspareuse.export');
+    Route::get('/print/{exp}',[printController::class, 'export_use_grn'])->name('printspareuse.export');
+
+
 
 });
 

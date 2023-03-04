@@ -9,6 +9,7 @@ use App\Models\Maintenancetype;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class requestController extends Controller
 {
@@ -54,6 +55,7 @@ class requestController extends Controller
      */
     public function store(RequestStoreRequest $request)
     {
+        $userId = Auth::id();
         // dd($request);
        Requester::create([
         'request_date'=> $request->request_date,
@@ -61,6 +63,7 @@ class requestController extends Controller
         'vcl_id'=>$request->vcl_id,
         'mtn_type'=>$request->mtn_type,
         'description'=>$request->description,
+        'created_by'=>$userId,
        ]);
        
        

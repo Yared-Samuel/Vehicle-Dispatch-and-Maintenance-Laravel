@@ -20,24 +20,18 @@ return new class extends Migration
             $table->integer('plate_code');
 
             $table->string('plate_city');            
-            $table->string('chassis_number');
+            $table->string('chassis_number')->nullable();
 
-            $table->string('motor_number');            
-            $table->string('vcl_model');
+            $table->string('motor_number')->nullable();            
+            $table->string('vcl_model')->nullable();
             
             $table->string('fuel_type');
-            $table->string('category_name');
+            $table->string('category_name')->nullable();
 
             $table->date('purchase_date')->default(null);
             $table->date('manufacture_date')->default(null);
-
-
-            
-
-            // $table->foreign('category_id')->references('category_id')->on('categories')->onDelete('cascade');
-            
-            
-
+            $table->string('image');
+            $table->smallInteger('created_by');
             $table->timestamps();
         
         });

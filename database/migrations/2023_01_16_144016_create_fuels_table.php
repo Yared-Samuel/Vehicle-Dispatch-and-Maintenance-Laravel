@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('litre');
             $table->integer('cash');
             $table->foreignId('vcl_id')->constrained('vcls','id');
+            $table->smallInteger('created_by');
             $table->timestamps();
         });
     }

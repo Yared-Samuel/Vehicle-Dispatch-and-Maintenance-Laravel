@@ -6,8 +6,22 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
-        
-       
+
+<link rel="stylesheet" type="text/css" href="{{ asset('table.css') }}">
+
+
+<!-- Bootstrap 3.3.7 -->
+
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/bootstrap/dist/css/bootstrap.min.css') }}"> --}}
+
+{{-- <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css"> --}}
+       <!-- DataTables -->
+{{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/datatables.bootstrap.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/dataTables.bootstrap.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/buttons.dataTables.min.css') }}">
+<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/jquery.dataTables.min.css') }}"> --}}
+
+<!-- end -->
 
         
         <script src="{{ asset('assets/js/datepicker.js') }}"></script>
@@ -51,7 +65,7 @@
                             <a href="#" class="block px-4 py-2">Maintenances</a>
                           </li>
                           <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            <a href="#" class="block px-4 py-2">Spare Parts</a>
+                            <a href="{{ route('admin.reports.stock') }}" class="block px-4 py-2">Spare Parts</a>
                           </li>
                         </ul>
                     </div>
@@ -241,5 +255,25 @@
         
         @include('sweetalert::alert')
 
+
+        {{-- <script src="{{ asset('frontend/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('frontend/bootstrap/dist/js/js/bootstrap.js') }}"></script>
+
+        
+
+        <script src="{{ asset('frontend/datatables/datatables.net/js/jquery-3.5.1.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/jquery.dataTables.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/dataTables.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.bootstrap4.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/jszip.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.print.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.html5.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.colVis.min.js') }}"></script> --}}
+
+        
     </body>
 </html>

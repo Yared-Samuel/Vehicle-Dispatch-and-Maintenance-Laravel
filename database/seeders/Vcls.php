@@ -26,6 +26,8 @@ class Vcls extends Seeder
             'category_name' => 'issuzu',
             'purchase_date' => '1984-08-07',
             'manufacture_date' => '1982-08-07',
+            'image'=>'ID',
+            'created_by'=>'1'
         ]);
     }
 }

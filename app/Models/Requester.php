@@ -14,7 +14,7 @@ class Requester extends Model
     protected $fillable= [
         'status','request_date','request_by','description','mtn_type','vcl_id','status',
 
-        'start_date','end_date','kilometer'
+        'start_date','end_date','kilometer','created_by',
         
     ];
 

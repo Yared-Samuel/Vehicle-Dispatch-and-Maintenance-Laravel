@@ -8,6 +8,8 @@ use App\Models\Driver;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class costController extends Controller
 {
@@ -24,6 +26,8 @@ class costController extends Controller
         
         
         $costs = Cost::with('cost_blgto_rqsts')->get();
+
+        // dd($costs);
 
         if (count($request->all()) > 0) {
             $vcl = $request->input('vcl');
@@ -55,10 +59,9 @@ class costController extends Controller
         $cost = Cost::select('requester_id')->get();       
         $vcls=Requester::with('rqst_blgto_vcls')
                 ->where('status','=',3)
-                ->where('updated_at', now())
+                ->where('updated_at',now())
                 ->orderBy('updated_at', 'DESC')
-                ->get()->first(); 
-
+                ->get()->first();
         $drvrs = Driver::all();
         
 
@@ -72,7 +75,7 @@ class costController extends Controller
                 ->where('status','=',3)
                 ->orderBy('updated_at', 'DESC')
                 ->get();
-                
+            // dd($vcls);
                 return view('admin.cost.create',compact('vcls','drvrs'));
         }
         
@@ -92,8 +95,10 @@ class costController extends Controller
      */
     public function store(CostStoreRequest $request)
     {
+
+        $userId = Auth::id();
         // store cost data of the recent maintained vehicle
-        Cost::create([
+        $cost_submit = Cost::create([
             'cost_date'=> $request->cost_date,
             'spare_cost_desc'=> $request->spare_cost_desc,
             'spare_cost'=>$request->spare_cost,
@@ -106,10 +111,21 @@ class costController extends Controller
             'garage_name'=>$request->garage_name,
             'driver_id'=>$request->driver_id,
             'requester_id'=>$request->requester_id,
+            'created_by'=>$userId,
             
            ]);
+        if ($cost_submit) {            
+               toast('Your Cost has been submited!','success');
 
-           return to_route('admin.cost.create');
+               
+        }elseif(!$cost_submit){
+
+            alert()->error('Not Submited!','warning');
+            
+        }
+
+        return to_route('admin.cost.create');
+        
     }
 
     /**
@@ -120,7 +136,13 @@ class costController extends Controller
      */
     public function show($id)
     {
+         $cost = Cost::with('cost_blgto_rqsts')->where('id',$id)->get();
+       
         
+        // $cost_detail = Cost::where('id',$id)->->get();
+        
+          
+        return view('admin.cost.show',compact('cost'));
 
            
     }

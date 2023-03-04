@@ -7,6 +7,7 @@ use App\Models\Spareinv;
 use App\Models\Usespare;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class spareuseController extends Controller
@@ -49,6 +50,8 @@ class spareuseController extends Controller
         $spare_used = Usespare::where('spareinv_id', $id)->sum('use_qty');
         $spare_use = $spare_used + $qty_delv;
         
+
+        $userId = Auth::id();
         
 
         if ($spare_inv > $spare_use) {
@@ -59,7 +62,8 @@ class spareuseController extends Controller
                 'vcl_id' => $request->vcl_id,
                 'mileage' => $request->mileage,
                 'driver_name' => $request->driver_name,
-                'desc' => $request->desc,               
+                'desc' => $request->desc,    
+                'created_by'=>$userId,           
 
             ]);
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\VclStoreRequest;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class vclController extends Controller
 {
@@ -41,6 +42,9 @@ class vclController extends Controller
      */
     public function store(VclStoreRequest $request)
     {
+
+        $userId = Auth::id();
+        $image = $request->file('image')->store('public/images/Vcl_Image');
         
         Vcl::create([
             'plate_id' => $request->plate_id,
@@ -53,6 +57,8 @@ class vclController extends Controller
             'category_name' => $request->category_name,
             'purchase_date' => $request->purchase_date,
             'manufacture_date' => $request->manufacture_date,
+            'created_by'=>$userId,
+            'image' => $image
         ]);
         return to_route('admin.vcls.index');
     }
@@ -65,7 +71,9 @@ class vclController extends Controller
      */
     public function show($id)
     {
-        //
+        $vcl_detail = Vcl::find($id)->get();
+        // dd($vcl_detail);
+        return view('admin.vcls.show',compact('vcl_detail'));
     }
 
     /**

@@ -10,7 +10,7 @@ class Usespare extends Model
     use HasFactory;
     protected $fillable= [
         'use_date','use_qty','spareinv_id','vcl_id','mileage','driver_name',
-        'desc','status'
+        'desc','status','created_by',
     ];
 
     public function uses_blgto_invs()

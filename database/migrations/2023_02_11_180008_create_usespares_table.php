@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('driver_name')->nullable();
             $table->string('desc')->nullable();
             $table->tinyInteger('status')->default('1');
+            $table->smallInteger('created_by');
             $table->timestamps();
         });
     }

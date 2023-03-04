@@ -6,6 +6,7 @@ use App\Http\Requests\FuelStoreRequest;
 use App\Models\Fuel;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class fuelchartController extends Controller
 {
@@ -45,12 +46,14 @@ class fuelchartController extends Controller
      */
     public function store(FuelStoreRequest $request)
     {
+        $userId = Auth::id();
         Fuel::create([            
             'fuel_date' => $request->fuel_date,
             'vcl_id' => $request->vcl_id,
             'cash' => $request->cash,
             'litre' => $request->litre,
             'kilometre' => $request->kilometre,
+            'created_by'=>$userId,
             
         ]);
         return to_route('admin.fuel.create');
@@ -64,8 +67,9 @@ class fuelchartController extends Controller
      */
     public function show($id, Request $request)
     {
+       
         $fuel_vcls = Vcl::get();
-        if (count($request->all()) > 0) {        
+        if (count($request->all()) > 0 & count($request->input('vcl')) > 0) {        
         $vcl = $request->input('vcl');
         $id = $vcl;
         $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query) use ($request){
@@ -74,7 +78,8 @@ class fuelchartController extends Controller
             $query->whereBetween('fuel_date',[$str_date, $end_date]);
             return $query->orderBy('fuel_date','DESC');
         })->get();
-        }else{
+        }
+        else{
             $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query){
             $query;
         })->get();

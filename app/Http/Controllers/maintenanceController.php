@@ -7,7 +7,7 @@ use App\Models\Cost;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 
 class maintenanceController extends Controller
 {

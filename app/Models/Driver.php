@@ -9,7 +9,7 @@ class Driver extends Model
 {
     use HasFactory;
 
-    protected $fillable =  ['driver_name'];
+    protected $fillable =  ['created_by','driver_name'];
 
     public function drvr_hasm_tires()
     {

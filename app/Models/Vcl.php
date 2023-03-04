@@ -13,7 +13,9 @@ class Vcl extends Model
 
 
     protected $fillable = [
-        'plate_id','plate_code','plate_city','chassis_number','motor_number','vcl_model','fuel_type','category_name','purchase_date','manufacture_date' ];
+        'plate_id','plate_code','plate_city','chassis_number',
+        'motor_number','vcl_model','fuel_type','category_name',
+        'purchase_date','manufacture_date','created_by','image' ];
 
     // protected $primaryKey = 'plate_id';
 
