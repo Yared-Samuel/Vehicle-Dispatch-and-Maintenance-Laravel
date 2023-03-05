@@ -47,9 +47,9 @@
                             Balance
                             
                         </th>
-                        <th scope="col" class="py-2 px-1 border border-r-gray-300">
+                        {{-- <th scope="col" class="py-2 px-1 border border-r-gray-300">
                             Detail
-                        </th>
+                        </th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -78,7 +78,7 @@
                         
                        
                         
-                        <td class="flex py-1 px-1">
+                        {{-- <td class="flex py-1 px-1">
                             <a href="
                             " class="text-teal-600"
                                 >
@@ -87,7 +87,7 @@
                                       </svg>
                                       
                                 </a>
-                        </td>
+                        </td> --}}
                     </tr>
                     @endif
                     @endforeach

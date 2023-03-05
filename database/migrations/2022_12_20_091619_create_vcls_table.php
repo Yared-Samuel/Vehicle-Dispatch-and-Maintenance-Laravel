@@ -20,16 +20,16 @@ return new class extends Migration
             $table->integer('plate_code');
 
             $table->string('plate_city');            
-            $table->string('chassis_number')->nullable();
+            $table->string('chassis_number')->nullable()->default(null);
 
-            $table->string('motor_number')->nullable();            
-            $table->string('vcl_model')->nullable();
+            $table->string('motor_number')->nullable()->default(null);            
+            $table->string('vcl_model')->nullable()->default(null);
             
             $table->string('fuel_type');
-            $table->string('category_name')->nullable();
+            $table->string('category_name');
 
-            $table->date('purchase_date')->default(null);
-            $table->date('manufacture_date')->default(null);
+            $table->date('purchase_date')->default(null)->nullable();
+            $table->date('manufacture_date')->default(null)->nullable();
             $table->string('image');
             $table->smallInteger('created_by');
             $table->timestamps();

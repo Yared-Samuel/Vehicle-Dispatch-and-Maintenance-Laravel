@@ -20,14 +20,7 @@ class printController extends Controller
     public function export_use_grn($id)
     {
         $inv_use_grns = Usespare::where('id',$id)->with('uses_blgto_invs','use_blgtomny_vcls')->get();
-        // foreach ($inv_use_grns as $value) {
-        //     $value->use_blgtomny_vcls;
-        //     dd($value);
-        // }
-
-
-
-        // dd($inv_use_grns->use_blgtomny_vcls);
+        
 
         return view('admin.print.spareuseexp',compact('inv_use_grns'));
     }

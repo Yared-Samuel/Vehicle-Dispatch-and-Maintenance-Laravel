@@ -6,6 +6,7 @@ use App\Http\Requests\VclStoreRequest;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class vclController extends Controller
 {
@@ -44,7 +45,10 @@ class vclController extends Controller
     {
 
         $userId = Auth::id();
-        $image = $request->file('image')->store('public/images/Vcl_Image');
+        $image = $request->file('image');
+       $image =  $image->store('public/images/Vcl_Image');
+        
+        // dd($image);
         
         Vcl::create([
             'plate_id' => $request->plate_id,
@@ -71,7 +75,7 @@ class vclController extends Controller
      */
     public function show($id)
     {
-        $vcl_detail = Vcl::find($id)->get();
+        $vcl_detail = Vcl::where('id',$id)->get();
         // dd($vcl_detail);
         return view('admin.vcls.show',compact('vcl_detail'));
     }
@@ -84,7 +88,16 @@ class vclController extends Controller
      */
     public function edit($id)
     {
-        //
+        $vcl_count = Vcl::get()->count();
+        
+        $vcl_diesel = Vcl::where('fuel_type','diesel')->get();
+        
+        $vcl_benzene = Vcl::where('fuel_type','benzene')->get();
+
+        $vcl_category = Vcl::get()->groupBy('category_name');
+        
+        // dd($vcl_category);
+        return view('admin.vcls.edit',compact('vcl_count','vcl_diesel','vcl_benzene','vcl_category'));
     }
 
     /**

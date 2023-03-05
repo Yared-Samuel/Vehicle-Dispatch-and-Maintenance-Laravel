@@ -74,9 +74,9 @@
                 <tbody>
                   <tr>
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->uses_blgto_invs->spare_name }}</td>
-                    @foreach ($spareuse_grn->use_blgtomny_vcls as $vcl)
-                    <td class="py-1 px-2  border-r border-b-4">{{ $vcl->plate_id }}</td>
-                    @endforeach
+                   
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_blgtomny_vcls->plate_id }}</td>
+                   
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->uses_blgto_invs->spare_type }}</td>
                     
                    
@@ -123,7 +123,16 @@
         <div class="border-t pt-9 border-slate-200">
          <div class="text-sm font-semibold text-slate-700">
           <p>
-           This Document originaly created at {{ $spareuse_grn->created_at }}. 1st Copy - For file. 2nd Copy - For store keeper.
+            
+           
+          </p>
+          <p>
+
+           Distribution 1st Copy - For file. 2nd Copy - For store keeper.
+           
+          </p>
+          <p>
+           This Document originaly created at {{ $spareuse_grn->created_at }}.
            
           </p>
          </div>

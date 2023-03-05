@@ -19,7 +19,8 @@ class spareuseController extends Controller
      */
     public function index()
     {
-        $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();        
+        $spare_use = Usespare::with('uses_blgto_invs','use_blgtomny_vcls')->get();     
+        // dd($spare_use);   
         return view('admin.spareuse.index',compact('spare_use'));
     }
 

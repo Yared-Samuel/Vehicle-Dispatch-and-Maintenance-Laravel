@@ -20,6 +20,6 @@ class Usespare extends Model
 
     public function use_blgtomny_vcls()
     {
-        return $this->belongsToMany(Vcl::class);
+        return $this->belongsTo(Vcl::class,'vcl_id','id');
     }
 }

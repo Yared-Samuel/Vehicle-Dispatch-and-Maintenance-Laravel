@@ -5,7 +5,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>    
-    
+    {{-- {{ $ids = 1 }} --}}
     <div class="relative overflow-x-scroll max-h-full h-5/6 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
         <div class="flex justify-between w-full px-4 py-2 items-center">
             <div class="text-xl font-bold">
@@ -14,8 +14,8 @@
             <div>     
                 <a href="{{ route('admin.vcls.create') }}" class="text-white font-bold bg-gradient-to-r from-teal-800 to-cyan-400 hover:font-extrabold border-4 border-slate-300 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                 >Add Vehicles</a>
-                <a href="#" class="text-white font-bold hover:text-white border inline border-teal-800 bg-gradient-to-r from-teal-800 to-cyan-400 hover:font-extrabold hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Something here</a>
+                <a href="{{ route('admin.vcls.edit', $ids=1) }}" class="text-white font-bold hover:text-white border inline border-teal-800 bg-gradient-to-r from-teal-800 to-cyan-400 hover:font-extrabold hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+                >General Information</a>
             </div>
         </div>
         
@@ -45,6 +45,9 @@
                     Fuel Consumption
                 </th>
                 <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                    Document
+                </th>
+                <th scope="col" class="py-2 px-2 border border-r-gray-300">
                     Detail
                 </th>
                 
@@ -70,6 +73,9 @@
                 </td>
                 <td class="py-1 px-2 border-r">
                     {{ $vcl->fuel_type }}
+                </td>
+                <td scope="row" class="pt-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    <img src={{ Storage::url($vcl->image) }}   class="w-10 h-10 rounded">   
                 </td>
                 <td class="flex py-1 px-1">
                     <a href="{{ route('admin.vcls.show', $vcl->id) }}" class="text-teal-600"
