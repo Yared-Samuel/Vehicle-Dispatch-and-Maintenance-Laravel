@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CostStoreRequest;
 use App\Models\Cost;
 use App\Models\Driver;
+use App\Models\Mtn_cost;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
@@ -27,7 +28,7 @@ class costController extends Controller
         
         $costs = Cost::with('cost_blgto_rqsts')->get();
 
-        // dd($costs);
+        
 
         if (count($request->all()) > 0) {
             $vcl = $request->input('vcl');
@@ -97,16 +98,17 @@ class costController extends Controller
     {
 
         $userId = Auth::id();
+
+        $cash = $request->cost_cash;
+        $qty_in = $request->qty;
+        $totalCost = $cash + $qty_in;
         // store cost data of the recent maintained vehicle
         $cost_submit = Cost::create([
             'cost_date'=> $request->cost_date,
-            'spare_cost_desc'=> $request->spare_cost_desc,
-            'spare_cost'=>$request->spare_cost,
-            'spare_qty'=>$request->spare_qty,
-            'mech_cost_desc'=>$request->mech_cost_desc,
-            'mech_cost'=>$request->mech_cost,
-            'other_cost_desc'=>$request->other_cost_desc,
-            'other_cost'=>$request->other_cost,
+            'cost_desc'=> $request->cost_desc,
+            'cost_cash'=>$request->cost_cash,
+            'qty'=>$request->qty,
+            'total_cost'=>$totalCost,
             'ref_no'=>$request->ref_no,
             'garage_name'=>$request->garage_name,
             'driver_id'=>$request->driver_id,
@@ -114,13 +116,34 @@ class costController extends Controller
             'created_by'=>$userId,
             
            ]);
-        if ($cost_submit) {            
+
+
+           $lastId = Cost::select('id')->orderBy('id','desc')->first() ?? 0;
+            $mtn_cost = Mtn_cost::create([
+            'cost_id'=>$lastId,
+            'cost_date'=> $request->cost_date,
+            'cost_desc'=> $request->cost_desc,
+            'cost_cash'=>$request->cost_cash,
+            'qty'=>$request->qty,
+            'total_cost'=>$totalCost,
+            'ref_no'=>$request->ref_no,
+            'garage_name'=>$request->garage_name,
+            
+            
+           ]);
+
+           
+
+
+
+
+        if ($cost_submit && $mtn_cost) {            
                toast('Your Cost has been submited!','success');
 
                
-        }elseif(!$cost_submit){
+        }elseif(!$cost_submit || !$mtn_cost){
 
-            alert()->error('Not Submited!','warning');
+            Alert()->error('Not Submited!','warning');
             
         }
 

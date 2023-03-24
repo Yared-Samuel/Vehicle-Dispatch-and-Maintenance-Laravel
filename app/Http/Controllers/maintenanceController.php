@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cost;
-
+use App\Models\Mtn_cost;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class maintenanceController extends Controller
 {
@@ -20,7 +21,7 @@ class maintenanceController extends Controller
     {
         $mtn_aprroveds= Requester::select('id','vcl_id','start_date','status','mtn_type','description',
                                                         'request_date')
-                                    ->where('status','2')
+                                    ->whereBetween('status',[2,3])
                                     ->get();
         
         return view('admin.maintenance.index',compact('mtn_aprroveds'));
@@ -83,13 +84,15 @@ class maintenanceController extends Controller
                         ->where('id','=',$id)
                         ->get();
 
-        //dd($rqst_approved);
         
-        $costs = Cost::with('cost_blgto_rqsts')
-                        ->where('requester_id','=',null)
-                        ->get();
+        
+        // $costs = Cost::with('cost_blgto_rqsts')
+        //                 ->where('requester_id','=',null)
+        //                 ->get();
         return view('admin.maintenance.edit')
-        ->with(['rqst_approved'=>$rqst_approved,'costs'=>$costs]);
+        ->with(['rqst_approved'=>$rqst_approved
+        // ,'costs'=>$costs
+    ]);
 
         return to_route('admin.cost.create',compact('id'));
     }
@@ -110,14 +113,29 @@ class maintenanceController extends Controller
         ]);
 
         $mtn_complete = Requester::find($id);
-        $mtn_complete->update([
+        $mtn_completed =  $mtn_complete->update([
             
             'end_date'=>$request->end_date,
             'kilometer'=>$request->kilometer,
             'status'=>3,
             'timestamps'=>now(),
         ]);
-        return to_route('admin.cost.create');
+        $mtn_cost = Mtn_cost::where('requester_id',$id);
+       $mtn_cost_tbl = $mtn_cost->update([
+            'status'=>3,
+        ]);
+
+
+        if ($mtn_completed && $mtn_cost_tbl) {
+            toast('Maintenance completed!','success');
+        }else{
+            Alert()->error('Something Went Wrong!','warning');
+        }
+
+
+
+
+        return to_route('admin.maintenance.index');
     }
 
     /**

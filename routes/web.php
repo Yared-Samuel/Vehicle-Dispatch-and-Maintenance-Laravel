@@ -14,6 +14,7 @@ use App\Http\Controllers\spareinvController;
 use App\Http\Controllers\SparepartController;
 use App\Http\Controllers\Spareuse;
 use App\Http\Controllers\spareuseController;
+use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\vclController;
 
@@ -61,9 +62,33 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
 
 
 });
+Route::middleware(['auth', 'user'])->name('admin.')->prefix('admin')->group(function(){
+    Route::get('/', [UserController::class, 'index'])->name('index');
+    Route::resource('/request',requestController::class);
+    Route::resource('/maintenance',maintenanceController::class);
+    Route::resource('/vcls',vclController::class);
+    Route::resource('/drivers',driverController::class);
+    Route::resource('/cost',costController::class);    
+    Route::resource('/fuel',fuelchartController::class);       
+    Route::resource('/spareuse',spareuseController::class);
+    Route::resource('/spareinv',spareinvController::class);
+    Route::get('/reports/stock',[repController::class, 'stock'])->name('reports.stock');
+    
+    Route::get('/reports/fuel',[repController::class, 'index'])->name('reports.fuel');
+
+    Route::get('/print/{export}',[printController::class, 'export_inv_grn'])->name('printspareinv.export');
+    Route::get('/print/spareuseexp/{exp}',[printController::class, 'export_use_grn'])->name('printspareuse.export');
+
+
+
+});
 
     
     
 
 
 require __DIR__.'/auth.php';
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

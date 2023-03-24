@@ -10,6 +10,10 @@ use App\Models\Maintenancetype;
 class Requester extends Model
 {
     use HasFactory;
+    // create custom primary key // not the default one
+        // protected $primaryKey = 'id';
+    // preven the id from autoIncrementing
+        // public $incrementing = false;
 
     protected $fillable= [
         'status','request_date','request_by','description','mtn_type','vcl_id','status',

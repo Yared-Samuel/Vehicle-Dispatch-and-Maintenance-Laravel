@@ -93,6 +93,7 @@
             
         </tbody>
     </table>
+    {{ $vcls->links() }}
 </div>
 
 

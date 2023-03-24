@@ -229,7 +229,7 @@
                   </div>
                 </div>
               </div>
-            <main class="flex flex-col m-1 p-1 pb-10 w-full h-full overflow-y-auto h-screen bg-slate-100 justify-between">
+            <main class="flex flex-col m-1 p-1 pb-10 w-full overflow-y-auto h-screen bg-slate-100 justify-between ">
 
                 {{ $slot }}
 
@@ -243,36 +243,15 @@
            
         </div>
         
-        <script>
-            
-            $(document).ready( function () {
-                $('#table_one').DataTable();
-                
-            } );
-            
-        </script>
+        
         <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
         
         @include('sweetalert::alert')
+        <script src="{{ asset('ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js') }}"></script>
 
-
-        {{-- <script src="{{ asset('frontend/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-        <script src="{{ asset('frontend/bootstrap/dist/js/js/bootstrap.js') }}"></script>
-
+        <script src="{{ asset('jquery.js') }}"></script>
         
 
-        <script src="{{ asset('frontend/datatables/datatables.net/js/jquery-3.5.1.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/jquery.dataTables.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/dataTables.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/dataTables.buttons.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.bootstrap4.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/jszip.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net-bs/js/dataTables.bootstrap.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.print.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/vfs_fonts.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/pdfmake.min.js') }}"></script>
-        <script src="{{ asset('frontend/datatables/datatables.net/js/buttons.colVis.min.js') }}"></script> --}}
 
         
     </body>

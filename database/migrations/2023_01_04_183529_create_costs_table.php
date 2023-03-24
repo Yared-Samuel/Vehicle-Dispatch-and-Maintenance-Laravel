@@ -16,13 +16,10 @@ return new class extends Migration
         Schema::create('costs', function (Blueprint $table) {
             $table->id();
             $table->date('cost_date');
-            $table->string('spare_cost_desc')->nullable();
-            $table->integer('spare_cost')->nullable();
-            $table->integer('spare_qty')->nullable();
-            $table->string('mech_cost_desc')->nullable();
-            $table->integer('mech_cost')->nullable();
-            $table->string('other_cost_desc')->nullable();
-            $table->integer('other_cost')->nullable();
+            $table->string('cost_desc')->nullable();
+            $table->integer('cost_cash')->nullable();
+            $table->integer('qty')->nullable();
+            $table->integer('total_cost')->nullable();            
             $table->integer('ref_no')->nullable();
             $table->string('garage_name')->nullable();
             $table->foreignId('driver_id')->nullable()->constrained('drivers','id');

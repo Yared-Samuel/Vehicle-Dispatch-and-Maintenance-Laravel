@@ -25,17 +25,15 @@ class CostStoreRequest extends FormRequest
     {
         return [
             'cost_date'=>['required'],
-            'spare_cost_desc'=>['nullable'],
-            'spare_cost'=>['nullable'],
-            'spare_qty'=>['nullable'],
-            'mech_cost_desc'=>['nullable'],
-            'mech_cost'=>['nullable'],
-            'other_cost_desc'=>['nullable'],
-            'other_cost'=>['nullable'],
+            'cost_desc'=>['nullable'],
+            'cost_cash'=>['nullable'],
+            'qty'=>['nullable'],
+            'total_cost'=>['nullable'],
             'ref_no'=>['required'],
             'garage_name'=>['nullable'],
             'driver_id'=>['required'],
             'requester_id'=>['required'],
+            'created_by'=>['required'],
         ];
     }
 }

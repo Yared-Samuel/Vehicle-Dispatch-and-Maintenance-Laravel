@@ -10,7 +10,7 @@ class Cost extends Model
     use HasFactory;
 
     protected $fillable= [
-        'cost_date','spare_cost_desc','spare_cost','spare_qty','mech_cost_desc','mech_cost','other_cost_desc','other_cost',
+        'cost_date','cost_desc','cost_cash','qty','total_cost',
         'ref_no','garage_name','driver_id','requester_id','created_by',
     ];
 

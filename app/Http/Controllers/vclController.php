@@ -17,7 +17,7 @@ class vclController extends Controller
      */
     public function index()
     {
-        $vcls = Vcl::with('vcl_cost')->get();
+        $vcls = Vcl::paginate(3);
         
         
                

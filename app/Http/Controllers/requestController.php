@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\RequestStoreRequest;
 
 use App\Models\Maintenancetype;
+use App\Models\Mtn_cost;
 use App\Models\Requester;
 use App\Models\Vcl;
 use Illuminate\Http\Request;
@@ -56,8 +57,11 @@ class requestController extends Controller
     public function store(RequestStoreRequest $request)
     {
         $userId = Auth::id();
-        // dd($request);
-       Requester::create([
+
+        
+        
+      $rqst = Requester::create([
+
         'request_date'=> $request->request_date,
         'request_by'=>$request->request_by,
         'vcl_id'=>$request->vcl_id,
@@ -65,6 +69,26 @@ class requestController extends Controller
         'description'=>$request->description,
         'created_by'=>$userId,
        ]);
+
+       $lastId = Requester::select('id')->orderBy('id','desc')->first();
+       
+      $mtn_cost= Mtn_cost::create([
+        'requester_id'=>$lastId->id,
+        'vcl_id'=>$request->vcl_id,
+        'created_by'=>$userId,
+
+       ]);
+
+       if ($rqst && $mtn_cost) {            
+        toast('Maintenance Requested!','success');
+
+        
+        }elseif(!$rqst || !$mtn_cost){
+
+            alert()->error('Not Submited!','warning');
+            
+        }
+
        
        
        return to_route('admin.request.index');
@@ -106,15 +130,31 @@ class requestController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // 1 requested 2 Acepted or in maintenance 3 maintenance completed
         
         $req = Requester::find($id);
-        // $req->status = 2;
-        $req->update([
+        
+        $req_done= $req->update([
             'start_date'=>$request->start_date,
             'status'=>$request->status,
            
         ]);
-        // $req->save();
+        $mtn_cost = Mtn_cost::where('requester_id',$id);
+        $mtn_cost_tbl = 
+            $mtn_cost->update([
+                'status'=>2,
+            ]);
+
+
+
+        if ($req_done && $mtn_cost_tbl) {
+            toast('Maintenance Request Accepted!','success');
+        }else{
+            Alert()->error('Something Went Wrong!','warning');
+        }
+
+
+
         return to_route('admin.request.index');
     }
 
