@@ -20,9 +20,25 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                <a class="navbar-brand" href="{{ url('dashboard/') }}">
+                    Dashboard
                 </a>
+                <a class="navbar-brand" href="{{ url('admin/request') }}"> 
+                <button type="button" class="btn btn-primary">Maintenance Request</button>
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/maintenance') }}"> 
+                <button type="button" class="btn btn-secondary">Maintenance Schedule</button>
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/fuel') }}"> 
+                <button type="button" class="btn btn-danger">Fueling</button>
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/cost') }}"> 
+                <button type="button" class="btn btn-warning">Expences</button>
+                </a>
+                <a class="navbar-brand" href="{{ url('admin/spareinv') }}"> 
+                <button type="button" class="btn btn-info">Sparepart Stock</button>
+                </a>
+                        
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -73,6 +89,7 @@
         </nav>
 
         <main class="py-4">
+           
             @yield('content')
         </main>
     </div>

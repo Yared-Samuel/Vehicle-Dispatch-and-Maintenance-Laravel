@@ -35,25 +35,18 @@
             <table class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-200 uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
-                        <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            No
-                        </th>
-                        <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            GRN
-                        </th>
+                        
+                        
                         <th scope="col" column-name="plate_id":sort-column="$sortColumn" :sort-direction="$sortDirection" class="py-2 px-2 border border-r-gray-300">
                             Date
                         </th>
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            NAme
+                            Item Name
                             
                         </th>
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            Type
+                            Model
                            
-                        </th>
-                        <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            Serial
                         </th>
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
                             Quantity
@@ -61,12 +54,9 @@
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
                             Unit Price
                         </th>
-                        
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            Total price
-                        </th>
-                        
-                        
+                            Total Price
+                        </th>              
                         <th scope="col" class="py-2 px-1 border border-r-gray-300">
                             Detail
                         </th>
@@ -75,43 +65,44 @@
                 <tbody>
                 @if ($spareInv)                       
                 
-                    @foreach ($spareInv as $key=>$spare)
-                    
-                    <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
-                        <th scope="row" class="py-1 px-2 border-r">
-                            {{ $key +1 }}
-                        </th>
+                    @foreach ($spareInv as $key=>$spares)
+                    <tr>
                         <td class="py-1 px-2 border-r">
-                           <a href=""> <b> {{ $spare->id }}</b> </a>
-                        </td>
+                            <a href=""> <b> {{ $key }}</b> </a>
+                         </td>
+                    </tr>
+                      @foreach ($spares as $spare)
+                          
+                     
+                    <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
+                        
+                        
                         <td class="py-1 px-2 border-r">
                             <b> {{ $spare->date_in }}</b> 
                         </td>
                         
                         <td class="py-1 px-2 h-5 border-r">                               
-                            <b> {{ $spare->spare_name }}</b> 
+                            <b> {{ $spare->spareInItem->name }}</b> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->spare_type }}</b> 
+                            <b> {{ $spare->model }}</b> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->serial }}</b> 
+                            <b> {{ $spare->qty_in }}</b> <small class="text-yellow-700">{{ $spare->unit }}</small>
                         </td>
-                        <td class="py-1 px-2 border-r">
-                            <b> {{ $spare->qty_in }}</b> <small class="text-yellow-700">{{ $spare->unit }}</small> 
-                        </td>
-                        <td class="py-1 px-2 border-r">
-                            <b>{{ $spare->price_in / $spare->qty_in }}</b> <small class="text-yellow-700">Birr per {{ $spare->unit }}</small> 
-                        </td>
-                        
                         <td class="py-1 px-2 border-r">
                             <b> {{ $spare->price_in }}</b> <small class="text-green-700">birr</small> 
                         </td>
+                        <td class="py-1 px-2 border-r">
+                            <b>{{ $spare->price_in * $spare->qty_in }}</b> <small class="text-green-700">birr</small> 
+                        </td>
+                        
+                        
                        
                         
                         <td class="flex py-1 px-1">
                             <a href="
-                            {{ route('admin.printspareinv.export', $spare->id) }}
+                            {{ route('admin.printspareinv.export', $spare->GRN_ref) }}
                             " class="text-teal-600"
                                 >
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
@@ -122,6 +113,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    @endforeach    
                     @else
         
                         

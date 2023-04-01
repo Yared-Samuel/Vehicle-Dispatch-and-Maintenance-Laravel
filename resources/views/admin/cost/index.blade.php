@@ -31,7 +31,7 @@
     </div>
       {{-- <div class="text-right font-bold mr-4">Cost Lists</div> --}}
 
-      <form action="{{ route('admin.cost.index') }}" method="GET" role="search"  class="flex">
+      {{-- <form action="{{ route('admin.cost.index') }}" method="GET" role="search"  class="flex">
   
         <div class="relative">    
           <input name="start" type="date" value="{{ request()->input('start') }}" class="bg-white border border-gray-400 text-black text-sm font-semibold rounded-lg focus:ring-teal-700 focus:border-blue-500 block w-full pl-10 p-1  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date start">
@@ -54,7 +54,7 @@
                   <button type="submit" class="text-white mr-3 font-bold bg-gradient-to-r from-teal-800 to-cyan-400  border-4 border-slate-300 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg  px-1 py-0 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
                                   >Filter Cost</button>
               </a>
-      </form>
+      </form> --}}
     </div> 
 
 
@@ -71,6 +71,9 @@
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                  No
             </th>
+            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                 Rquest Id
+            </th>
             <th scope="col" column-name="plate_id":sort-column="$sortColumn" :sort-direction="$sortDirection" class="py-2 px-2 border border-r-gray-300">
               Plate
             </th>
@@ -78,31 +81,24 @@
               Cost date
             </th>
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Spare part
+             Item Description
                 
             </th>
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Cost
+              Unit Price
                
             </th>
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
               Quantity
             </th>
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Operation
+              Total Cost
             </th>
             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Cost
+              Reference No
             </th>
-            <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Other Costs
-            </th>
-            <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Ref. No
-            </th>
-            <th scope="col" class="py-2 px-2 border border-r-gray-300">
-              Total
-            </th>
+            
+           
             
             
             <th scope="col" class="py-2 px-1 border border-r-gray-300">
@@ -116,60 +112,50 @@
       
         
        
-      @foreach ($cost_vcls as $key=>$vcls )
-      @foreach ($vcls->vcl_cost as $costs)  
+      @foreach ($cost_vcls as $cost )
+      @foreach ($cost as $key=>$costs )
+        
       
         <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
           
           <th scope="row" class="py-1 px-2 border-r">
-              {{ $key +1 }}
+              {{ $key +1  }} 
+            </th>
+          <th scope="row" class="py-1 px-2 border-r">
+              {{ $costs->requester_id }}
             </th>
             <td class="py-1 px-2 border-r">
-             0{{ $vcls->plate_code }} - <b> {{ $vcls->plate_id }}
+             0{{ $costs->mtnnCost_blgto_vcls->plate_code }} - <b> {{ $costs->mtnnCost_blgto_vcls->plate_id }}
             </td>
             <td class="py-1 px-2 border-r">
               {{ $costs->cost_date }}
             </td>
             
             <td class="py-1 px-2 h-5 border-r">                               
-              {{ $costs->spare_cost_desc }}
+              {{ $costs->cost_desc }}
             </td>
             <td class="py-1 px-2 border-r">
-              {{ $spare=$costs->spare_cost ?? '0' }}
+              {{ $spare=$costs->cost_cash ?? '0' }}
             </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ $qty=$costs->spare_qty ?? '1' }}
-            </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ $costs->mech_cost_desc }}
-            </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ $mech=$costs->mech_cost ?? '0'}}
-            </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ $costs->other_cost_desc }} - {{ $other= $costs->other_cost }}
-            </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ $costs->ref_no }}
-            </td>
-            <td class="py-1 px-2 border-r font-extrabold underline">
-              {{ ($spare * $qty) + $mech + $other }}
+            <td class="py-1 px-2 border-r underline">
+              {{ $qty=$costs->qty ?? '1' }}
             </td>
             
+            <td class="py-1 px-2 border-r font-extrabold underline">
+              {{ $costs->total_cost }}
+            </td>
+            <td class="py-1 px-2 border-r  underline">
+              {{ $costs->ref_no }}
+            </td>      
             <td class="flex py-1 px-1">
-              <a href="{{ route("admin.cost.show", $costs->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a> <span class="font-bold"> - OR - </span>
+              <a href="{{ route("admin.cost.show", $costs->requester_id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Detail</a> <span class="font-bold"> - OR - </span>
                   <a href="#" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Complete</a>
-                {{-- <a href="{{ route("admin.fuel.show", $fueler->id) }}" class="text-teal-600"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
-                            <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />
-                          </svg>
-                          
-                    </a> --}}
+                
             </td>
     
            
         </tr>
+        
         @endforeach
         @endforeach
     </tbody>

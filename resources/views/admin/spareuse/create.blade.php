@@ -14,78 +14,156 @@
                 >Back To Index</a>
         </div>
     </div>
-            <div class="max-w-7xl mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
             
+        
+
+
+
+        {{-- <div class="max-w-7xl mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8"> --}}
+
+
+            {{-- new --}}
+
+            <div class="max-w-full mt-5 mx-5 overflow-hidden rounded-lg shadow-lg">
+                <div class="px-6  bg-slate-200">
+                  <h4 class="mb-3 font-bold text-lg tracking-tight text-gray-800"> Issue Form   </h4>
+                </div>
                 <form method="POST" action="{{ route('admin.spareuse.store') }}">
                     @csrf
-                        
-                    <div class="flex justify-around">
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="date" name="use_date" id="use_date" class="block py-2.5 px-0 w-full absolute text-sm text-gray-900 bg-transparent border-0 border-b-2 border-black appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-500 peer" required placeholder=" "/>
-                            <label for="use_date" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Issue Date</label>
-                        </div>
-
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <label for="vcl_id" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Vehicle Plate Number</label>                                
-                            <select name="vcl_id" id="vcl_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" >
-                                <option disabled selected> Select Vehicle </option>
-                                @foreach ($vcls as $vcl)
-                                <option class="text-white bg-slate-600" value="{{ $vcl->id }}">{{ $vcl->plate_city }}  0{{$vcl->plate_code}} - {{ $vcl->plate_id   }}</option>
-                                @endforeach
-                            </select>                            
-                        </div>
-
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <label for="spareinvs_id" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >SparePart</label>                                
-                            <select name="spareinv_id" id="spareinv_id" class="block py-2.5 px-0 w-full font-medium text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-2 focus:ring-0 focus:border-teal-500 peer" >
-                                <option disabled selected>Select SparePart </option>
-                                @foreach ($items as $item)
-                                <option class="text-white bg-slate-600" value="{{ $item->id }}">{{ $item->spare_name }} </option>
-                                @endforeach
-                            </select>                            
-                        </div>
-                    </div>    
-                    <div class="flex justify-around">
-
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="number" name="use_qty" id="use_qty" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                            <label for="use_qty" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Quantity</label>
-                        </div>
-
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="number" name="mileage" id="mileage" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                            <label for="mileage" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Mileage</label>
-                        </div>
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="text" name="driver_name" id="driver_name" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " />
-                            <label for="driver_name" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-8 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Driver Name</label>
-                        </div>        
-                    </div>                        
-                    <div class="flex justify-around">
-
-
-                            <div class="relative z-0 mb-10 w-4/5 group">
-                                <input type="text" name="desc" id="desc" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="desc" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Description</label>
-                            </div>
-                             
+                    <div id="show_spare_use" class="flex-col bg-slate-100 w-full">
+                        {{-- form list div here --}}
+                        <div  class="row flex justify-around w-full py-2 role="group" ">
+                           
                             
-                                
-                    </div>                        
-                        <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
-                                >Save</button>
-                </form>
-  
-            
-            
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
+                                <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($items as $item)
+                                    <option class="text-white bg-slate-600" value="{{ $item->id }}">{{ $item->name }} - {{$item->category}}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
 
-        </div>
-    {{-- </div> --}}
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                                <input type="number" name="use_qty[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Vehicle</label>
+                                <select name="vcl_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($vcls as $vcl)
+                                    <option class="text-white bg-slate-600" value="{{ $vcl->id }}">{{ $vcl->plate_city }}  0{{$vcl->plate_code}} - {{ $vcl->plate_id   }}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Driver</label>
+                                <select name="driver_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($drivers as $drvr)
+                                    <option class="text-white bg-slate-600" value="{{ $drvr->id }}">{{ $drvr->driver_name }} </option>
+                                    @endforeach
+                                </select>         
+                            </div>                  
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mileage</label>
+                                <input type="number" name="mileage[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                            
+                            <div class="add_spare_use px-2 pt-6 rounded-full">
+                                <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                      </svg>
+                                      </button>
+                        
+                                </div>
+
+                              {{-- <<--end-->   --}}
+                          
+                        </div>
+                        
+                    </div>
+                    <a href="{{ route('admin.spareuse.store') }}"></a>
+                    <button type="submit" id="add_btn" class="h-10 px-10 m-8 text-green-100 transition-colors duration-150 bg-green-700 rounded-full focus:shadow-outline hover:bg-green-800"
+                            >Save</button>
+                
+                </form>
+              </div>
+
+        
+        
+
+    </div>
 </x-admin-layout>
+
+
+<script>
+    $(document).ready(function(){
+      $(".add_spare_use").click(function(e){
+        e.preventDefault();
+        $("#show_spare_use").prepend(`
+        <div id="show_spare_use" class="flex-col bg-slate-100 w-full">
+                        {{-- form list div here --}}
+                        <div  class="row flex justify-around w-full py-2 role="group" ">
+                           
+                            
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
+                                <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($items as $item)
+                                    <option class="text-white bg-slate-600" value="{{ $item->id }}">{{ $item->name }} - {{$item->category}}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
+
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                                <input type="number" name="use_qty[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Vehicle</label>
+                                <select name="vcl_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($vcls as $vcl)
+                                    <option class="text-white bg-slate-600" value="{{ $vcl->id }}">{{ $vcl->plate_city }}  0{{$vcl->plate_code}} - {{ $vcl->plate_id   }}</option>
+                                    @endforeach
+                                </select>         
+                            </div>
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Driver</label>
+                                <select name="driver_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option disabled selected></option>
+                                    @foreach ($drivers as $drvr)
+                                    <option class="text-white bg-slate-600" value="{{ $drvr->id }}">{{ $drvr->driver_name }} </option>
+                                    @endforeach
+                                </select>         
+                            </div>                  
+                            <div class="mx-1 w-2/12">
+                                <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Mileage</label>
+                                <input type="number" name="mileage[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            </div>
+                          
+              <div class="remove_spareuse_btn px-2 pt-6 rounded-full">
+                  <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-red-500 rounded-full focus:shadow-outline hover:bg-red-800">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                    </svg>
+
+                        </button>
+          
+                  </div>
+            
+          
+        `);
+      });
+      $(document).on('click', '.remove_spareuse_btn', function(e) {
+        e.preventDefault();
+        let rows_item = $(this).parent();
+        $(rows_item).remove();
+      });
+    });
+</script>

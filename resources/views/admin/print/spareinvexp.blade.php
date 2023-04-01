@@ -5,7 +5,7 @@
         </h2>
     </x-slot> 
     <!-- component -->
-    @foreach ($inv_grns as $inv_grn)
+    
         
     
     <div class="max-w-5xl mx-auto py-6 bg-white">
@@ -20,8 +20,8 @@
             Goods received note (GRN)
          </p>
          <div>
-            <p>Date: {{ $inv_grn->date_in }}</p>
-            <p>GRN No: {{ $inv_grn->id }}</p>
+            <p>Date: {{ $Date }}</p>
+            
          </div>
          
 
@@ -29,40 +29,14 @@
         <hr class="font-bold">
         </div>
        </div>
-       <div class="p-9">
-        <div class="flex w-full">
-         <div class="grid grid-cols-4 gap-12">
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">
-            Item Serial No:
-           </p>
-           <p>{{ $inv_grn->serial }}</p>
-           
-          </div>
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">Invoice Created at</p>
-           <p>{{ $inv_grn->created_at }}</p>
-           
-          </div>
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">GRN Number</p>
-           <p>0000{{ $inv_grn->id }}</p>         
-          </div>
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">Item Ccategory</p>
-           <p>{{ $inv_grn->spare_type }}</p>         
-          </div>
-          
-         </div>
-        </div>
-       </div>
+       
    
        <div class="p-9">
         <div class="flex flex-col mx-0 mt-8">
-            <table class="table-fixed">
+            <table class="">
                 <thead>
-                  <tr>
-                    
+                  <tr>                    
+                    {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">No.</th> --}}
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Description</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Category</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Quantity</th>
@@ -71,15 +45,21 @@
                   </tr>
                 </thead>
                 <tbody>
+                  <tr class="border-2">
+                  <td>{{ $GRN }}</td>
+
+                  </tr>
+                  @foreach ($inv_grns as $key=>$inv_grn)
                   <tr>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $inv_grn->spare_name }}</td>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $inv_grn->spare_type }}</td>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $inv_grn->qty_in }} <small>{{ $inv_grn->unit }}</small> </td>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $inv_grn->price_in / $inv_grn->qty_in }}.00</td>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $inv_grn->price_in }}.00</td>
+                    {{-- <td class="py-1 px-2  border-r border-b-2">{{ $key+1 }}</td> --}}
+                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2"> - {{ $inv_grn->spareInItem->name }}</td>
+                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->spareInItem->category }}</td>
+                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->qty_in }} <small>{{ $inv_grn->unit }}</small> </td>
+                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->price_in }}</td>
+                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->total_price }}</td>
                     
                   </tr>
-                  
+                  @endforeach
                 </tbody>
               </table>
         </div>
@@ -110,19 +90,25 @@
          </div>
         </div>
        </div>
-       <div class="mt-10 p-9">
-        <div class="border-t pt-9 border-slate-200">
-         <div class="text-sm font-semibold text-slate-700">
-          <p>
-           This Document originaly created at {{ $inv_grn->created_at }}. 1st Copy - For file. 2nd Copy - For store keeper.
+       
            
-          </p>
-         </div>
-        </div>
-       </div>
+           
+         
       </div>
      </article>
+
+     
+<footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+  
+      <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ now()->format('Y') }} <a class="hover:underline">Girma Gifawossen Trading</a>. All Rights Reserved.</span>
+      <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">This Document originaly created at {{ $inv_grn->created_at }}. Document Distribution 1st Copy - For file. 2nd Copy - For store keeper.</span>
+  </div>
+</footer>
+
+
+
     </div>
-    @endforeach
+    
     
 </x-admin-layout>

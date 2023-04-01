@@ -26,6 +26,7 @@ class FuelStoreRequest extends FormRequest
         return [
             'fuel_date'=>['required'],
             'kilometre'=>['required'],
+            'prev_km'=>['nullable'],
             'litre'=>['required'],
             'cash'=>['required'],
             'vcl_id'=>['required'],

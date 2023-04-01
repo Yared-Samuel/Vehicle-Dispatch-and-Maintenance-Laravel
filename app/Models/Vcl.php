@@ -41,6 +41,12 @@ class Vcl extends Model
         return $this->hasManyThrough(Cost::class, Requester::class);
     }
 
+    public function vcl_hasmny_mtnCost()
+    {
+        return $this->hasMany(Mtn_cost::class);
+    }
+
+
 
 
 

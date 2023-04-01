@@ -25,11 +25,14 @@ class SpareUseRequest extends FormRequest
     {
         return [
             'use_date'=>['required'],
+            'GIN_ref'=>['required'],
+            'item_id'=>['required'],
+            'status'=>['nullable'],
             'use_qty'=>['required'],
-            'spareinv_id'=>['required'],
+            'spareinv_id'=>['nullable'],
             'vcl_id'=>['required'],
             'mileage'=>['nullable'],
-            'driver_name'=>['nullable'],
+            'driver_id'=>['nullable'],
             'desc'=>['nullable'],
             
         ];

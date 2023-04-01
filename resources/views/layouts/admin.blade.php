@@ -219,6 +219,13 @@
                         </svg>                        
                         <span class="group-hover:text-gray-700">Vehicles</span>
                       </a>
+                      <a href="{{ route('admin.items.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r border-b-4 border-blue-50 from-gray-600 to-gray-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 3v1.5M4.5 8.25H3m18 0h-1.5M4.5 12H3m18 0h-1.5m-15 3.75H3m18 0h-1.5M8.25 19.5V21M12 3v1.5m0 15V21m3.75-18v1.5m0 15V21m-9-1.5h10.5a2.25 2.25 0 002.25-2.25V6.75a2.25 2.25 0 00-2.25-2.25H6.75A2.25 2.25 0 004.5 6.75v10.5a2.25 2.25 0 002.25 2.25zm.75-12h9v9h-9v-9z" />
+                        </svg>
+                                              
+                        <span class="group-hover:text-gray-700">Items</span>
+                      </a>
                       <a href="{{ route('admin.drivers.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-gray-600 to-gray-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-3.07M12 6.375a3.375 3.375 0 11-6.75 0 3.375 3.375 0 016.75 0zm8.25 2.25a2.625 2.625 0 11-5.25 0 2.625 2.625 0 015.25 0z" />
@@ -252,7 +259,53 @@
         <script src="{{ asset('jquery.js') }}"></script>
         
 
+        <script>
+          $(document).ready(function(){
+            $(".add_item_btn").click(function(e){
+              e.preventDefault();
+              $("#show_item").prepend(`
+              <div  class="row flex justify-around w-full px-4 py-2 role="group" ">
+                <div class="mx-1 w-2/12">
+                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cost Date</label>
+                        <input type="date" name="cost_date[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mx-1 w-3/12">
+                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                        <input type="text" name="cost_desc[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mx-1 w-2/12">
+                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                        <input type="number" name="cost_cash[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mx-1 w-2/12">
+                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                        <input type="number" name="qty[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="mx-1 w-2/12">
+                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reference</label>
+                        <input type="number" name="ref_no[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <div class="remove_item_btn px-2 pt-6 w-1/12">
+                        <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-red-500 rounded-full focus:shadow-outline hover:bg-red-800">
+                          <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                          </svg>
 
+                              </button>
+                
+                        </div>
+                  
+                </div>
+              `);
+            });
+            $(document).on('click', '.remove_item_btn', function(e) {
+              e.preventDefault();
+              let row_item = $(this).parent();
+              $(row_item).remove();
+            });
+          });
+        </script>
+        
         
     </body>
 </html>

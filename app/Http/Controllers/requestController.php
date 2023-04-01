@@ -70,20 +70,13 @@ class requestController extends Controller
         'created_by'=>$userId,
        ]);
 
-       $lastId = Requester::select('id')->orderBy('id','desc')->first();
-       
-      $mtn_cost= Mtn_cost::create([
-        'requester_id'=>$lastId->id,
-        'vcl_id'=>$request->vcl_id,
-        'created_by'=>$userId,
+    
 
-       ]);
-
-       if ($rqst && $mtn_cost) {            
+       if ($rqst) {            
         toast('Maintenance Requested!','success');
 
         
-        }elseif(!$rqst || !$mtn_cost){
+        }elseif(!$rqst){
 
             alert()->error('Not Submited!','warning');
             
@@ -139,15 +132,10 @@ class requestController extends Controller
             'status'=>$request->status,
            
         ]);
-        $mtn_cost = Mtn_cost::where('requester_id',$id);
-        $mtn_cost_tbl = 
-            $mtn_cost->update([
-                'status'=>2,
-            ]);
+        
 
 
-
-        if ($req_done && $mtn_cost_tbl) {
+        if ($req_done) {
             toast('Maintenance Request Accepted!','success');
         }else{
             Alert()->error('Something Went Wrong!','warning');

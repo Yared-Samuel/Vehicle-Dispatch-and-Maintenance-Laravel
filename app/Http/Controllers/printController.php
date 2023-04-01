@@ -11,9 +11,11 @@ class printController extends Controller
     public function export_inv_grn($id)
     {
         
-        $inv_grns = Spareinv::where('id',$id)->get();
-        
-        return view('admin.print.spareinvexp')->with(['inv_grns'=>$inv_grns]);
+        $inv_grns = Spareinv::with('spareInItem')->where('GRN_ref',$id)->get();
+        $Date = ($inv_grns[1]->date_in);
+        $GRN = $id;
+        return view('admin.print.spareinvexp')->
+            with(['inv_grns'=>$inv_grns,'Date'=>$Date,'GRN'=>$GRN]);
 
     }
 

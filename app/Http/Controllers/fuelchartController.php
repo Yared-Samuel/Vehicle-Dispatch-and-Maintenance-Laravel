@@ -5,6 +5,7 @@ use Illuminate\Support\Collection;
 use App\Http\Requests\FuelStoreRequest;
 use App\Models\Fuel;
 use App\Models\Vcl;
+use Illuminate\Console\View\Components\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,11 +19,12 @@ class fuelchartController extends Controller
 
 
 
-     public function index()
+     public function index(Request $request)
      {
 
         $fuels =Vcl::with('vcl_hasmny_fuels')->get();
-            
+        // $fuels =Vcl::where('plate_id','Like','%')->with('vcl_hasmny_fuels')->get();
+        
             
                 return view('admin.fuel.index')->with(['fuels'=>$fuels]);
      } 
@@ -47,15 +49,41 @@ class fuelchartController extends Controller
     public function store(FuelStoreRequest $request)
     {
         $userId = Auth::id();
-        Fuel::create([            
-            'fuel_date' => $request->fuel_date,
-            'vcl_id' => $request->vcl_id,
-            'cash' => $request->cash,
-            'litre' => $request->litre,
-            'kilometre' => $request->kilometre,
-            'created_by'=>$userId,
+        $vcl_id = $request->vcl_id;
+        $prev_km = Fuel::where('vcl_id',$vcl_id)->orderBy('id','Desc')->first();
+        $prev_km = $prev_km->kilometre ?? null;
+        if ($prev_km && $prev_km < $request->kilometre) {
             
-        ]);
+
+            Fuel::create([            
+                'fuel_date' => $request->fuel_date,
+                'vcl_id' => $request->vcl_id,
+                'cash' => $request->cash,
+                'litre' => $request->litre,
+                'kilometre' => $request->kilometre,
+                'prev_km' => $prev_km,
+                'created_by'=>$userId,
+                
+            ]);
+        }elseif ($prev_km == null) {
+            Fuel::create([            
+                'fuel_date' => $request->fuel_date,
+                'vcl_id' => $request->vcl_id,
+                'cash' => $request->cash,
+                'litre' => $request->litre,
+                'kilometre' => $request->kilometre,
+                'prev_km' => 0,
+                'created_by'=>$userId,
+                
+            ]);
+        }else
+        {
+            Alert()->error('Pleas check your input!','warning');
+            
+        }
+
+
+        
         return to_route('admin.fuel.create');
     }
 
@@ -67,9 +95,9 @@ class fuelchartController extends Controller
      */
     public function show($id, Request $request)
     {
-       
+        
         $fuel_vcls = Vcl::get();
-        if (count($request->all()) > 0 & count($request->input('vcl')) > 0) {        
+        if (($request) && $request->input('vcl')) {        
         $vcl = $request->input('vcl');
         $id = $vcl;
         $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query) use ($request){
@@ -83,7 +111,6 @@ class fuelchartController extends Controller
             $fuels =Vcl::where('id',$id)->with('vcl_hasmny_fuels', function($query){
             $query;
         })->get();
-            
         }
         
          return view('admin.fuel.show')->with(['fuels'=>$fuels,'fuel_vcls'=>$fuel_vcls]);
@@ -98,7 +125,15 @@ class fuelchartController extends Controller
      */
     public function edit($id)
     {
-        //
+        $view_fuel = Fuel::select('kilometre')->where('vcl_id',$id)->get();
+        $avg_fuel = Fuel::select('kilometre')->where('vcl_id',$id)->sum('kilometre');
+        
+        $vcl_plate = Vcl::where('id',$id)->first()->pluck('plate_id');
+        $vcl_type = Vcl::where('id',$id)->first()->pluck('fuel_type');
+        
+        
+        return view('admin.fuel.edit',compact('view_fuel','avg_fuel','vcl_plate','vcl_type'));
+
     }
 
     /**

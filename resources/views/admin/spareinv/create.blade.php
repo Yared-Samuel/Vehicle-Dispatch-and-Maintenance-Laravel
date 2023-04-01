@@ -1,13 +1,15 @@
+
 <x-admin-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
+            $items
         </h2>
     </x-slot>    
     <div class="py-2">
         <div class="flex justify-between rounded-md py-4 mx-4 bg-slate-300">
         <div class="text-xl pl-3 font-bold">
-            Deliver Spare Part
+            GRN
     </div>  
         <div class=" p-2">
             <a href="{{ route('admin.spareinv.index') }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
@@ -15,89 +17,153 @@
         </div>
     </div>
             <div class="max-w-7xl mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
-            
-                <form method="POST" action="{{ route('admin.spareinv.store') }}">
-                    @csrf
-                        
-                    <div class="flex justify-around">
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="date" name="date_in" id="date_in" class="block py-2.5 px-0 w-full absolute text-sm text-gray-900 bg-transparent border-0 border-b-2 border-black appearance-none dark:text-white dark:border-gray-600 dark:focus:border-teal-500 focus:outline-none focus:ring-0 focus:border-teal-500 peer" required placeholder=" "/>
-                            <label for="date_in" class="peer-focus:font-medium font-semibold absolute text-md text-black dark:text-gray-400 duration-300 transform -translate-y-6 scale-105 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal -600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Date of Delevery</label>
-                        </div>
 
-                        
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <input type="number" name="serial" id="serial" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " />
-                            <label for="serial" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                            >Serial Number <small>OPTIONAL</small> </label>
-                        </div>
 
-                        <div class="relative z-0 mb-10 w-1/5 group">
-                            <label for="spare_type" class="sr-only">Spare Types</label>
-                            <select name="spare_type" id="spare_type" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required >
-                                <option disabled selected>Spare Types</option>
-                                @foreach (App\Enums\SpareType::cases() as $SpareType)
-                                <option value="{{ $SpareType->value }}">{{ $SpareType->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>                      
-                        
-                        
-                    </div>    
-                        <div class="flex justify-around">
+                {{-- new --}}
 
-                            <div class="relative z-0 mb-10 w-1/5 group">
-                                <input type="text" name="spare_name" id="spare_name" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="spare_name" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Spare part Name</label>
-                            </div>                            
-                            <div class="relative z-0 mb-10 w-1/5 group">
-                                <input type="text" name="spare_model" id="spare_model" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="spare_model" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Spare part Model</label>
-                            </div>                            
-                                  
+                <div class="max-w-full mt-5 mx-5 overflow-hidden rounded-lg shadow-lg">
+                    <div class="px-6  bg-slate-200">
+                      <h4 class="mb-3 font-bold text-lg tracking-tight text-gray-800"> Delevery Form   </h4>
+                    </div>
+                    <form method="POST" action="{{ route('admin.spareinv.store') }}">
+                        @csrf
+                        <div id="show_spare" class="flex-col bg-slate-100 w-full">
+                            {{-- form list div here --}}
+                            <div  class="row flex justify-around w-full py-2 role="group" ">
+                               
+                                
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
+                                    <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option disabled selected></option>
+                                        @foreach ($items as $item)
+                                        <option class="text-white bg-slate-600" value="{{ $item->id }}">{{ $item->name }} - {{$item->category}}</option>
+                                        @endforeach
+                                    </select>         
+                                </div>
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Serial No.</label>
+                                    <input type="text" name="serial[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                </div>
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
+                                    <input type="text" name="model[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                </div>
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                                    <input type="number" name="qty_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                </div>
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit Price</label>
+                                    <input type="number" name="price_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                </div>
+                                <div class="mx-1 w-2/12">
+                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
+                                    <select name="unit[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option disabled selected></option>
+                                        @foreach (App\Enums\Unit::cases() as $unit)
+                                            <option value="{{ $unit->value }}">{{ $unit->name }}</option>
+                                        @endforeach
+                                    </select>         
+                                </div>
+                                <div class="add_spare_btn px-2 pt-6 rounded-full">
+                                    <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800">
+                                        <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                          </svg>
+                                          </button>
                             
-                            <div class="relative z-0 mb-10 w-1/5 group">
-                                <input type="number" name="qty_in" id="qty_in" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="qty_in" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-1 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Quantity Delevered</label>
+                                    </div>
+                              
                             </div>
-
-                            
-
                             
                         </div>
-                        
-                        <div class="flex justify-start pl-20">
-
-                            <div class="relative z-0 m-auto mb-10 w-1/5 group">
-                                <input type="number" name="price_in" id="price_in" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required />
-                                <label for="price_in" class="peer-focus:font-medium absolute font-semibold text-md dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-teal-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
-                                >Price <small>Total</small></label>
-                            </div>
-
-                            <div class="relative z-0 m-auto mb-10 w-1/5 group">
-                                <label for="unit" class="sr-only">Unit of measurment</label>
-                                <select name="unit" id="unit" class="dynamic block py-2.5 px-0 w-full font-semibold text-md text-black bg-transparent border-0 border-b-2 border-black appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-teal-500 peer" placeholder=" " required >
-                                    <option disabled selected>Unit of measurment</option>
-                                    @foreach (App\Enums\Unit::cases() as $unit)
-                                    <option value="{{ $unit->value }}">{{ $unit->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>               
-                            
-
-                        </div>
-                        <button type="submit" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 "
-                                >Store In</button>
-                </form>
+                        <a href="{{ route('admin.spareinv.store') }}"></a>
+                        <button type="submit" id="add_btn" class="h-10 px-10 m-8 text-green-100 transition-colors duration-150 bg-green-700 rounded-full focus:shadow-outline hover:bg-green-800"
+                                >Save</button>
+                    
+                    </form>
+                  </div>
   
             
             
 
         </div>
     
-    
+
+
+
+
+
+
+
+
+
+        
 </x-admin-layout>
+
+<script>
+    $(document).ready(function(){
+      $(".add_spare_btn").click(function(e){
+        e.preventDefault();
+        $("#show_spare").prepend(`
+        <div  class="row flex justify-around w-full py-2 role="group" ">
+          
+                          
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
+                              <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                  <option disabled selected></option>
+                                  @foreach ($items as $item)
+                                        <option class="text-white bg-slate-600" value="{{ $item->id }}">{{ $item->name }} - {{$item->category}}</option>
+                                        @endforeach
+                                  
+                                  
+                              </select>         
+                          </div>
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Serial No.</label>
+                              <input type="text" name="serial[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          </div>
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
+                              <input type="text" name="model[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          </div>
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                              <input type="number" name="qty_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          </div>
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit Price</label>
+                              <input type="number" name="price_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                          </div>
+                          <div class="mx-1 w-2/12">
+                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
+                              <select name="unit[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                  <option disabled selected></option>
+                                  @foreach (App\Enums\Unit::cases() as $unit)
+                                      <option value="{{ $unit->value }}">{{ $unit->name }}</option>
+                                  @endforeach
+                              </select>         
+                          </div>
+                          
+              <div class="remove_spare_btn px-2 pt-6 rounded-full">
+                  <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-red-500 rounded-full focus:shadow-outline hover:bg-red-800">
+                    <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                    </svg>
+
+                        </button>
+          
+                  </div>
+            
+          
+        `);
+      });
+      $(document).on('click', '.remove_spare_btn', function(e) {
+        e.preventDefault();
+        let rows_item = $(this).parent();
+        $(rows_item).remove();
+      });
+    });
+</script>

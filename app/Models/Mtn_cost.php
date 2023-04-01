@@ -16,4 +16,11 @@ class Mtn_cost extends Model
         
         
     ];
+
+
+    public function mtnnCost_blgto_vcls()
+    {
+        return $this->belongsTo(Vcl::class,'vcl_id','id');
+    }
+    
 }

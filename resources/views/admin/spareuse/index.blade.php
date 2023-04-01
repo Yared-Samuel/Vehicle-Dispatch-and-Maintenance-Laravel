@@ -38,7 +38,9 @@
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Date
                             </th>
-                            
+                            <th scope="col" class="py-2 px-1 border border-r-gray-300">
+                                Plate
+                            </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Mileage
                             </th>
@@ -53,9 +55,7 @@
                                 Issued Qty
                                
                             </th>
-                            <th scope="col" class="py-2 px-1 border border-r-gray-300">
-                                Plate
-                            </th>
+                            
                             <th scope="col" class="py-2 px-1 border border-r-gray-300">
                                 Detail
                             </th>
@@ -64,7 +64,7 @@
                     <tbody>
                         
                         @foreach ($spare_use as $key=>$spare)
-                                                
+                        
                         <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
                             <th scope="row" class="py-1 px-2 border-r">
                                 {{ $key +1 }}
@@ -72,22 +72,23 @@
                             <td class="py-1 px-2 border-r">
                                 <b> {{ $spare->use_date }}</b>
                             </td>
+                            <td class="py-1 px-2 border-r">
+                                <b> {{ $spare->use_blgtomny_vcls->plate_id }}</b>
+                            </td>  
                            
                             <td class="py-1 px-2 h-5 border-r">                               
                                 <b>{{ $spare->mileage }}</b>
                             </td>
                             <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->uses_blgto_invs->spare_name }}</b> 
+                                <b> {{ $spare->spareUseItem->name }}</b> 
                             </td>
                             <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->uses_blgto_invs->spare_type }}</b> 
+                                <b> {{ $spare->spareUseItem->category }}</b> 
                             </td>
                             <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->use_qty }}</b> <small class="text-blue-300">{{ $spare->uses_blgto_invs->unit }}</small> 
+                                <b> {{ $spare->use_qty }} </b>
                             </td>
-                            <td class="py-1 px-2 border-r">
-                                <b> {{ $spare->use_blgtomny_vcls->plate_id }}</b>
-                            </td>                  
+                                            
                             <td class="flex py-1 px-1">
                                 <a href="{{ route('admin.printspareuse.export', $spare->id) }}" class="text-teal-600">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">

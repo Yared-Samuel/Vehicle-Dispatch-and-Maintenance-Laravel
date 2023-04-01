@@ -32,7 +32,7 @@ return new class extends Migration
             $table->integer('qty')->nullable();
             $table->integer('total_cost')->nullable();
             $table->integer('ref_no')->nullable();
-            $table->string('garage_name')->nullable(); 
+            $table->string('garage_name')->nullable();
 
             $table->timestamps();
         });

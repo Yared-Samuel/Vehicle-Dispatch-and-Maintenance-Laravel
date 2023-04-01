@@ -9,8 +9,8 @@ class Usespare extends Model
 {
     use HasFactory;
     protected $fillable= [
-        'use_date','use_qty','spareinv_id','vcl_id','mileage','driver_name',
-        'desc','status','created_by',
+        'use_date','use_qty','spareinv_id','vcl_id','mileage','driver_id',
+        'desc','status','created_by','GIV_ref',
     ];
 
     public function uses_blgto_invs()
@@ -21,5 +21,10 @@ class Usespare extends Model
     public function use_blgtomny_vcls()
     {
         return $this->belongsTo(Vcl::class,'vcl_id','id');
+    }
+
+    public function spareUseItem()
+    {
+        return $this->belongsTo(Item::class,'item_id','id');
     }
 }

@@ -15,14 +15,17 @@ return new class extends Migration
     {
         Schema::create('spareinvs', function (Blueprint $table) {
             $table->id();
+            $table->string('GRN_ref');
             $table->date('date_in');
-            $table->integer('serial')->nullable();
-            $table->string('spare_name');
-            $table->string('spare_model');
-            $table->string('spare_type');
+            $table->string('serial')->nullable();
+            $table->foreignId('item_id')->constrained('items','id')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->string('model')->nullable();
             $table->integer('qty_in');
-            $table->string('unit');
             $table->integer('price_in');
+            $table->integer('total_price');
+            $table->string('unit');            
             $table->smallInteger('created_by');
             $table->timestamps();
         });

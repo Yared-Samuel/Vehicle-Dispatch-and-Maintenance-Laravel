@@ -17,10 +17,13 @@
                 >Consumption Analysis</a>
             </div>
         </div>
-        <div class="input-group relative flex flex-wrap items-stretch w-1/4 mb-0 rounded">
-            <input type="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
+        <div class="container input-group relative flex flex-wrap items-stretch w-1/4 mb-0 rounded">
+            <div class="search">
+            <input type="search" name="search" id="search" class="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+                    placeholder="Search" aria-label="Search" aria-describedby="button-addon2">
             <span class="input-group-text flex items-center px-3 py-1.5 text-base font-normal text-gray-700 text-center whitespace-nowrap rounded" id="basic-addon2">
             </span>
+                </div>
           </div>
         
             
@@ -52,7 +55,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    
                         
                         @foreach ($fuels as $key=>$fueler)
                        
@@ -76,7 +79,7 @@
                             </td>
                             @endforeach
                             <td class="flex py-1 px-1">
-                                <a href="{{ route("admin.fuel.show", $fueler->id) }}" class="text-teal-600"
+                                <a href="{{ route("admin.fuel.edit", $fueler->id) }}" class="text-teal-600"
                                     >
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
                                             <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />
@@ -90,6 +93,7 @@
                         
                         
                     </tbody>
+                    <tbody id="content"></tbody>
                 </table>
                 <div class="flex justify-center mt-2 py-2 bg-slate-300 rounded-md w-full">
                     <nav aria-label="Page navigation example">
@@ -279,3 +283,21 @@
   
     
 </x-admin-layout>
+
+
+<script>
+    $('#search').on('keyup',function()
+    {
+        $value =$(this).val();
+        $.ajax({
+            type:'get',
+            url:'{{ URL::to('admin/fuel/index') }}',
+            data:{'search':$value},
+            success:function(data)
+            {
+                console.log(data);
+                $('#content').html(data)
+            }
+        });
+})
+</script>

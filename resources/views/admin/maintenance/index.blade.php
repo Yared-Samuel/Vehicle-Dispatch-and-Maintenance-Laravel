@@ -32,7 +32,10 @@
                                 Maintenace Type
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                                Scheduled For
+                                From Date
+                            </th>
+                            <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                                To Date
                             </th>
                             <th scope="col" class="py-2 px-2 border border-r-gray-300">
                                 Maintenance Description
@@ -64,13 +67,29 @@
                             <td class="py-1 px-2 border-r">
                                 {{ $mtn_aprroved->mtn_type }}
                             </td>
-                            @if ($mtn_aprroved->start_date > now())
-                                <td class="text-green-700 py-1 px-2">{{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }} </td>
-                                @else
-                                <td class="text-red-700 py-1 px-2"> {{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }} (Pleas Check your schedule!!!) </td>
+                            @if($mtn_aprroved->end_date)
+                            <td class="text-green-700 py-1 px-2"> {{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }}</td> 
+                            @elseif ($mtn_aprroved->start_date > now())
+                            <td class="text-red-700 py-1 px-2">{{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }} - Maintenance Required! </td>     
+                            @elseif ($mtn_aprroved->start_date < now())
+                                <td class="text-green-700 py-1 px-2"> {{ date('d-m-Y', strtotime($mtn_aprroved->start_date)); }}</td>   
                             @endif
+
+                            @if ($mtn_aprroved->end_date)
+                            <td class="text-green-700 py-1 px-2">{{ $mtn_aprroved->end_date  }} </td> 
+                            @else
+                            <td class="text-green-700 py-1 px-2">waiting for maintenance</td> 
+                            @endif
+                            
+                            
+                            
+                               
+                            
+                                
+                            
+
                             <td class="py-1 px-2 border-r">
-                                {{ $mtn_aprroved->description }}
+                                {{ $mtn_aprroved->description ?? ' ' }}
                             </td>
                             @if ($mtn_aprroved->status == 2)
                             <td class="py-1 px-1">
@@ -95,7 +114,7 @@
 
 
                             <td class="py-1 px-1 ">
-                                <a href="{{ route('admin.cost.create', $mtn_aprroved->id) }}" class="text-teal-600 "
+                                <a href="{{ route('admin.cost.edit', $mtn_aprroved->id) }}" class="text-teal-600 "
                                         >
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
                                             <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />

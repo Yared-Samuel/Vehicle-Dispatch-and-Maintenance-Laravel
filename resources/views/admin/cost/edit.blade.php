@@ -29,13 +29,13 @@
         <div class="text-right font-bold mr-4">Cost Form</div>
       </div> 
 
-
       <div class="max-w-full mt-5 mx-5 overflow-hidden rounded-lg shadow-lg">
         <div class="px-6  bg-slate-100">
           <h4 class="mb-3 font-bold text-lg tracking-tight text-gray-800">Cost Form   </h4>
         </div>
-        <form method="POST" action="{{ route('admin.cost.add',$id) }}">
+        <form method="POST" action="{{ route('admin.cost.update', $id) }}">
             @csrf
+            @method('PUT')
             <div id="show_item" class="flex-col bg-slate-50">
                 {{-- form list div here --}}
                 <div  class="row flex justify-around w-full px-4 py-2 role="group" ">
@@ -71,7 +71,7 @@
                 </div>
                 
             </div>
-            <a href="{{ route('admin.cost.add',$id) }}"></a>
+            <a href="{{ route('admin.cost.update', $id) }}"></a>
             <button type="submit" id="add_btn" class="h-10 px-10 m-8 text-green-100 transition-colors duration-150 bg-green-700 rounded-full focus:shadow-outline hover:bg-green-800"
                     >Save</button>
         

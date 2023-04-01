@@ -10,10 +10,20 @@ class Spareinv extends Model
     use HasFactory;
 
     protected $fillable= [
-        'date_in','serial','spare_name','spare_model','spare_type','qty_in',
-        'unit','created_by','price_in'
+        'date_in','serial','item_id','model','qty_in','price_in','total_price',
+        'unit','created_by','GRN_ref'
         
     ];
+
+
+    public function spareInVcl()
+    {
+        return $this->belongsTo(Vcl::class,'vcl_id','id');
+    }
+    public function spareInItem()
+    {
+        return $this->belongsTo(Item::class,'item_id','id');
+    }
 
     public function inv_hasmny_uses()
     {

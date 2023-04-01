@@ -13,15 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fuels', function (Blueprint $table) {
+        Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->date('fuel_date');
-            $table->integer('kilometre');
-            $table->integer('prev_km');
-            $table->integer('litre');
-            $table->integer('cash');            
-            $table->foreignId('vcl_id')->constrained('vcls','id');
-            $table->smallInteger('created_by');
+            $table->string('name');
+            $table->string('category');
             $table->timestamps();
         });
     }
@@ -33,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fuels');
+        Schema::dropIfExists('items');
     }
 };

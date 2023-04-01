@@ -19,7 +19,7 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','start_date','status','mtn_type','description',
+        $mtn_aprroveds= Requester::select('id','vcl_id','start_date','end_date','status','mtn_type','description',
                                                         'request_date')
                                     ->whereBetween('status',[2,3])
                                     ->get();
@@ -112,6 +112,8 @@ class maintenanceController extends Controller
             'kilometer'=>'required'
         ]);
 
+        // 1 requested 2 Acepted or in maintenance 3 maintenance completed 4 cost applied
+
         $mtn_complete = Requester::find($id);
         $mtn_completed =  $mtn_complete->update([
             
@@ -120,13 +122,10 @@ class maintenanceController extends Controller
             'status'=>3,
             'timestamps'=>now(),
         ]);
-        $mtn_cost = Mtn_cost::where('requester_id',$id);
-       $mtn_cost_tbl = $mtn_cost->update([
-            'status'=>3,
-        ]);
+        
 
 
-        if ($mtn_completed && $mtn_cost_tbl) {
+        if ($mtn_completed) {
             toast('Maintenance completed!','success');
         }else{
             Alert()->error('Something Went Wrong!','warning');

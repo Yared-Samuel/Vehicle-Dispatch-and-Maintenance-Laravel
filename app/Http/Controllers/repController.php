@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Fuel;
+use App\Models\Inventory;
+use App\Models\Item;
 use App\Models\Spareinv;
 use App\Models\Usespare;
 use App\Models\Vcl;
@@ -43,11 +45,12 @@ class repController extends Controller
 
    
         public function stock(){
-            $stock = Spareinv::with('inv_hasmny_uses')->get();
+            // $stock = Inventory::with('INVItem')->get()->groupBy('item_id');
+            // dd($stock);
     
-            
-    
-            return view('admin.reports.stock')->with(['stock'=>$stock]);
+            $rems = Item::has('vcl_hasmny_INV')->get();
+            // dd($rems);
+            return view('admin.reports.stock')->with(['rems'=>$rems]);
         }
     
     

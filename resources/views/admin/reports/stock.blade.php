@@ -30,73 +30,42 @@
 
             
           <div>
-             <table class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
+             <table class="w-5/6 table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-200 uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            No
+                            Items
                         </th>
                         <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            Spare Name
+                           Stock
                         </th>
                         
-                        <th scope="col" column-name="plate_id":sort-column="$sortColumn" :sort-direction="$sortDirection" class="py-2 px-2 border border-r-gray-300">
-                            Spare Model
-                        </th>
-                        <th scope="col" class="py-2 px-2 border border-r-gray-300">
-                            Balance
-                            
-                        </th>
-                        {{-- <th scope="col" class="py-2 px-1 border border-r-gray-300">
-                            Detail
-                        </th> --}}
+                        
                     </tr>
                 </thead>
                 <tbody>
-                @if ($stock)                       
-                
-                    @foreach ($stock as $key=>$stock_rep)
-                    @if ($stock_rep->qty_in - $stock_rep->inv_hasmny_uses->sum('use_qty') > 0)
-                        
-                    
-                    
+                                  
+                  
+                   
+                    @foreach ($rems as $key=>$rem)
                     <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
-                        <th scope="row" class="py-1 px-2 border-r">
-                            {{ $key +1 }}
-                        </th>
-                        <td class="py-1 px-2 border-r">
-                           <a href=""> <b> {{ $stock_rep->spare_name }}</b> </a>
-                        </td>
-                        
-                        
-                        <td class="py-1 px-2 h-5 border-r">                               
-                            <b> {{ $stock_rep->spare_model }}</b> 
-                        </td>
-                        <td class="py-1 px-2 border-r">
-                            <b> {{$stock_rep->qty_in - $stock_rep->inv_hasmny_uses->sum('use_qty')}}</b> 
-                        </td>
-                        
-                       
-                        
-                        {{-- <td class="flex py-1 px-1">
-                            <a href="
-                            " class="text-teal-600"
-                                >
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-6 ">
-                                        <path fill-rule="evenodd" d="M7.5 3.75A1.5 1.5 0 006 5.25v13.5a1.5 1.5 0 001.5 1.5h6a1.5 1.5 0 001.5-1.5V15a.75.75 0 011.5 0v3.75a3 3 0 01-3 3h-6a3 3 0 01-3-3V5.25a3 3 0 013-3h6a3 3 0 013 3V9A.75.75 0 0115 9V5.25a1.5 1.5 0 00-1.5-1.5h-6zm5.03 4.72a.75.75 0 010 1.06l-1.72 1.72h10.94a.75.75 0 010 1.5H10.81l1.72 1.72a.75.75 0 11-1.06 1.06l-3-3a.75.75 0 010-1.06l3-3a.75.75 0 011.06 0z" clip-rule="evenodd" />
-                                      </svg>
-                                      
-                                </a>
-                        </td> --}}
-                    </tr>
-                    @endif
+
+                    
+                    <td class="py-1 px-2 border-r">
+                        <a href="">  -  <b> {{ $rem->name }}</b> </a>
+                     </td>
+                    <td class="py-1 px-2 border-r">
+                        <a href=""> <b> {{ $rem->vcl_hasmny_INV->sum('quantity_inv') }}</b> </a>
+                     </td>
+                    
+                </tr>
                     @endforeach
-                    @else
+                   
+                   
         
                         
-                   <tr>0 Data Found</tr>
-                        
-                    @endif
+                   
+                   
                     
                 </tbody>
             </table> 
