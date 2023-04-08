@@ -5,7 +5,7 @@
         </h2>
     </x-slot> 
     <!-- component -->
-    @foreach ($inv_use_grns as $spareuse_grn)
+    
         
     
     <div class="max-w-5xl mx-auto py-6 bg-white">
@@ -20,8 +20,8 @@
             Goods ISSUE note 
          </p>
          <div>
-            <p>Date: {{ $spareuse_grn->use_date }}</p>
-            <p>GRN No: {{ $spareuse_grn->id }}</p>
+            <p>Date: {{ $dates }}</p>
+            <p>GRN No: {{ $doc_no }}</p>
          </div>
          
 
@@ -29,16 +29,10 @@
         <hr class="font-bold">
         </div>
        </div>
-       <div class="p-9">
+       {{-- <div class="p-9">
         <div class="flex w-full">
          <div class="grid grid-cols-4 gap-12">
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">
-            Item Serial No:
-           </p>
-           <p>{{ $spareuse_grn->uses_blgto_invs->serial }}</p>
-           
-          </div>
+          
           <div class="text-sm font-light text-slate-500">
            <p class="text-sm font-normal text-slate-700">Invoice Created at</p>
            <p>{{ $spareuse_grn->created_at }}</p>
@@ -55,7 +49,7 @@
           
          </div>
         </div>
-       </div>
+       </div> --}}
    
        <div class="p-9">
         <div class="flex flex-col mx-0 mt-8">
@@ -65,31 +59,28 @@
                     
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Description</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Plate</th>
-                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Category</th>
-                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Milage</th>
+                    {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">Category</th> --}}
+                    {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">Milage</th> --}}
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Quantity</th>
                     
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($inv_use as $spareuse_grn)
                   <tr>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->uses_blgto_invs->spare_name }}</td>
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->spareUseItem->name }}</td>
                    
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_blgtomny_vcls->plate_id }}</td>
                    
-                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->uses_blgto_invs->spare_type }}</td>
-                    
-                   
-                   
-                      
-                    
-                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->mileage }}</td>
-                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }} <small>{{ $spareuse_grn->uses_blgto_invs->unit }}</small> </td>
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }}</td>     
+                    {{-- <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }} <small>{{ $spareuse_grn->uses_blgto_invs->unit }}</small> </td> --}}
                     
                     
                   </tr>
+                  @endforeach
                   
                 </tbody>
+                {{-- <td>{{ $total_use }}</td> --}}
               </table>
         </div>
        </div>
@@ -122,25 +113,19 @@
        <div class="mt-10 p-9">
         <div class="border-t pt-9 border-slate-200">
          <div class="text-sm font-semibold text-slate-700">
-          <p>
-            
-           
-          </p>
-          <p>
-
-           Distribution 1st Copy - For file. 2nd Copy - For store keeper.
-           
-          </p>
-          <p>
-           This Document originaly created at {{ $spareuse_grn->created_at }}.
-           
-          </p>
+          <footer class="bg-white rounded-lg shadow dark:bg-gray-900 m-4">
+  
+            <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+            <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ now()->format('Y') }} <a class="hover:underline">Girma Gifawossen Trading</a>. All Rights Reserved.</span>
+            {{-- <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">This Document originaly created at {{ $created->created_at }}. Document Distribution 1st Copy - For file. 2nd Copy - For store keeper.</span> --}}
+        </div>
+      </footer>
          </div>
         </div>
        </div>
       </div>
      </article>
     </div>
-    @endforeach
+    
     
 </x-admin-layout>

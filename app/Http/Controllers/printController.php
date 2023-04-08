@@ -12,7 +12,7 @@ class printController extends Controller
     {
         
         $inv_grns = Spareinv::with('spareInItem')->where('GRN_ref',$id)->get();
-        $Date = ($inv_grns[1]->date_in);
+        $Date = ($inv_grns[0]->date_in);
         $GRN = $id;
         return view('admin.print.spareinvexp')->
             with(['inv_grns'=>$inv_grns,'Date'=>$Date,'GRN'=>$GRN]);
@@ -21,9 +21,17 @@ class printController extends Controller
 
     public function export_use_grn($id)
     {
-        $inv_use_grns = Usespare::where('id',$id)->with('uses_blgto_invs','use_blgtomny_vcls')->get();
+        $inv_use = Usespare::with('spareUseItem','use_blgtomny_vcls')->where('GIV_ref',$id)->get();
+        // dd($inv_use);
+        $dates = ($inv_use[0]->use_date);
+        $doc_no = ($inv_use[0]->id);
+        $created = ($inv_use[0]->created_at);
+        // dd($created)->date();
+        $total_use = $inv_use->sum('use_qty');
+        // dd($total_use);
+        // $inv_use_grns = Usespare::where('id',$id)->with('uses_blgto_invs','use_blgtomny_vcls')->get();
         
 
-        return view('admin.print.spareuseexp',compact('inv_use_grns'));
+        return view('admin.print.spareuseexp',compact('inv_use','dates','total_use','doc_no','created'));
     }
 }

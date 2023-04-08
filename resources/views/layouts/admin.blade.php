@@ -6,30 +6,34 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <title>{{ config('app.name', 'Laravel') }}</title>
+{{-- bootstrap 5 --}}
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{-- Datatables --}}
+<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/fixedheader/3.3.2/css/fixedHeader.dataTables.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/searchbuilder/1.4.2/css/searchBuilder.dataTables.css" rel="stylesheet"/>
+<link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" rel="stylesheet">
 
-<link rel="stylesheet" type="text/css" href="{{ asset('table.css') }}">
+{{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.css"> --}}
+
 
 
 <!-- Bootstrap 3.3.7 -->
 
-{{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/bootstrap/dist/css/bootstrap.min.css') }}"> --}}
-
-{{-- <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.css"> --}}
-       <!-- DataTables -->
-{{-- <link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/datatables.bootstrap.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/dataTables.bootstrap.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/buttons.dataTables.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('frontend/datatables/datatables.net-bs/css/jquery.dataTables.min.css') }}"> --}}
-
-<!-- end -->
 
         
         <script src="{{ asset('assets/js/datepicker.js') }}"></script>
         
+        <link rel="stylesheet" type="text/css" href="{{ asset('table.css') }}">
 
         <!-- Scripts -->
         @vite('resources/css/app.css')
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+        @vite(['resources/css/app.css', 'resources/js/app.js'
+        // ,'resources/css/jquery.dataTables.css','resources/js/jquery.dataTables.js'
+        //         ,'resources/js/jquery.min.js'
+                ])
     </head>
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
@@ -250,7 +254,7 @@
            
         </div>
         
-        
+        @stack('scripts')
         <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
         
         @include('sweetalert::alert')
@@ -305,6 +309,27 @@
             });
           });
         </script>
+        {{-- datatables --}}
+ 
+        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.js"></script>
+        <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.js"></script>
+        <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.js"></script>
+        <script src="https://cdn.datatables.net/searchbuilder/1.4.2/js/dataTables.searchBuilder.js"></script>
+
+        {{-- bootstrap 5 --}}
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    
         
         
     </body>

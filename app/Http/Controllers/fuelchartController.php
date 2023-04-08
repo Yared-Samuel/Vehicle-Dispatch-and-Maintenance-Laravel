@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\DataTables\FuelsDataTable;
 use Illuminate\Support\Collection;
 use App\Http\Requests\FuelStoreRequest;
 use App\Models\Fuel;
@@ -19,12 +21,12 @@ class fuelchartController extends Controller
 
 
 
-     public function index(Request $request)
+     public function index(FuelsDataTable $datatable)
      {
 
         $fuels =Vcl::with('vcl_hasmny_fuels')->get();
         // $fuels =Vcl::where('plate_id','Like','%')->with('vcl_hasmny_fuels')->get();
-        
+        // return $datatable->render('admin.fuel.index');
             
                 return view('admin.fuel.index')->with(['fuels'=>$fuels]);
      } 
@@ -125,14 +127,16 @@ class fuelchartController extends Controller
      */
     public function edit($id)
     {
-        $view_fuel = Fuel::select('kilometre')->where('vcl_id',$id)->get();
-        $avg_fuel = Fuel::select('kilometre')->where('vcl_id',$id)->sum('kilometre');
+        $view_fuel = Fuel::where('vcl_id',$id)->orderBy('fuel_date','Desc')->get();
+        $avg_fuel = Fuel::select('litre')->where('vcl_id',$id)->avg('litre');
+        $total_cash = Fuel::select('cash')->where('vcl_id',$id)->sum('cash');
+        // dd($avg_fuel);
+        $vcl_plate = Vcl::where('id',$id)->first();
         
-        $vcl_plate = Vcl::where('id',$id)->first()->pluck('plate_id');
         $vcl_type = Vcl::where('id',$id)->first()->pluck('fuel_type');
         
         
-        return view('admin.fuel.edit',compact('view_fuel','avg_fuel','vcl_plate','vcl_type'));
+        return view('admin.fuel.edit',compact('view_fuel','avg_fuel','vcl_plate','vcl_type','total_cash'));
 
     }
 

@@ -63,8 +63,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
     Route::get('/print/{export}',[printController::class, 'export_inv_grn'])->name('printspareinv.export');
     Route::get('/print/spareuseexp/{exp}',[printController::class, 'export_use_grn'])->name('printspareuse.export');
     Route::get('/cost/create/{rqst}',[costController::class, 'add_cost'])->name('cost.add');
-
-
+    Route::get('/export/fuelexport', [exportController::class, 'fuelExport'])->name('export.fuel');
 
 
 });
@@ -89,7 +88,7 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
 
 // });
 
-    
+// Route::view('components/fuel-table', [exportController::class, 'fueltable'])->name('fuel.table');
     
 
 

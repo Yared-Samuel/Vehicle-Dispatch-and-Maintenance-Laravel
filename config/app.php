@@ -181,6 +181,11 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\DataTablesServiceProvider::class,
+        Yajra\DataTables\ButtonsServiceProvider::class,
+        Barryvdh\Snappy\ServiceProvider::class,
         // Maatwebsite\Excel\ExcelServiceProvider::class,
         // Maatwebsite\LaravelNovaExcel\LaravelNovaExcelServiceProvider::class,
 
@@ -211,6 +216,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // 'ExampleClass' => App\Example\ExampleClass::class,
         // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ])->toArray(),
