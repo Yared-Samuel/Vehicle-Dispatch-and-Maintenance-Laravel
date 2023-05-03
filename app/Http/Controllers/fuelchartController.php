@@ -21,14 +21,32 @@ class fuelchartController extends Controller
 
 
 
-     public function index(FuelsDataTable $datatable)
+     public function index(Request $request)
      {
 
-        $fuels =Vcl::with('vcl_hasmny_fuels')->get();
-        // $fuels =Vcl::where('plate_id','Like','%')->with('vcl_hasmny_fuels')->get();
+        // dd($request->input('vcl_id'));
+
+        $vcls= Vcl::all();
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $vcl_id = $request->input('vcl_id');
+
+        if ($start && !$vcl_id) {
+            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->with('fuel_blgto_vcls')->get();
+        }
+        elseif ($vcl_id) {
+            
+            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->where('vcl_id',$vcl_id)->with('fuel_blgto_vcls')->get();            
+            // dd($fuels);
+        }
+        else {
+            $fuels =Fuel::with('fuel_blgto_vcls')->get();
+        } 
+        
+        
         // return $datatable->render('admin.fuel.index');
             
-                return view('admin.fuel.index')->with(['fuels'=>$fuels]);
+                return view('admin.fuel.index',compact('fuels','vcls'));
      } 
 
     /**
@@ -67,6 +85,8 @@ class fuelchartController extends Controller
                 'created_by'=>$userId,
                 
             ]);
+            toast('Data Submited!','success');
+
         }elseif ($prev_km == null) {
             Fuel::create([            
                 'fuel_date' => $request->fuel_date,
@@ -78,6 +98,7 @@ class fuelchartController extends Controller
                 'created_by'=>$userId,
                 
             ]);
+            toast('Data Submited!','success');
         }else
         {
             Alert()->error('Pleas check your input!','warning');
@@ -128,15 +149,45 @@ class fuelchartController extends Controller
     public function edit($id)
     {
         $view_fuel = Fuel::where('vcl_id',$id)->orderBy('fuel_date','Desc')->get();
-        $avg_fuel = Fuel::select('litre')->where('vcl_id',$id)->avg('litre');
+        $avg_fuel = Fuel::select('litre')->where('vcl_id',$id)->sum('litre');
+        $avg_fuel = number_format($avg_fuel, 2); 
         $total_cash = Fuel::select('cash')->where('vcl_id',$id)->sum('cash');
-        // dd($avg_fuel);
-        $vcl_plate = Vcl::where('id',$id)->first();
-        
+        $total_cash = number_format($total_cash, 2);
+        $vcl_plate = Vcl::where('id',$id)->first();        
         $vcl_type = Vcl::where('id',$id)->first()->pluck('fuel_type');
+
+
+        // average fuel consumption calcullation
+
+        $fuel_model = Fuel::where('vcl_id',$id)->get();
+        $fuel_avg_consumption = 0;
+        $fuel_consumtion = 0;
+        $diff_km = 0;
+        foreach ($fuel_model as $key => $q) {
+            if ($q->prev_km > 0) {
+                //Difference b/n current and previous distance
+                $diff = $q->kilometre - $q->prev_km;
+                // Litter
+                $litter = $q->litre;
+                // Fuel consumption ratio
+                $fuel_consumtion = $diff / $litter; 
+                // sum of the difference
+                $diff_km = $diff_km + $diff;
+            }
+            
+            $fuel_avg_consumption  = $fuel_avg_consumption + $fuel_consumtion;
+            $key;
+        }
+        
+
+        $average_fuel_counsumption = $fuel_avg_consumption / $key;
+         $average_fuel_counsumption = number_format($average_fuel_counsumption, 2); 
+        $km_average_deference = $diff_km;
+        $km_average_deference = number_format($km_average_deference, 2); 
+
         
         
-        return view('admin.fuel.edit',compact('view_fuel','avg_fuel','vcl_plate','vcl_type','total_cash'));
+        return view('admin.fuel.edit',compact('view_fuel','km_average_deference','vcl_plate','vcl_type','total_cash','average_fuel_counsumption','avg_fuel'));
 
     }
 

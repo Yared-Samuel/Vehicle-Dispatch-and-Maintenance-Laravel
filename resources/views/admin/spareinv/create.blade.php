@@ -16,12 +16,12 @@
                 >Back To Index</a>
         </div>
     </div>
-            <div class="max-w-7xl mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
+            <div class=" mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
 
 
                 {{-- new --}}
 
-                <div class="max-w-full mt-5 mx-5 overflow-hidden rounded-lg shadow-lg">
+                <div class="max-w-full mt-5 overflow-hidden rounded-lg shadow-lg">
                     <div class="px-6  bg-slate-200">
                       <h4 class="mb-3 font-bold text-lg tracking-tight text-gray-800"> Delevery Form   </h4>
                     </div>
@@ -32,7 +32,7 @@
                             <div  class="row flex justify-around w-full py-2 role="group" ">
                                
                                 
-                                <div class="mx-1 w-2/12">
+                                <div class="mx-1 w-25">
                                     <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
                                     <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                         <option disabled selected></option>
@@ -41,31 +41,23 @@
                                         @endforeach
                                     </select>         
                                 </div>
-                                <div class="mx-1 w-2/12">
+                                <div class="mx-1 w-25">
                                     <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Serial No.</label>
                                     <input type="text" name="serial[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 </div>
-                                <div class="mx-1 w-2/12">
+                                <div class="mx-1 w-25">
                                     <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
                                     <input type="text" name="model[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 </div>
-                                <div class="mx-1 w-2/12">
+                                <div class="mx-1 w-25">
                                     <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
                                     <input type="number" name="qty_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 </div>
-                                <div class="mx-1 w-2/12">
+                                <div class="mx-1 w-25">
                                     <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit Price</label>
                                     <input type="number" name="price_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 </div>
-                                <div class="mx-1 w-2/12">
-                                    <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
-                                    <select name="unit[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                        <option disabled selected></option>
-                                        @foreach (App\Enums\Unit::cases() as $unit)
-                                            <option value="{{ $unit->value }}">{{ $unit->name }}</option>
-                                        @endforeach
-                                    </select>         
-                                </div>
+                                
                                 <div class="add_spare_btn px-2 pt-6 rounded-full">
                                     <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-indigo-700 rounded-full focus:shadow-outline hover:bg-indigo-800">
                                         <svg fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-6 h-6">
@@ -110,7 +102,7 @@
         <div  class="row flex justify-around w-full py-2 role="group" ">
           
                           
-                          <div class="mx-1 w-2/12">
+                          <div class="mx-1 w-25">
                               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Item</label>
                               <select name="item_id[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                   <option disabled selected></option>
@@ -121,31 +113,23 @@
                                   
                               </select>         
                           </div>
-                          <div class="mx-1 w-2/12">
+                          <div class="mx-1 w-25">
                               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Serial No.</label>
                               <input type="text" name="serial[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           </div>
-                          <div class="mx-1 w-2/12">
+                          <div class="mx-1 w-25">
                               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Model</label>
                               <input type="text" name="model[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           </div>
-                          <div class="mx-1 w-2/12">
+                          <div class="mx-1 w-25">
                               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
                               <input type="number" name="qty_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           </div>
-                          <div class="mx-1 w-2/12">
+                          <div class="mx-1 w-25">
                               <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit Price</label>
                               <input type="number" name="price_in[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                           </div>
-                          <div class="mx-1 w-2/12">
-                              <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Unit</label>
-                              <select name="unit[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                  <option disabled selected></option>
-                                  @foreach (App\Enums\Unit::cases() as $unit)
-                                      <option value="{{ $unit->value }}">{{ $unit->name }}</option>
-                                  @endforeach
-                              </select>         
-                          </div>
+                          
                           
               <div class="remove_spare_btn px-2 pt-6 rounded-full">
                   <button class="h-10 px-10 flex-wrap text-indigo-100 transition-colors duration-150 bg-red-500 rounded-full focus:shadow-outline hover:bg-red-800">

@@ -16,7 +16,7 @@ class Requester extends Model
         // public $incrementing = false;
 
     protected $fillable= [
-        'status','request_date','request_by','description','mtn_type','vcl_id','status',
+        'status','request_date','request_by','description','mtn_type','vcl_id','status','schedule',
 
         'start_date','end_date','kilometer','created_by',
         

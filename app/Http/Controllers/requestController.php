@@ -23,8 +23,10 @@ class requestController extends Controller
     {
         $requests = Requester::where('status','=','1')
                                 ->get();
+        $rej = Requester::where('status','=','0')
+                                ->get();
         
-        return view('admin.request.index',compact('requests'));
+        return view('admin.request.index',compact('requests','rej'));
     }
 
     /**
@@ -123,20 +125,23 @@ class requestController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 1 requested 2 Acepted or in maintenance 3 maintenance completed
+        // 1 requested 0 rejected 2 Acepted and scheduled 3 maintenance completed
         
         $req = Requester::find($id);
+        $stat = $request->status;
         
         $req_done= $req->update([
-            'start_date'=>$request->start_date,
-            'status'=>$request->status,
+            'schedule'=>$request->schedule,
+            'status'=>$stat,
            
         ]);
         
 
 
-        if ($req_done) {
+        if ($stat = 2 && $req_done) {
             toast('Maintenance Request Accepted!','success');
+        }elseif ($stat = 0 && $req_done) {
+            toast('Maintenance Request Declined!','success');
         }else{
             Alert()->error('Something Went Wrong!','warning');
         }

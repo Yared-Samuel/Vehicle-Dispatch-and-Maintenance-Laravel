@@ -21,11 +21,42 @@ class spareuseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();     
+        $vcls= Vcl::all();
+        $items = Item::all();
+        // requests
+        $item_selected = $request->input('item');
+
+        $start = $request->input('start');
+        $end = $request->input('end');
+        $vcl_id = $request->input('vcl_id');
+
+        if ($start && !$vcl_id) {
+            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->with('use_blgtomny_vcls','spareUseItem')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
+
+        }
+        elseif ($vcl_id) {
+            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->where('vcl_id',$vcl_id)->with('use_blgtomny_vcls','spareUseItem')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();       
+
+        }
+        elseif ($item_selected) {
+            $items_used = Usespare::where('item_id',$item_selected)->with('use_blgtomny_vcls','spareUseItem')->get();
+            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
+
+        }
+        else {
+            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();       
+
+        } 
+
+
+         
         
-        return view('admin.spareuse.index',compact('spare_use'));
+        return view('admin.spareuse.index',compact('spare_use','vcls','items','items_used'));
     }
 
     /**
@@ -66,19 +97,7 @@ class spareuseController extends Controller
             
             $GIV = $G.$start_no;
         }
-            // number only from DRN reference
-        // $GIV_No_only = substr($GIV , strlen($G));
-        
-
-
-
-
-        // $id = $request->item_id;
-        // $qty_delv = $request->use_qty;
-        // $spare_inv = Spareinv::where('id', $id)->first()->qty_in;      
-        // $spare_used = Usespare::where('spareinv_id', $id)->sum('use_qty');
-        // $spare_use = $spare_used + $qty_delv;
-        
+               
         
 
         $userId = Auth::id();
@@ -90,13 +109,10 @@ class spareuseController extends Controller
             $item_issue = $request->item_id[$key];
             $item_inv = Inventory::where('item_id',$item_issue)->sum('quantity_inv');
             if ($item_inv < $qty_issue) {
-                
                 Alert::error('Pleas Check', 'Check Your Stock')->width('500px')->padding('5px');
                 return to_route('admin.reports.stock');
-                
                 break;
             }
-
         }
 
 
@@ -110,9 +126,10 @@ class spareuseController extends Controller
                 'item_id' => $request->item_id[$key],
                 'use_qty' => $request->use_qty[$key],
                 'vcl_id' => $request->vcl_id[$key],
-                'driver_id' => $request->driver_id[$key],
+                'driver_id' => $request->driver_id[$key] ?? null,
                 'mileage' => $request->mileage[$key],
                 'status' => 1, // spare on truck
+                'issue_serial'=>$request->issue_serial[$key],
                 'created_by'=>$userId,
                 'created_at'=> now(),
         ];

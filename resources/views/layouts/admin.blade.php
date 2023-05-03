@@ -7,7 +7,7 @@
 
         <title>{{ config('app.name', 'Laravel') }}</title>
 {{-- bootstrap 5 --}}
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 {{-- Datatables --}}
 <link href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" rel="stylesheet"/>
 <link href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.css" rel="stylesheet"/>
@@ -30,7 +30,7 @@
 
         <!-- Scripts -->
         @vite('resources/css/app.css')
-        @vite(['resources/css/app.css', 'resources/js/app.js'
+        @vite(['resources/css/app.css', 'resources/js/app.js','resources/js/app.js'
         // ,'resources/css/jquery.dataTables.css','resources/js/jquery.dataTables.js'
         //         ,'resources/js/jquery.min.js'
                 ])
@@ -38,7 +38,7 @@
     <body class="font-sans antialiased  overflow-clip md:min-h-screen">
         
 
-        <div class="bg-gradient-to-r from-teal-800 to-teal-400 shadow-slate-500  px-4 md:px-4 dark:bg-gray-900">
+        <div class="bg-gradient-to-r from-teal-800 to-teal-600 shadow-slate-500  px-4 md:px-4 dark:bg-gray-900">
             <div class="flex flex-wrap justify-between items-center ">
                 
                 <a href="https://flowbite.com" class="flex items-center">
@@ -54,21 +54,16 @@
       Reports      
       </button>
                     <!-- Dropdown menu -->
-                    <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                        <ul class="p-2 text-md font-bold text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
-                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                          <a href="#" class="block px-4 py-2 ">
-                              Expences</a>
-                          </li>
-                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                    <div id="dropdownHover" class="z-10 hidden text-white bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+                        <ul class="p-2 text-md text-white font-bold dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+                          
+                          <li class="my-1 text-md text-light ">
                             <a href="
                             {{ route('admin.reports.fuel') }}
                             " class="block px-4 py-2">Fuel</a>
                           </li>
-                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            <a href="#" class="block px-4 py-2">Maintenances</a>
-                          </li>
-                          <li class="bg-gradient-to-r from-teal-800 to-cyan-400 my-1 text-md text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                         
+                          <li class="my-1 text-md text-white ">
                             <a href="{{ route('admin.reports.stock') }}" class="block px-4 py-2">Spare Parts</a>
                           </li>
                         </ul>
@@ -96,16 +91,17 @@
                       </div>
                       
                       <div class="py-0">
-                        
-                          <form method="POST" action="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
-                            @csrf
-
-                            <x-dropdown-link :href="route('profile.edit')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">
+                        <x-dropdown-link :href="route('profile.edit')">
                                 {{ __('Profile') }}
-                            </x-dropdown-link>
-                        </form>
+                        </x-dropdown-link>
+                          
+                        
+                      </div>
+                      <div class="py-0">
+                        <x-dropdown-link :href="route('register')">
+                                {{ __('Register') }}
+                        </x-dropdown-link>
+                          
                         
                       </div>
                       <div class="py-0">
@@ -138,20 +134,13 @@
 
             <div class="min-h-screen bg-gray-100">
                 <div class="sidebar min-h-screen w-[3.35rem] overflow-hidden border-r hover:w-56 hover:bg-white hover:shadow-lg">
-                  <div class="flex h-screen flex-col justify-between pt-0 pb-6">
-                    <div>
-                      <div class="w-max p-0">
-                        {{-- <img src="{{ asset('images/Logos.svg') }}" class="mr-3 h-6 sm:h-9" alt="Flowbite Logo" /> --}}
-                        {{-- <img src="https://tailus.io/images/logo.svg" class="w-32" alt=""> --}}
-                      </div>
-                      <ul class="mt-0.5 space-y-1 tracking-wide">
-                        <li class="min-w-max">
-                          <a href="{{ route('admin.request.index') }}"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-400  px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            {{-- <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                              <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
-                              <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
-                              <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
-                            </svg> --}}
+                  <div class="flex h-screen flex-col justify-between object-left pt-0 pb-6">
+                    <div class="">
+                      
+                      <div class="mt-0.5 space-y-1 g-0 tracking-wide min-w-max">
+                        
+                          <a href="{{ route('admin.request.index') }}"  class="relative flex items-center g-0 space-x-4 bg-gradient-to-r from-teal-800 to-cyan-400  px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5M9 11.25v1.5M12 9v3.75m3-6v6" />
                             </svg>
@@ -159,15 +148,11 @@
                             <span class="-mr-1 font-bold">Request</span>
                             
                           </a>
-                        </li>
                         
-                        <li class="min-w-max">
-                          <a href="{{ route('admin.maintenance.index') }}"  aria-label="dashboard" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            {{-- <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
-                              <path d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z" class="fill-current text-cyan-400 dark:fill-slate-600"></path>
-                              <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z" class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
-                              <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z" class="fill-current group-hover:text-sky-300"></path>
-                            </svg> --}}
+                        
+                        
+                          <a href="{{ route('admin.maintenance.index') }}"   class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
+                            
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M11.42 15.17L17.25 21A2.652 2.652 0 0021 17.25l-5.877-5.877M11.42 15.17l2.496-3.03c.317-.384.74-.626 1.208-.766M11.42 15.17l-4.655 5.653a2.548 2.548 0 11-3.586-3.586l6.837-5.63m5.108-.233c.55-.164 1.163-.188 1.743-.14a4.5 4.5 0 004.486-6.336l-3.276 3.277a3.004 3.004 0 01-2.25-2.25l3.276-3.276a4.5 4.5 0 00-6.336 4.486c.091 1.076-.071 2.264-.904 2.95l-.102.085m-1.745 1.437L5.909 7.5H4.5L2.25 3.75l1.5-1.5L7.5 4.5v1.409l4.26 4.26m-1.745 1.437l1.745-1.437m6.615 8.206L15.75 15.75M4.867 19.125h.008v.008h-.008v-.008z" />
                             </svg>
@@ -175,34 +160,28 @@
                             <span class="-mr-1 font-bold">Maintenance</span>
                             
                           </a>
-                        </li>
-                        <li class="min-w-max">
+                        
+                        
                           <a href="{{ route('admin.fuel.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                              <path class="fill-current text-gray-300 group-hover:text-cyan-300" fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd" />
-                              <path class="fill-current text-gray-600 group-hover:text-cyan-600" d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
-                            </svg> --}}
+                            
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M12 3c2.755 0 5.455.232 8.083.678.533.09.917.556.917 1.096v1.044a2.25 2.25 0 01-.659 1.591l-5.432 5.432a2.25 2.25 0 00-.659 1.591v2.927a2.25 2.25 0 01-1.244 2.013L9.75 21v-6.568a2.25 2.25 0 00-.659-1.591L3.659 7.409A2.25 2.25 0 013 5.818V4.774c0-.54.384-1.006.917-1.096A48.32 48.32 0 0112 3z" />
                             </svg>
                             
                             <span class="font-bold">Fueling</span>
                           </a>
-                        </li>
-                        <li class="min-w-max">
+                        
+                        
                           <a href="{{ route('admin.cost.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
-                            {{-- <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                              <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd" d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z" clip-rule="evenodd" />
-                              <path class="fill-current text-gray-300 group-hover:text-cyan-300" d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-                            </svg> --}}
+                            
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" />
                             </svg>
                             
                             <span class="font-bold">Expences</span>
                           </a>
-                        </li>
-                        <li class="min-w-max">
+                        
+                        
                           <a href="{{ route('admin.spareinv.index') }}" class="relative flex items-center space-x-4 bg-gradient-to-r from-teal-800 to-cyan-200 px-4 py-3 text-white hover:bg-gradient-to-r hover:from-indigo-900 hover:to-emerald-500">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
@@ -210,9 +189,9 @@
                             
                             <span class="font-bold">Inventory</span>
                           </a>
-                        </li>
                         
-                      </ul>
+                        
+                        </div>
                       
                     </div>
                     
@@ -240,7 +219,7 @@
                   </div>
                 </div>
               </div>
-            <main class="flex flex-col m-1 p-1 pb-10 w-full overflow-y-auto h-screen bg-slate-100 justify-between ">
+            <main class="flex flex-col m-1 p-1 pb-10 w-full overflow-y-auto h-screen bg-white justify-between">
 
                 {{ $slot }}
 
@@ -268,25 +247,25 @@
             $(".add_item_btn").click(function(e){
               e.preventDefault();
               $("#show_item").prepend(`
-              <div  class="row flex justify-around w-full px-4 py-2 role="group" ">
-                <div class="mx-1 w-2/12">
-                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Cost Date</label>
+              <div  class="row flex  w-full px-4 py-2 role="group" ">
+                <div class="w-25">
+                        <label for="small-input" class="block  text-sm font-medium text-gray-900 dark:text-white">Cost Date</label>
                         <input type="date" name="cost_date[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mx-1 w-3/12">
-                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
+                    <div class="w-25">
+                        <label for="small-input" class="block  text-sm font-medium text-gray-900 dark:text-white">Description</label>
                         <input type="text" name="cost_desc[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mx-1 w-2/12">
-                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Price</label>
+                    <div class="w-25">
+                        <label for="small-input" class="block  text-sm font-medium text-gray-900 dark:text-white">Price</label>
                         <input type="number" name="cost_cash[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mx-1 w-2/12">
-                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
+                    <div class="w-25">
+                        <label for="small-input" class="block  text-sm font-medium text-gray-900 dark:text-white">Quantity</label>
                         <input type="number" name="qty[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
-                    <div class="mx-1 w-2/12">
-                        <label for="small-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Reference</label>
+                    <div class="w-25">
+                        <label for="small-input" class="block  text-sm font-medium text-gray-900 dark:text-white">Reference</label>
                         <input type="number" name="ref_no[]" id="small-input" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                     </div>
                     <div class="remove_item_btn px-2 pt-6 w-1/12">
@@ -311,24 +290,18 @@
         </script>
         {{-- datatables --}}
  
-        <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/pdfmake.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.36/vfs_fonts.js"></script>
-        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
-        <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.js"></script>
+        {{-- <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.html5.js"></script>
         <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.print.js"></script>
         <script src="https://cdn.datatables.net/datetime/1.4.0/js/dataTables.dateTime.js"></script>
         <script src="https://cdn.datatables.net/fixedheader/3.3.2/js/dataTables.fixedHeader.js"></script>
-        <script src="https://cdn.datatables.net/searchbuilder/1.4.2/js/dataTables.searchBuilder.js"></script>
+        <script src="https://cdn.datatables.net/searchbuilder/1.4.2/js/dataTables.searchBuilder.js"></script> --}}
 
-        {{-- bootstrap 5 --}}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-        <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-    <script src="//cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+        
     
         
         

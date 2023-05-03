@@ -10,10 +10,18 @@ class Item extends Model
     use HasFactory;
 
     protected $fillable= [
-        'name','category',
+        'name','category','item_code','unit'
         
     ];
 
+    public function item_hasmny_INV()
+    {
+        return $this->hasMany(Inventory::class);
+    }
+    public function item_hasmny_use()
+    {
+        return $this->hasMany(Usespare::class);
+    }
     public function vcl_hasmny_INV()
     {
         return $this->hasMany(Inventory::class);

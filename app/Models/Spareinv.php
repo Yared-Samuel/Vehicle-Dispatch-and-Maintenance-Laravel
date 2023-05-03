@@ -11,7 +11,7 @@ class Spareinv extends Model
 
     protected $fillable= [
         'date_in','serial','item_id','model','qty_in','price_in','total_price',
-        'unit','created_by','GRN_ref'
+        'created_by','GRN_ref'
         
     ];
 

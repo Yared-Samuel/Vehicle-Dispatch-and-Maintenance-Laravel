@@ -19,12 +19,20 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','start_date','end_date','status','mtn_type','description',
+        $mtn_aprroveds= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
                                                         'request_date')
-                                    ->whereBetween('status',[2,3])
+                                    ->where('status',2)
+                                    ->get();
+        $mtn_started= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
+                                                        'request_date')
+                                    ->where('status',3)
+                                    ->get();
+        $mtn_completed= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
+                                                        'request_date')
+                                    ->where('status',4)
                                     ->get();
         
-        return view('admin.maintenance.index',compact('mtn_aprroveds'));
+        return view('admin.maintenance.index',compact('mtn_aprroveds','mtn_started','mtn_completed'));
         
     }
 
@@ -83,18 +91,17 @@ class maintenanceController extends Controller
                         ->with('rqst_blgto_vcls')
                         ->where('id','=',$id)
                         ->get();
-
+        foreach ($rqst_approved as $key => $rqst_approves) {
+            $start_date_check = $rqst_approves->start_date ?? null;
+        $end_date_check = $rqst_approves->end_date ?? null;
+        $status_check = $rqst_approves->status;
+        }
         
         
-        // $costs = Cost::with('cost_blgto_rqsts')
-        //                 ->where('requester_id','=',null)
-        //                 ->get();
-        return view('admin.maintenance.edit')
-        ->with(['rqst_approved'=>$rqst_approved
-        // ,'costs'=>$costs
-    ]);
+        
+        return view('admin.maintenance.edit',compact('rqst_approved','start_date_check','end_date_check','status_check'));
 
-        return to_route('admin.cost.create',compact('id'));
+        // return to_route('admin.cost.create',compact('id','start_date_check','end_date_check','status_check'));
     }
 
     /**
@@ -106,30 +113,64 @@ class maintenanceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $request->validate([
-            
-            'end_date'=>'required',
-            'kilometer'=>'required'
-        ]);
+        $start = $request->start_date ?? null;
+        $end = $request->end_date ?? null;
+        
 
-        // 1 requested 2 Acepted or in maintenance 3 maintenance completed 4 cost applied
+        // 1 requested 2 Acepted or in maintenance 3 maintenance started 4 maintenance completed 5 cost applied
 
         $mtn_complete = Requester::find($id);
-        $mtn_completed =  $mtn_complete->update([
+        $check_start = $mtn_complete->start_date;
+        $check_end = $mtn_complete->end_date;
+        $check_kilometer = $mtn_complete->kilometer;
+
+        if ($start != null && $end != null) {
+            $mtn_completed =  $mtn_complete->update([
             
-            'end_date'=>$request->end_date,
-            'kilometer'=>$request->kilometer,
-            'status'=>3,
-            'timestamps'=>now(),
-        ]);
+                'start_date'=>$start,
+                'end_date'=>$end,
+                'kilometer'=>$request->kilometer,
+                'status'=>4,
+                'timestamps'=>now(),
+            ]);
+            toast('Maintenance completed!','success');
+
+        }elseif (is_null($start) && $end != null) {
+            $mtn_completed =  $mtn_complete->update([
+            
+                // 'start_date'=>$start,
+                'end_date'=>$end,
+                'kilometer'=>$request->kilometer,
+                'status'=>4,
+                'timestamps'=>now(),
+            ]);
+
+            toast('Maintenance completed!','success');
+        }elseif ($start <> null && is_null($end)) {
+            $mtn_completed =  $mtn_complete->update([
+            
+                'start_date'=>$start,
+                // 'end_date'=>$end,
+                'kilometer'=>$request->kilometer,
+                'status'=>3,
+                'timestamps'=>now(),
+            ]);
+            toast('Vehicle maintenance started!','success');
+
+        }else {
+            Alert()->error('Something Went Wrong!','warning');
+        }
+
+
+        
         
 
 
-        if ($mtn_completed) {
-            toast('Maintenance completed!','success');
-        }else{
-            Alert()->error('Something Went Wrong!','warning');
-        }
+        // if ($mtn_completed) {
+        //     toast('Maintenance completed!','success');
+        // }else{
+        //     Alert()->error('Something Went Wrong!','warning');
+        // }
 
 
 

@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\costController;
+use App\Http\Controllers\dashController;
 use App\Http\Controllers\driverController;
 use App\Http\Controllers\exportController;
 use App\Http\Controllers\fuelchartController;
@@ -31,15 +33,15 @@ use App\Http\Controllers\vclController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -90,6 +92,16 @@ Route::middleware(['auth', 'Admin'])->name('admin.')->prefix('admin')->group(fun
 
 // Route::view('components/fuel-table', [exportController::class, 'fueltable'])->name('fuel.table');
     
+
+
+
+// registration and so on
+
+
+
+
+
+
 
 
 require __DIR__.'/auth.php';

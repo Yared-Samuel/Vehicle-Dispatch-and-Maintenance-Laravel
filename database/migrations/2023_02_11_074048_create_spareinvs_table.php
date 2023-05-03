@@ -25,7 +25,6 @@ return new class extends Migration
             $table->integer('qty_in');
             $table->integer('price_in');
             $table->integer('total_price');
-            $table->string('unit');            
             $table->smallInteger('created_by');
             $table->timestamps();
         });

@@ -6,8 +6,8 @@
         </h2>
     </x-slot>    
     {{-- {{ $ids = 1 }} --}}
-    <div class="relative overflow-x-scroll max-h-full h-5/6 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
-        <div class="flex justify-between w-full px-4 py-2 items-center">
+    <div class="relative overflow-x-scroll max-h-full h-5/6 bg-slate-50 p-4 md:max-h-screen shadow-md sm:rounded-lg">
+        <div class="flex justify-between w-full bg-slate-400 px-4 py-2 items-center">
             <div class="text-xl font-bold">
                 Vehicle Lists
             </div>  
@@ -23,7 +23,7 @@
         
        
         
-            <table id="table_one" class="w-full overflow-x-scroll text-sm text-left text-gray-500 dark:text-gray-400">
+            <table id="vcl-tbl" class="w-full overflow-x-scroll text-sm text-left text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-white uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
             <tr>
                 <th scope="col" class="py-2 px-2 border border-r-gray-300">
@@ -101,19 +101,18 @@
 </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-      $('#tiretbl').DataTable({
-        "order": [
-          [4, "desc"]
-        ],
-        dom: 'lBfrtip',
-        buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
-      });
-    });
-    </script>
+
         
     
 </x-admin-layout>
+
+<script>
+    $(document).ready(function() {
+    $('#vcl-tbl').DataTable({
+        dom: 'B<"clear">lfrtip',
+   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
+    });
+});
+  
+ 
+</script>

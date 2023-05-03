@@ -1,12 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Item;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\ReservationStoreRequest;
+use App\Models\Reservation;
+use App\Models\Table;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
-class itemController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +17,8 @@ class itemController extends Controller
      */
     public function index()
     {
-        $items = Item::all();
-
-        return view('admin.items.index',compact('items'));
+        $reservations= Reservation::all();
+        return view('admin.reservations.index',compact('reservations'));
     }
 
     /**
@@ -27,7 +28,8 @@ class itemController extends Controller
      */
     public function create()
     {
-        return view('admin.items.create');
+        $tables = Table::all();
+        return view('admin.reservations.create', compact('tables'));
     }
 
     /**
@@ -36,25 +38,10 @@ class itemController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservationStoreRequest $request)
     {
-        $item_id = Item::max('id') ?? 1;
-        
-        $number = sprintf('%03d',$item_id);
-
-        $code = 'GIC_';
-        $item_code = $code.$number;
-        // dd($item_code);
-
-        Item::create([
-            'item_code'=> $item_code,
-            'name'=> $request->name,
-            'category'=> $request->category,
-            'unit'=> $request->unit,
-
-        ]);
-
-        return to_route('admin.items.index');
+        Reservation::create($request->validated());
+        return to_route('admin.reservations.index');
     }
 
     /**

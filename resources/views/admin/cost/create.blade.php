@@ -16,7 +16,7 @@
                 <button type="button" class="text-green-700 hover:text-white border border-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mr-2 mb-2 dark:border-green-500 dark:text-green-500 dark:hover:text-white dark:hover:bg-green-600 dark:focus:ring-green-800"
                   >Cost List</button>
             </a>
-            <a href="{{ route('admin.cost.index') }}">
+            {{-- <a href="{{ route('admin.cost.index') }}">
                 <button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1.5 text-center mr-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900"
                   >Replenish
                   <span class="inline-flex items-center justify-center w-4 h-4 ml-2 text-xs font-semibold text-white bg-red-400 rounded-full">
@@ -27,7 +27,7 @@
             
       </div>
         <div class="text-right font-bold mr-4">Cost Form</div>
-      </div> 
+      </div>  --}}
 
 
       <div class="max-w-full mt-5 mx-5 overflow-hidden rounded-lg shadow-lg">

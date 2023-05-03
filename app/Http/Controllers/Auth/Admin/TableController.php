@@ -1,14 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\MaintenancetypeStoreRequest;
-use App\Models\Maintenancetype;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\TableStoreRequest;
+use App\Models\Table;
 use Illuminate\Http\Request;
 
-use function Ramsey\Uuid\v1;
-
-class maintenanceTypeController extends Controller
+class TableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +16,8 @@ class maintenanceTypeController extends Controller
      */
     public function index()
     {
-        $mnts = Maintenancetype::all();
-
-        return view('admin.maintenancetype.index', compact('mnts'));
+        $tables= Table::all();
+        return view('admin.tables.index', compact('tables'));
     }
 
     /**
@@ -29,7 +27,7 @@ class maintenanceTypeController extends Controller
      */
     public function create()
     {
-        return view('admin.maintenancetype.create');
+        return view('admin.tables.create');
     }
 
     /**
@@ -38,14 +36,16 @@ class maintenanceTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(MaintenancetypeStoreRequest $request)
+    public function store(TableStoreRequest $request)
     {
-        
-        Maintenancetype::create([
-            'maintenance_name'=>$request->maintenance_name
+        Table::create([
+            'name' => $request->name,
+            'guest_number' => $request->guest_number,
+            'status' => $request->status,
+            'location' => $request->location,
         ]);
 
-        return to_route('admin.maintenancetype.index');
+        return to_route('admin.tables.index');
     }
 
     /**
@@ -65,9 +65,9 @@ class maintenanceTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Maintenancetype $maintenancetype)
+    public function edit(Table $table)
     {
-        return view('admin.maintenancetype.edit',compact('maintenancetype'));
+        return view('admin.tables.edit', compact('table'));
     }
 
     /**
@@ -77,17 +77,11 @@ class maintenanceTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Maintenancetype $maintenancetype)
+    public function update(TableStoreRequest $request, Table $table)
     {
-        $request->validate([
-            'maintenance_name'=>'required'
-        ]);
+        $table->update($request->validated());
 
-        $maintenancetype->update([
-            'maintenance_name'=>$request->maintenance_name
-        ]);
-        return to_route('admin.maintenancetype.index');
-
+        return to_route('admin.tables.index');
     }
 
     /**
@@ -96,10 +90,10 @@ class maintenanceTypeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maintenancetype $maintenancetype)
+    public function destroy(Table $table)
     {
-        $maintenancetype->delete();
+        $table->delete();
 
-        return to_route('admin.maintenancetype.index');
+        return to_route('admin.tables.index');
     }
 }

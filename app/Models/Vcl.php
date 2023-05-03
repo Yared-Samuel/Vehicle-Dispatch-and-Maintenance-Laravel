@@ -45,6 +45,7 @@ class Vcl extends Model
     {
         return $this->hasMany(Mtn_cost::class);
     }
+    
 
 
 

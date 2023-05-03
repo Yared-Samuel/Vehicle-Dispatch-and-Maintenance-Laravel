@@ -17,14 +17,15 @@
             <x-application-logo></x-application-logo>   
             <div class="flex justify-between">
          <p class="text-xl font-extrabold tracking-tight uppercase font-body">
-            Goods received note (GRN)
+            Goods receiving note (GRN)
          </p>
          <div>
-            <p>Date: {{ $Date }}</p>
-            
+          <hr class="m-0 p-0">
+            <p class="m-0 p-0">Date: {{ $Date }}</p>
+            <hr class="m-0 p-0">
+            <p class="m-0 p-0">GRN-No: {{ $GRN }}</p>
+            <hr class="m-0 p-0">
          </div>
-         
-
         </div>
         <hr class="font-bold">
         </div>
@@ -37,24 +38,24 @@
                 <thead>
                   <tr>                    
                     {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">No.</th> --}}
-                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Description</th>
-                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Category</th>
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Item Code</th>
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Item Name</th>
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Model</th>
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Serial</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Quantity</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Unite price</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Total price</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr class="border-2">
-                  <td>{{ $GRN }}</td>
-
-                  </tr>
+                <tbody>         
                   @foreach ($inv_grns as $key=>$inv_grn)
                   <tr>
                     {{-- <td class="py-1 px-2  border-r border-b-2">{{ $key+1 }}</td> --}}
-                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2"> - {{ $inv_grn->spareInItem->name }}</td>
-                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->spareInItem->category }}</td>
-                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->qty_in }} <small>{{ $inv_grn->unit }}</small> </td>
+                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2"> - {{ $inv_grn->spareInItem->item_code }}</td>
+                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2">{{ $inv_grn->spareInItem->name }}</td>
+                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2">{{ $inv_grn->model }}</td>
+                    <td class="py-1 px-2  border-l border-r border-b-2 border-t-2">{{ $inv_grn->serial }}</td>
+                    <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->qty_in }} <small>{{ $inv_grn->spareInItem->unit }}</small> </td>
                     <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->price_in }}</td>
                     <td class="py-1 px-2  border-r border-b-2 border-t-2">{{ $inv_grn->total_price }}</td>
                     
@@ -95,6 +96,7 @@
            
          
       </div>
+      <p class="pt-4">Thechnical Verification By___________________________________________Signature__________________________________________</p> 
      </article>
 
      

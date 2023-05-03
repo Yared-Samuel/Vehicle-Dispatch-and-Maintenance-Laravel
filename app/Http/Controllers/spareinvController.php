@@ -21,7 +21,7 @@ class spareinvController extends Controller
      */
     public function index()
     {
-        $spareInv = Spareinv::with('spareInItem')->get()->groupBy('GRN_ref');
+        $spareInv = Spareinv::with('spareInItem')->get();
         // dd($spareInv);
         return view('admin.spareinv.index')->with(['spareInv'=>$spareInv]);
     }
@@ -80,7 +80,6 @@ class spareinvController extends Controller
             'qty_in' => $request->qty_in[$key],
             'price_in' => $request->price_in[$key],
             'total_price' => $request->qty_in[$key] * $request->price_in[$key],
-            'unit' => $request->unit[$key],
             'created_by'=>$userId,
             'created_at'=> now(),
     ];

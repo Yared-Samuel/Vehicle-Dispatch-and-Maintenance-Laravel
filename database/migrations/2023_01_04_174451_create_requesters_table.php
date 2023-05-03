@@ -27,6 +27,7 @@ return new class extends Migration
 
             //on maintenance
 
+            $table->date('schedule')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->bigInteger('kilometer')->nullable()->default(0001);

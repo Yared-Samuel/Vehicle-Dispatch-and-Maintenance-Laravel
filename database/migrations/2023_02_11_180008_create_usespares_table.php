@@ -27,6 +27,8 @@ return new class extends Migration
             
             $table->integer('mileage')->nullable();
             $table->string('desc')->nullable();
+            // Serial number only for Tires
+            $table->string('issue_serial')->nullable();
             // status 1->on the truck 2-> Disposed
             $table->tinyInteger('status')->default('1');
             $table->smallInteger('created_by');

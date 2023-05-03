@@ -25,37 +25,29 @@ class costController extends Controller
      */
     public function index(Request $request)
     {
+        $vcls= Vcl::all();
 
 
+      $start =  $request->input('start');
+      $end =  $request->input('end');
+      $vcl_id =  $request->input('vcl_id');
 
-        $cost_vcls = Mtn_cost::with('mtnnCost_blgto_vcls')->orderBy('cost_date','desc')->get()->groupBy('requester_id');
+        if ($start && !$vcl_id ) {
+        $cost_vcls = Mtn_cost::whereBetween('cost_date',[$start, $end])->with('mtnnCost_blgto_vcls')->orderBy('cost_date','desc')->get();
+            
+        }elseif ($vcl_id) {
+        $cost_vcls = Mtn_cost::whereBetween('cost_date',[$start, $end])->where('vcl_id',$vcl_id )->with('mtnnCost_blgto_vcls')->orderBy('cost_date','desc')->get();
+            
+        }else
+        {
+            $cost_vcls = Mtn_cost::with('mtnnCost_blgto_vcls')->orderBy('cost_date','desc')->get();
+        }
+
         
         
-        // $costs = Mtn_cost::with('mtnnCost_blgto_vcls')->get();
-
         
-
-        // if (count($request->all()) > 0) {
-        //     $vcl = $request->input('vcl');
-            
-            
-        //     $cost_vcls = Vcl::where('id','=',$vcl)->with('vcl_hasmny_mtnCost',function ($date_range) use ($request){
-        //                         $str_date =  $request->input('start');            
-        //                         $end_date = $request->input('end');
-        //                          $date_range->whereBetween('cost_date',[$str_date, $end_date])->get()
-        //                         ->groupBy('requester_id ')
-        //                          ;
-        //                                  return $date_range;
-        //                                          })->get();  
-        //         dd($cost_vcls);
-                                                 
-        // }else{
-        //     $cost_vcls = Vcl::with('vcl_hasmny_mtnCost')->get()->groupBy('requester_id ');
-        //     dd($cost_vcls);
-
-            
-        // }
-        return view('admin.cost.index',compact('cost_vcls'));
+        
+        return view('admin.cost.index',compact('cost_vcls','vcls'));
     }
 
 
@@ -147,7 +139,7 @@ class costController extends Controller
     public function show($id)
     {
          $cost = Mtn_cost::where('requester_id',$id)->with('mtnnCost_blgto_vcls')->get();
-        // dd($cost);
+        
         
         // $cost_detail = Cost::where('id',$id)->->get();
         

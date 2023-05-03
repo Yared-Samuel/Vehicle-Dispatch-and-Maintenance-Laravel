@@ -21,7 +21,7 @@
          </p>
          <div>
             <p>Date: {{ $dates }}</p>
-            <p>GRN No: {{ $doc_no }}</p>
+            <p>ISSUE No: {{ $doc_no }}</p>
          </div>
          
 
@@ -29,27 +29,7 @@
         <hr class="font-bold">
         </div>
        </div>
-       {{-- <div class="p-9">
-        <div class="flex w-full">
-         <div class="grid grid-cols-4 gap-12">
-          
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">Invoice Created at</p>
-           <p>{{ $spareuse_grn->created_at }}</p>
-           
-          </div>
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">GRN Number</p>
-           <p>0000{{ $spareuse_grn->id }}</p>         
-          </div>
-          <div class="text-sm font-light text-slate-500">
-           <p class="text-sm font-normal text-slate-700">Item Ccategory</p>
-           <p>{{ $spareuse_grn->uses_blgto_invs->spare_type }}</p>         
-          </div>
-          
-         </div>
-        </div>
-       </div> --}}
+       
    
        <div class="p-9">
         <div class="flex flex-col mx-0 mt-8">
@@ -57,10 +37,10 @@
                 <thead>
                   <tr>
                     
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Item Code</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Description</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Plate</th>
-                    {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">Category</th> --}}
-                    {{-- <th scope="col" class="py-2 px-2 border border-r-gray-300">Milage</th> --}}
+                    
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Quantity</th>
                     
                   </tr>
@@ -68,19 +48,18 @@
                 <tbody>
                   @foreach ($inv_use as $spareuse_grn)
                   <tr>
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->spareUseItem->item_code }}</td>
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->spareUseItem->name }}</td>
                    
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_blgtomny_vcls->plate_id }}</td>
                    
-                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }}</td>     
-                    {{-- <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }} <small>{{ $spareuse_grn->uses_blgto_invs->unit }}</small> </td> --}}
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }} <small>{{ $spareuse_grn->spareUseItem->unit }}</small> </td>     
                     
                     
                   </tr>
                   @endforeach
                   
                 </tbody>
-                {{-- <td>{{ $total_use }}</td> --}}
               </table>
         </div>
        </div>
@@ -117,7 +96,6 @@
   
             <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">© {{ now()->format('Y') }} <a class="hover:underline">Girma Gifawossen Trading</a>. All Rights Reserved.</span>
-            {{-- <span class="block text-sm text-gray-500 sm:text-center dark:text-gray-400">This Document originaly created at {{ $created->created_at }}. Document Distribution 1st Copy - For file. 2nd Copy - For store keeper.</span> --}}
         </div>
       </footer>
          </div>
@@ -126,6 +104,9 @@
       </div>
      </article>
     </div>
+
+
+    
     
     
 </x-admin-layout>
