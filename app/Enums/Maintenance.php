@@ -10,6 +10,7 @@ namespace App\Enums;
     case Defferencial = 'differ';
     case Lights = 'light';
     case Mirror = 'mirror';
+    case Cloths = 'cloth';
     case Other = 'other';
     
  }

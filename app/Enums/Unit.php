@@ -5,6 +5,7 @@ namespace App\Enums;
  enum Unit: string
  {
     case Piece = 'piece';
+    case Pair = 'pair';
     case Liter = 'liter';
     case Kilogram = 'kilogram';
     case Meter = 'meter';

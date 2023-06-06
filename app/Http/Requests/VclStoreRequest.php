@@ -27,14 +27,14 @@ class VclStoreRequest extends FormRequest
             'plate_id'=>['required'],
             'plate_code'=>['required'],
             'plate_city'=>['required'],
-            'chassis_number'=>['required'],
-            'motor_number'=>['required'],
-            'vcl_model'=>['required'],
+            'chassis_number'=>['nullable'],
+            'motor_number'=>['nullable'],
+            'vcl_model'=>['nullable'],
             'fuel_type'=>['required'],
             'category_name'=>['required'],
-            'purchase_date'=>['required'],
-            'manufacture_date'=>['required'],
-            'image'=> ['required', 'image'],
+            'purchase_date'=>['nullable'],
+            'manufacture_date'=>['nullable'],
+            'image'=> ['nullable', 'image'],
         ];
     }
 }

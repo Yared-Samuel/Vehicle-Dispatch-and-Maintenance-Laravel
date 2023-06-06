@@ -12,6 +12,7 @@ namespace App\Enums;
     case Mirrors = 'mirror';
     case Lights = 'light';
     case Tire = 'tire';
+    case Cloths = 'cloth';
     case Other = 'other';
     
  }
