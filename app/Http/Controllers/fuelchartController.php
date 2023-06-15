@@ -32,15 +32,15 @@ class fuelchartController extends Controller
         $vcl_id = $request->input('vcl_id');
 
         if ($start && !$vcl_id) {
-            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->with('fuel_blgto_vcls')->get();
+            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->with('fuel_blgto_vcls')->orderBy('id','desc')->orderBy('fuel_date','desc')->get();
         }
         elseif ($vcl_id) {
             
-            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->where('vcl_id',$vcl_id)->with('fuel_blgto_vcls')->get();            
+            $fuels =Fuel::whereBetween('fuel_date',[$start, $end])->where('vcl_id',$vcl_id)->with('fuel_blgto_vcls')->orderBy('id','desc')->orderBy('fuel_date','desc')->get();            
             // dd($fuels);
         }
         else {
-            $fuels =Fuel::with('fuel_blgto_vcls')->get();
+            $fuels =Fuel::with('fuel_blgto_vcls')->orderBy('id','desc')->orderBy('fuel_date','desc')->get();
         } 
         
         
@@ -56,7 +56,7 @@ class fuelchartController extends Controller
      */
     public function create()
     {
-        $vcls= Vcl::all();
+        $vcls= Vcl::all()->sortBy('plate_id');
         return view('admin.fuel.create')->with(['vcls'=>$vcls]);
     }
 
@@ -107,7 +107,7 @@ class fuelchartController extends Controller
 
 
         
-        return to_route('admin.fuel.create');
+        return to_route('admin.fuel.index');
     }
 
     /**

@@ -21,7 +21,7 @@ class spareinvController extends Controller
      */
     public function index()
     {
-        $spareInv = Spareinv::with('spareInItem')->get();
+        $spareInv = Spareinv::with('spareInItem')->orderBy('id','desc')->get();
         // dd($spareInv);
         return view('admin.spareinv.index')->with(['spareInv'=>$spareInv]);
     }
@@ -34,7 +34,7 @@ class spareinvController extends Controller
      */
     public function create()
     {
-        $items = Item::all();
+        $items = Item::orderBy('name')->get();
         $vcls = Vcl::all();
         return view('admin.spareinv.create',compact('items','vcls'));
     }

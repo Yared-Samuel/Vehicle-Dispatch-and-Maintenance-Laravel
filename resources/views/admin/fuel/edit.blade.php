@@ -165,8 +165,11 @@
                                 <b> {{ $view->kilometre }}</b> <small class="text-yellow-800">KM</small>
                                 
                             </td>
+                            @php
+                              $avg_consumptin = ($view->kilometre - $view->prev_km) / $view->litre
+                            @endphp
                             <td>
-                              <b> {{ $avg_consumptin = ($view->kilometre - $view->prev_km) / $view->litre }}</b> <small class="text-red-500">KM / LITTER</small> 
+                              <b> {{ number_format($avg_consumptin, 2) }}</b> <small class="text-red-500">KM / LITTER</small> 
                           </td>
                           
                             

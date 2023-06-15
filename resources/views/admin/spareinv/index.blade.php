@@ -108,7 +108,7 @@
                             <b> {{ $spare->price_in }}</b> <small class="text-green-700">birr</small> 
                         </td>
                         <td class="py-1 px-2 border-r">
-                            <b>{{ $spare->price_in * $spare->qty_in }}</b> <small class="text-green-700">birr</small> 
+                            <b>{{ $spare->price_in * $spare->qty_in }}</b> <small class="text-green-700">birr</small>
                         </td>
                         
                         

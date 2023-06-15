@@ -33,23 +33,23 @@ class spareuseController extends Controller
         $vcl_id = $request->input('vcl_id');
 
         if ($start && !$vcl_id) {
-            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->with('use_blgtomny_vcls','spareUseItem')->get();
-            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
+            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
 
         }
         elseif ($vcl_id) {
-            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->where('vcl_id',$vcl_id)->with('use_blgtomny_vcls','spareUseItem')->get();
-            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();       
+            $spare_use = Usespare::whereBetween('use_date',[$start, $end])->where('vcl_id',$vcl_id)->with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();       
 
         }
         elseif ($item_selected) {
-            $items_used = Usespare::where('item_id',$item_selected)->with('use_blgtomny_vcls','spareUseItem')->get();
-            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
+            $items_used = Usespare::where('item_id',$item_selected)->with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
+            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
 
         }
         else {
-            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();
-            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->get();       
+            $spare_use = Usespare::with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();
+            $items_used = Usespare::with('use_blgtomny_vcls','spareUseItem')->orderBy('id','desc')->get();    
 
         } 
 

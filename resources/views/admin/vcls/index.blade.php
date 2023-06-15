@@ -22,32 +22,32 @@
     
         
        
-        
-            <table id="vcl-tbl" class="w-full overflow-x-scroll text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-white uppercase bg-gray-700 dark:bg-gray-700 dark:text-gray-400">
+        <div class="bg-gray-100 p-2 rounded-md border">
+            <table id="vcl-tbl" class="display table table-sm hover cell-border compact stripe" >
+                <thead style="background-color: gray; font-size: 100%; color: white;">
             <tr>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     #
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Plate
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Category
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Model
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Purchase date
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Fuel Consumption
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Document
                 </th>
-                <th scope="col" class="py-2 px-2 border border-r-gray-300">
+                <th>
                     Detail
                 </th>
                 
@@ -55,23 +55,23 @@
         </thead>
         <tbody>
             @foreach ($vcls as $key=>$vcl)
-            <tr class="odd:bg-white even:bg-slate-100 bg-gray-100 text-gray-900 font-semibold hover:bg-gray-200 border-b dark:bg-gray-900 dark:border-gray-700">
-                <th scope="row" class="py-1 px-2 border-r">
+            <tr >
+                <th >
                     {{ $key + 1 }}
                 </th>
-                <td class="py-1 px-2 border-r">
+                <td>
                     {{ $vcl->plate_city }} - 0{{ $vcl->plate_code }} <b>-</b> {{ $vcl->plate_id }}
                 </td>
-                <td class="py-1 px-2 border-r">
+                <td>
                     {{ $vcl->category_name }}
                 </td>                
-                <td class="py-1 px-2 border-r">
+                <td>
                     {{ $vcl->vcl_model }}
                 </td>
-                <td class="py-1 px-2 border-r">
+                <td>
                     {{ $vcl->purchase_date }}
                 </td>
-                <td class="py-1 px-2 border-r">
+                <td>
                     {{ $vcl->fuel_type }}
                 </td>
                 <td scope="row" class="pt-2 font-medium text-gray-900 whitespace-nowrap dark:text-white">
@@ -93,7 +93,7 @@
             
         </tbody>
     </table>
-    {{ $vcls->links() }}
+        </div>
 </div>
 
 
@@ -107,12 +107,23 @@
 </x-admin-layout>
 
 <script>
-    $(document).ready(function() {
+//     $(document).ready(function() {
+//     $('#vcl-tbl').DataTable({
+//         dom: 'B<"clear">lfrtip',
+//    buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
+//     });
+// });
+
+
+$(document).ready(function() {
     $('#vcl-tbl').DataTable({
         dom: 'B<"clear">lfrtip',
-   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5']
+   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5'],
+   pageLength: 10,
+      lengthMenu: [5, 10, 20, 50, 100, 200, 500],
+      
     });
-});
+  });
   
  
 </script>

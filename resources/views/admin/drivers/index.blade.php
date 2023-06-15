@@ -4,7 +4,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>    
-    <div class="relative overflow-x-auto max-h-full h-96 bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
+    <div class="relative mb-10 overflow-x-auto max-h-full h-fit bg-slate-100 p-4 md:max-h-screen shadow-md sm:rounded-lg">
         <div class="flex justify-between w-full px-4 py-2 items-center">
             <div class="text-xl font-bold">
               Drivers
@@ -16,41 +16,35 @@
         
             
             
-                <table  class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400" id="table_one">
+                <table id="driver"  class="w-1/2" >
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
-                            <th scope="col" class="py-2 px-2">
+                            <th scope="col">
                                 No
                             </th>
-                            <th scope="col" class="py-2 px-2">
+                            <th scope="col">
                                 driver Name
                             </th>
-                            <th scope="col" class="py-2 px-2">
-                                Vehicle
-                            </th>
-                            <th scope="col" class="py-2 px-2">
+                            
+                            <th scope="col">
                                 Action
                             </th>
                             
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($drivers as $driver)
+                        @foreach ($drivers as $key=>$driver)
                                         
                        
                         <tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-700">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                {{ $driver->id }}
+                            <th scope="row" class="font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                {{ $key +1 }}
                             </th>
-                            <td class="py-4 px-6">
+                            <td class="">
                                 {{ $driver->driver_name }}
                             </td>
-                            <td class="py-4 px-6">
-                                {{ $driver->driver_name }}
-                            </td>
-                            <td class="flex py-4 px-6">
-                                
-
+                            
+                            <td >
                             <form method="POST"
                                    action="{{ route('admin.drivers.destroy', $driver->id) }}"
                                    onsubmit="return confirm('Are you sure?');" >
@@ -76,3 +70,17 @@
 
     
 </x-admin-layout>
+
+<script>
+    $(document).ready(function() {
+    $('#driver').DataTable({
+        dom: 'B<"toolbar">lfrtip',
+   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5'],   
+   pageLength: 20,
+    lengthMenu: [0, 5, 10, 20, 50, 100, 200, 500],
+    });
+    
+});
+  
+ 
+</script>

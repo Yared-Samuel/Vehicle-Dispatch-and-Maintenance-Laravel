@@ -13,8 +13,10 @@
       <div class="bg-[white] rounded-b-md">
         
        <div class="px-20">
-        <div class="space-y-2 text-slate-700">
-            <x-application-logo></x-application-logo>   
+        <div class="text-slate-700">
+          <div class="m-0 w-40 h-40">
+            <x-print-logo></x-print-logo>  
+          </div> 
             <div class="flex justify-between">
          <p class="text-xl font-extrabold tracking-tight uppercase font-body">
             Goods ISSUE note 
@@ -31,7 +33,7 @@
        </div>
        
    
-       <div class="p-9">
+       <div class="px-9">
         <div class="flex flex-col mx-0 mt-8">
             <table class="table-fixed">
                 <thead>
@@ -40,6 +42,7 @@
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Item Code</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Description</th>
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Plate</th>
+                    <th scope="col" class="py-2 px-2 border border-r-gray-300">Mileage (KM)</th>
                     
                     <th scope="col" class="py-2 px-2 border border-r-gray-300">Quantity</th>
                     
@@ -52,6 +55,7 @@
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->spareUseItem->name }}</td>
                    
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_blgtomny_vcls->plate_id }}</td>
+                    <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->mileage }}</td>
                    
                     <td class="py-1 px-2  border-r border-b-4">{{ $spareuse_grn->use_qty }} <small>{{ $spareuse_grn->spareUseItem->unit }}</small> </td>     
                     
@@ -65,10 +69,10 @@
        </div>
        <div class="px-9">
         <div class="flex w-full pb-2">
-         <div class="grid grid-cols-4 gap-12">
-          <div class="text-lg font-light text-slate-500">
+         <div class="grid grid-cols-4 gap-12 border-solid border-black">
+          <div class="text-lg font-light text-slate-500 mt-5 ">
            <p class="text-lg  font-normal text-slate-700">
-            Received by:
+            Store (ሰጪ):
            </p>
            <p class="pt-2">Name_________________________________________</p>           
            <p class="pt-4">Signature______________________________________</p>           
@@ -81,7 +85,7 @@
          <div class="grid grid-cols-4 gap-12">
           <div class="text-lg font-light text-slate-500">
            <p class="text-lg  font-normal text-slate-700">
-            Delevered by:
+            Delevered To (ተቀባይ):
            </p>
            <p class="pt-2">Name_________________________________________</p>           
            <p class="pt-4">Signature______________________________________</p>           

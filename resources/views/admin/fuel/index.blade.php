@@ -5,7 +5,7 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="bg-slate-100 ">  
+    <div class="bg-slate-100 mb-10">  
     <div class="overflow-hidden bg-slate-200 p-4 md:max-h-screen max-h-72 shadow-md sm:rounded-lg">
         <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
             <div class="text-xl font-bold">
@@ -135,7 +135,7 @@
                                 <b> {{$diff =  $fuel->kilometre - $fuel->prev_km }}</b> <small class="text-yellow-800">KM</small> 
                             </td>
                             <td>
-                                <b> {{$diff / $fuel->litre }}</b> <small class="text-red-800">KM / LITER</small> 
+                                <b> {{number_format($diff / $fuel->litre, 2)  }}</b> <small class="text-red-800">KM / LITER</small> 
                             </td>
                             {{-- @endforeach --}}
                             <td class="flex py-1 px-1">
@@ -166,11 +166,12 @@
 <script>
     $(document).ready(function() {
     $('#example').DataTable({
-        dom: 'B<"clear">lfrtip',
-   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5'],
+        dom: 'B<"toolbar">lfrtip',
+   buttons: ['copyHtml5','excelHtml5','csvHtml5','pdfHtml5'],   
    pageLength: 10,
     lengthMenu: [0, 5, 10, 20, 50, 100, 200, 500],
     });
+    
 });
   
  
