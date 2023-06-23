@@ -19,8 +19,13 @@ class Inventory extends Model
         return $this->belongsTo(Vcl::class,'vcl_id','id');
     }
 
-    public function INVItem()
+    public function inv_blgto_items()
     {
         return $this->belongsTo(Item::class,'item_id','id');
+    }
+    
+    public function INVhasItem()
+    {
+        return $this->hasMany(Item::class);
     }
 }

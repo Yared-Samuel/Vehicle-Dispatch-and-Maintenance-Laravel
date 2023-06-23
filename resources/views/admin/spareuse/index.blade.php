@@ -4,26 +4,13 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="bg-slate-100 mb-5">  
+    <x-container-of-pages>
     <div class="overflow-hidden bg-slate-200 pb-4 p-4 md:max-h-screen max-h-72 shadow-md sm:rounded-lg">
-        <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
-            <div class="text-xl font-bold">
-                    Spare Issued
-            </div>  
-            <div>     
-                <a href="{{ route('admin.reports.stock') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Stock Balance</a>
-                <a href="{{ route('admin.spareinv.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Recived</a>
-                <a href="{{ route('admin.spareinv.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center mr-4 ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Recieve Items</a>
-                <a href="{{ route('admin.spareuse.index') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Issued List</a>
-                <a href="{{ route('admin.spareuse.create') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Issue Item</a>
-                
-            </div>
-        </div>
+        
+        <x-inventory-nav-links>
+            {{ __('Issued Spareparts') }}
+        </x-inventory-nav-links>
+            
 
 
 
@@ -71,7 +58,7 @@
     </a>
 
 </div>
-<div class="bg-gray-100 p-2 rounded-md border-2 border-slate-400">
+<div class="bg-gray-100 mb-10 p-2 rounded-md border-2 border-slate-400">
                 <table id="spareuse_tbl" class="display table table-sm hover cell-border compact stripe">
                     <thead style="background-color: gray; font-size: 100%; color: white;">
                         <tr>
@@ -79,11 +66,19 @@
                                 No
                             </th>
                             <th >
+                                Doc. No
+                            </th>
+                            <th >
                                 Item Code
                             </th>
                             <th >
+                                Date
+                            </th>
+                            
+                            <th >
                                 Spare Name
                             </th>
+
                             <th >
                                Serial
                             </th>
@@ -91,7 +86,7 @@
                                 Plate
                             </th>
                             <th >
-                                Date
+                                Driver / Witness
                             </th>
                             
                             <th >
@@ -121,7 +116,13 @@
                                 {{ $key +1 }}
                             </th>
                             <td >
+                                <b> {{ $spare->GIV_ref }}</b> 
+                            </td>
+                            <td >
                                 <b> {{ $spare->spareUseItem->item_code }}</b> 
+                            </td>
+                            <td >
+                                <b> {{ $spare->use_date }}</b>
                             </td>
                             <td >
                                 <b> {{ $spare->spareUseItem->name }}</b> 
@@ -133,8 +134,9 @@
                                 <b> {{ $spare->use_blgtomny_vcls->plate_id }}</b>
                             </td>  
                             <td >
-                                <b> {{ $spare->use_date }}</b>
-                            </td>
+                                <b> {{ $spare->use_blgtomny_driver->driver_name }}</b>
+                            </td>  
+                            
                            
                             <td >                               
                                 <b>{{ $spare->mileage }}</b>
@@ -205,7 +207,7 @@
 </a>
 
 </div>
-<div class="bg-gray-100 border-2 border-slate-400 p-2 rounded-md">
+<div class="bg-gray-100 border-2 border-slate-400 p-2 rounded-md mb-10">
         <table id="spareuse_tbl_serial" class="display table table-sm hover cell-border compact stripe">
             <thead style="background-color: gray; font-size: 100%; color: white;">
                 <tr>
@@ -265,9 +267,7 @@
         </table>
 </div>
                 
-    </div> 
-    
-</div>
+</x-container-of-pages>
   
     
 </x-admin-layout>

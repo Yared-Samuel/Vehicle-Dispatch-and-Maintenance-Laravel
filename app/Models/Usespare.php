@@ -22,6 +22,10 @@ class Usespare extends Model
     {
         return $this->belongsTo(Vcl::class,'vcl_id','id');
     }
+    public function use_blgtomny_driver()
+    {
+        return $this->belongsTo(Driver::class,'driver_id','id');
+    }
 
     public function spareUseItem()
     {

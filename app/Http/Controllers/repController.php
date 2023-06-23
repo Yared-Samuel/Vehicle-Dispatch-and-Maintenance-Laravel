@@ -47,9 +47,14 @@ class repController extends Controller
         public function stock(){
             // $stock = Inventory::with('INVItem')->get()->groupBy('item_id');
             // dd($stock);
-    
-            $rems = Item::has('vcl_hasmny_INV')->get();
+            $rems = Item::with('vcl_hasmny_INV')->get();
+            
+            // $rems = Inventory::with('inv_blgto_items')->get();
             // dd($rems);
+            // foreach ($rems as $key => $value) {
+            //     dd($value);
+            // }
+            //     dd($rems);
             return view('admin.reports.stock')->with(['rems'=>$rems]);
         }
     

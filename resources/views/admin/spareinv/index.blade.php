@@ -4,31 +4,20 @@
             {{ __('Dashboard') }}
         </h2>
     </x-slot>
-    <div class="bg-slate-100 mb-5">  
-    <div class="overflow-hidden bg-slate-200 p-4 md:max-h-screen max-h-72 shadow-md sm:rounded-lg">
-        <div class="flex justify-between bg-slate-300 w-full px-4 py-2 items-center rounded-sm">
-            <div class="text-xl font-bold">
-                    SparePart Inventory
-            </div>  
-            <div>     
-                <a href="{{ route('admin.reports.stock') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Stock Balance</a>
-                <a href="{{ route('admin.spareinv.index') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Recived</a>
-                <a href="{{ route('admin.spareinv.create') }}" class="text-teal-900 font-bold hover:text-white border inline border-teal-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-pd px-1 py-1 text-center mr-4 ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Recieve Items</a>
-                <a href="{{ route('admin.spareuse.index') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Issued List</a>
-                <a href="{{ route('admin.spareuse.create') }}" class="text-yellow-900 font-bold hover:text-white border inline border-yellow-800 hover:bg-teal-900 focus:ring-4 focus:outline-none focus:ring-gray-300 rounded-lg text-md px-1 py-1 text-center ml-2 mb-0 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-                >Issue Item</a>
-            </div>
+    <x-container-of-pages>
+    <div class="overflow-hidden bg-slate-200 p-4 md:max-h-screen max-h-72 shadow-md rounded-lg" >  
+    
+       
+            <x-inventory-nav-links>
+            {{ __('Recived Spareparts') }}
+            </x-inventory-nav-links>
         </div>
         
         
 
             
-          <div>
-            <table id="spareinv_tbls" class="w-full table-auto text-sm text-left border-2 border-gray-200 text-gray-500 dark:text-gray-400">
+         
+            <table id="spareinv_tbls" class="w-full table-auto text-sm text-left border-2 border-gray-500 shadow-md text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-200 uppercase bg-gray-600 dark:bg-gray-700 dark:text-gray-400">
                     <tr>
                         
@@ -130,13 +119,11 @@
                     
                 </tbody>
             </table>
-        </div>
+        </x-container-of-pages>
                 
                 
                 
-    </div> 
-    
-</div>
+   
 
 
 
