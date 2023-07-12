@@ -7,15 +7,13 @@
         </h2>
     </x-slot>    
     <div class="py-2">
-        <div class="flex justify-between rounded-md py-4 mx-4 bg-slate-300">
-        <div class="text-xl pl-3 font-bold">
-            GRN
-    </div>  
-        <div class=" p-2">
-            <a href="{{ route('admin.spareinv.index') }}" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-                >Back To Index</a>
+        <div class="overflow-hidden bg-slate-200 p-4 md:max-h-screen max-h-72 shadow-md rounded-lg" >  
+    
+       
+            <x-inventory-nav-links>
+            {{ __('Recive Spareparts / GRN') }}
+            </x-inventory-nav-links>
         </div>
-    </div>
             <div class=" mt-3 md:mx-auto bg-gray-50 shadow-lg py-4 mx-4 sm:px-6 lg:px-8">
 
 
