@@ -18,15 +18,17 @@ return new class extends Migration
             $table->string('GRN_ref');
             $table->date('date_in');
             $table->string('serial')->nullable();
-            $table->foreignId('item_id')->constrained('items','id')
-                    ->onUpdate('cascade')
-                    ->onDelete('cascade');
+            // $table->foreignId('item_id')->constrained('items','id')
+            //         ->onUpdate('cascade')
+            //         ->onDelete('cascade');
+            $table->foreignId('item_id')->constrained('items')->onUpdate('cascade')->onDelete('cascade');
             $table->string('model')->nullable();
             $table->integer('qty_in');
             $table->integer('price_in');
             $table->integer('total_price');
             $table->smallInteger('created_by');
             $table->timestamps();
+            
         });
     }
 

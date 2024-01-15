@@ -19,15 +19,15 @@ class maintenanceController extends Controller
      */
     public function index()
     {
-        $mtn_aprroveds= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
+        $mtn_aprroveds= Requester::select('id','vcl_id','start_date','end_date','status','mtn_type','description',
                                                         'request_date')
                                     ->where('status',2)
                                     ->get();
-        $mtn_started= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
+        $mtn_started= Requester::select('id','vcl_id','start_date','end_date','status','mtn_type','description',
                                                         'request_date')
                                     ->where('status',3)
                                     ->get();
-        $mtn_completed= Requester::select('id','vcl_id','schedule','start_date','end_date','status','mtn_type','description',
+        $mtn_completed= Requester::select('id','vcl_id','start_date','end_date','status','mtn_type','description',
                                                         'request_date')
                                     ->where('status',4)
                                     ->get();
